@@ -2,77 +2,111 @@
 
 ---
 
-<div class="fixed w-full top-0 left-0">
-    <!-- <div class="drop-shadow-indigo-500 drop-shadow-xl w-[100vw] bg-red-500">a</div> -->
-    <div class="flex justify-between mt-5 ml-5 mr-5 items-center">
-        <a href="/">
-            <img src="/logo.svg" alt="logo" class="w-[200px] sm:w-[250px] md:w-[300px] lg:w-[400px]"/>
-        </a>  
-        <div class="hidden sm:block">
-            <div class="flex gap-5 items-center">
-                <a href="/news" class="font-semibold lg:text-xl hover:underline">
-                    News
-                </a>
-                <a href="/roles" class="font-semibold lg:text-xl hover:underline">
-                    Roles
-                </a>
-                <a href="/partners" class="font-semibold lg:text-xl hover:underline">
-                    Partners
-                </a>
-                <a href="https://www.unsw.edu.au/challeng/vertically-integrated-projects/explore-vertically-integrated-projects/atomcraft">
-                    <button class="cursor-pointer bg-[#39F8EB] text-black pt-0.5 pb-0.5 rounded-2xl font-semibold lg:text-xl w-[80px] lg:w-[100px]">
-                        Join Us
-                    </button>
-                </a>
-            </div>
-        </div>
-
-        <div class="sm:hidden flex flex-col items-center">
-            <button id="mobile-menu-btn" class="sm:hidden cursor-pointer group inline-flex w-12 h-12 text-white text-center items-center justify-center rounded shadow-[0_1px_0_theme(colors.slate.950/.04),0_1px_2px_theme(colors.slate.950/.12),inset_0_-2px_0_theme(colors.slate.950/.04)] hover:shadow-[0_1px_0_theme(colors.slate.950/.04),0_4px_8px_theme(colors.slate.950/.12),inset_0_-2px_0_theme(colors.slate.950/.04)] transition" aria-pressed="false">
-                <span class="sr-only">Menu</span>
-                <svg class="w-6 h-6 fill-current pointer-events-none" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-                    <rect class="origin-center -translate-y-[5px] translate-x-[7px] transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.1)] group-[[aria-pressed=true]]:translate-x-0 group-[[aria-pressed=true]]:translate-y-0 group-[[aria-pressed=true]]:rotate-[315deg]" y="7" width="9" height="2" rx="1"></rect>
-                    <rect class="origin-center transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.8)] group-[[aria-pressed=true]]:rotate-45" y="7" width="16" height="2" rx="1"></rect>
-                    <rect class="origin-center translate-y-[5px] transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.1)] group-[[aria-pressed=true]]:translate-y-0 group-[[aria-pressed=true]]:rotate-[135deg]" y="7" width="9" height="2" rx="1"></rect>
-                </svg>
-            </button>
-
-            <div id="mobile-menu" class="sm:hidden absolute top-full right-0 w-[100px] opacity-0 max-h-0 invisible overflow-hidden transition-all duration-300 ease-in-out">
-                <div class="flex flex-col gap-5 items-center">
-                    <a href="/news" class="font-semibold">
-                        News
-                    </a>
-                    <a href="/roles" class="font-semibold">
-                        Roles
-                    </a>
-                    <a href="/partners" class="font-semibold">
-                        Partners
-                    </a>
-                    <a class="font-semibold">
-                        Join Us
-                    </a>
-                </div>
-            </div>
-        </div>
+<div class="fixed top-0 left-0 z-4 w-full">
+  <div
+    class="absolute top-0 left-1/2 z-5 h-[120px] w-[120vw] -translate-x-1/2 bg-[radial-gradient(ellipse_at_top,_rgba(41,14,101,0.9)_0%,_transparent_100%)] blur-2xl lg:h-[150px] lg:w-[150vw] xl:h-[200px] xl:w-[200vw]"
+  >
+  </div>
+  <!-- <div class="drop-shadow-indigo-500 drop-shadow-xl w-[100vw] bg-red-500">a</div> -->
+  <div
+    class="relative z-10 mt-5 mr-5 ml-5 flex items-center justify-between xl:mr-[5vw] xl:ml-[5vw]"
+  >
+    <a href="/">
+      <img
+        src="/logo.svg"
+        alt="logo"
+        class="z-10 w-[200px] sm:w-[250px] md:w-[300px] lg:w-[400px]"
+      />
+    </a>
+    <div class="z-10 hidden sm:block">
+      <div class="flex items-center gap-5">
+        <a href="/news" class="font-semibold hover:underline lg:text-xl">
+          News
+        </a>
+        <a href="/roles" class="font-semibold hover:underline lg:text-xl">
+          Roles
+        </a>
+        <a href="/partners" class="font-semibold hover:underline lg:text-xl">
+          Partners
+        </a>
+        <a
+          href="https://www.unsw.edu.au/challeng/vertically-integrated-projects/explore-vertically-integrated-projects/atomcraft"
+        >
+          <button
+            class="w-[80px] cursor-pointer rounded-2xl bg-[#39F8EB] pt-0.5 pb-0.5 font-semibold text-black lg:w-[100px] lg:text-xl"
+          >
+            Join Us
+          </button>
+        </a>
+      </div>
     </div>
+
+    <div class="z-10 flex flex-col items-center sm:hidden">
+      <button
+        id="mobile-menu-btn"
+        class="group inline-flex h-12 w-12 cursor-pointer items-center justify-center rounded text-center text-white shadow-[0_1px_0_theme(colors.slate.950/.04),0_1px_2px_theme(colors.slate.950/.12),inset_0_-2px_0_theme(colors.slate.950/.04)] transition hover:shadow-[0_1px_0_theme(colors.slate.950/.04),0_4px_8px_theme(colors.slate.950/.12),inset_0_-2px_0_theme(colors.slate.950/.04)] sm:hidden"
+        aria-pressed="false"
+      >
+        <span class="sr-only">Menu</span>
+        <svg
+          class="pointer-events-none h-6 w-6 fill-current"
+          viewBox="0 0 16 16"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            class="origin-center translate-x-[7px] -translate-y-[5px] transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.1)] group-[[aria-pressed=true]]:translate-x-0 group-[[aria-pressed=true]]:translate-y-0 group-[[aria-pressed=true]]:rotate-[315deg]"
+            y="7"
+            width="9"
+            height="2"
+            rx="1"></rect>
+          <rect
+            class="origin-center transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.8)] group-[[aria-pressed=true]]:rotate-45"
+            y="7"
+            width="16"
+            height="2"
+            rx="1"></rect>
+          <rect
+            class="origin-center translate-y-[5px] transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.1)] group-[[aria-pressed=true]]:translate-y-0 group-[[aria-pressed=true]]:rotate-[135deg]"
+            y="7"
+            width="9"
+            height="2"
+            rx="1"></rect>
+        </svg>
+      </button>
+
+      <div
+        id="mobile-menu"
+        class="invisible absolute top-full right-[-10] max-h-0 w-[100px] overflow-hidden opacity-0 transition-all duration-300 ease-in-out sm:hidden"
+      >
+        <div
+          class="flex flex-col items-center gap-5 rounded-2xl bg-black/70 pt-2 pb-2"
+        >
+          <a href="/news" class="font-semibold"> News </a>
+          <a href="/roles" class="font-semibold"> Roles </a>
+          <a href="/partners" class="font-semibold"> Partners </a>
+          <a class="font-semibold"> Join Us </a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const menuBtn = document.getElementById("mobile-menu-btn");
-        const mobileMenu = document.getElementById("mobile-menu");
+  document.addEventListener("DOMContentLoaded", () => {
+    const menuBtn = document.getElementById("mobile-menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
 
-        if (menuBtn && mobileMenu) {
-            document.addEventListener('click', () => {
-                const isPressed = menuBtn.getAttribute("aria-pressed") === 'true';
-                menuBtn.setAttribute("aria-pressed", String(!isPressed));
+    if (menuBtn && mobileMenu) {
+      document.addEventListener("click", () => {
+        const isPressed = menuBtn.getAttribute("aria-pressed") === "true";
+        menuBtn.setAttribute("aria-pressed", String(!isPressed));
 
-                mobileMenu.classList.toggle('opacity-0');
-                mobileMenu.classList.toggle('invisible');
-                
-                mobileMenu.classList.toggle('max-h-0');
-                mobileMenu.classList.toggle('max-h-screen');
-            })
-        }
-    })
+        mobileMenu.classList.toggle("opacity-0");
+        mobileMenu.classList.toggle("invisible");
+
+        mobileMenu.classList.toggle("max-h-0");
+        mobileMenu.classList.toggle("max-h-screen");
+      });
+    }
+  });
 </script>
