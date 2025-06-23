@@ -1,14 +1,121 @@
 ---
-import Navbar from '../components/Navbar.astro';
-import Layout from '../layouts/Layout.astro';
-import './src/styles/global.css' 
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
+import "./src/styles/global.css";
 ---
 
 <Layout>
-    	<Navbar>
-        <!-- <video id="comp-loi3vl5y_video" class="fixed minh-[100%] minw-[100vw] z-" crossorigin="anonymous" playsinline="" preload="auto" muted="" loop="" autoplay="" src="https://video.wixstatic.com/video/dd0bc3_5dd0653d529046b6b88448d83406cf8d/1080p/mp4/file.mp4"></video> -->
-    <!-- </div> -->
+  <div class="relative h-screen w-screen overflow-hidden">
+    <video
+      class="absolute top-0 left-0 z-1 h-full w-full object-cover"
+      crossorigin="anonymous"
+      playsinline
+      preload="auto"
+      muted
+      loop
+      autoplay
+      src="https://video.wixstatic.com/video/dd0bc3_5dd0653d529046b6b88448d83406cf8d/1080p/mp4/file.mp4"
+    ></video>
+
+    <div class="relative z-3 flex h-full w-full items-center justify-center">
+      <div class="flex w-full flex-col items-center gap-5 md:pb-[25vh]">
+        <img
+          src="hero-logo.svg"
+          class="z-3 mb-[-30px] w-[200px] will-change-transform sm:mb-[-50px] md:mb-[-70px] md:w-[300px] lg:w-[400px]"
+          id="hero-logo"
+        />
+        <div
+          class="relative flex w-full flex-col items-center gap-1 py-[30px] sm:gap-3 sm:py-[50px] md:py-[100px]"
+        >
+          <div
+            class="absolute inset-0 z-0 rounded-lg bg-[linear-gradient(to_bottom,transparent_0%,rgba(0,0,0,0.4)_25%,rgba(0,0,0,0.4)_75%,transparent_100%)] md:bg-[linear-gradient(to_bottom,transparent_0%,rgba(0,0,0,0.6)_25%,rgba(0,0,0,0.6)_75%,transparent_100%)]"
+          >
+          </div>
+          <h1
+            id="line-1"
+            class="text-3xl font-bold text-white will-change-transform sm:text-5xl md:text-6xl lg:text-8xl"
+          >
+            Crafting the Future
+          </h1>
+          <h1
+            id="line-2"
+            class="text-3xl font-bold text-white will-change-transform sm:text-5xl md:text-6xl lg:text-8xl"
+          >
+            of Fusion
+          </h1>
+        </div>
+      </div>
+    </div>
+  </div>
 </Layout>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import SplitType from "split-type";
+
+  gsap.registerPlugin(ScrollTrigger);
+  document.addEventListener("DOMContentLoaded", () => {
+    const line1 = new SplitType("#line-1", { types: "words" });
+    const line2 = new SplitType("#line-2", { types: "words" });
+
+    if (line1.words && line1.words[line1.words.length - 1]) {
+      line1.words[line1.words.length - 1].classList.add(
+        "text-transparent",
+        "bg-clip-text",
+        "bg-[linear-gradient(170deg,_#fff,_#7656BD_50%,_#fff)]",
+      );
+    }
+
+    if (line2.words) {
+      line2.words[0].classList.add(
+        "text-transparent",
+        "bg-clip-text",
+        "bg-[linear-gradient(170deg,_#fff,_#7656BD_50%,_#fff)]",
+      );
+      line2.words[1].classList.add(
+        "text-transparent",
+        "bg-clip-text",
+        "bg-[linear-gradient(170deg,_#fff,_#7656BD_50%,_#fff)]",
+      );
+    }
+
+    const timeline = gsap.timeline({
+      scrollTrigger: {
+        start: "top 80%",
+        trigger: "#hero-logo",
+        once: true,
+      },
+    });
+
+    timeline.from("#hero-logo", {
+      scale: 0.5,
+      opacity: 0,
+      duration: 1,
+      ease: "power3.out",
+    });
+
+    timeline.from(
+      line1.words,
+      {
+        y: 50,
+        opacity: 0,
+        stagger: 0.15,
+        duration: 2,
+        ease: "power3.out",
+      },
+      "0.6",
+    );
+
+    timeline.from(
+      line2.words,
+      {
+        y: 50,
+        opacity: 0,
+        stagger: 0.15,
+        duration: 2,
+        ease: "power2.out",
+      },
+      "1.2",
+    );
+  });
+</script>
