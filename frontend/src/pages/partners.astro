@@ -1,0 +1,67 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import "../styles/global.css";
+import partnerImage from "../assets/partner.jpg"
+import email from "../assets/email.svg";
+
+---
+
+<Layout>
+  <div class="mt-[20vh] max-w-[1500px] w-[90%] mx-auto">
+    <div class="flex">
+      <div>
+        <h1 class="xl:text-7xl 3xl:text-8xl">
+          <span class="text-transparent bg-clip-text bg-[linear-gradient(170deg,_#fff,_#7656BD_50%,_#fff)]">Partner</span> with Atomcraft
+        </h1>
+        <p class="text-2xl mt-10 w-[90%] text-gray_text">
+          Our partners provide the support and resources that make our research and engineering work possible, 
+          enabling us to turn ambitious ideas into real-world fusion devices.
+        </p>
+      </div>
+      <Image src={partnerImage} alt="Team photo of AtomCraft" class="w-[90%] scale-auto rounded-xl"/>
+    </div>
+
+    <div class="flex mx-auto w-fit mt-[20vh] gap-[5vw] justify-center">
+      <div class="flex flex-col text-gray_text w-[30%]">
+        <h2 class="text-white xl:text-5xl mb-5">
+          We'd love to hear from you!
+        </h2>
+        <p class="text-xl mb-2">
+          Whether you're curious about what we do or want to get involved, we'd love to chat.
+        </p>
+        <div class="flex">
+          <Image src={email} alt="email svg" class="mr-2"/>
+          <p>
+            Some person's email
+          </p>
+        </div>
+      </div>
+      <div class="relative h-[600px] w-2xl bg-[#4216A4]/50 rounded-md z-10 mb-50">
+        <div class="absolute top-0 left-0 h-full w-full rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-gradient-to-tr 
+          from-[#FFF]/25
+          to-[#080411]/25 border border-[#383149]">
+          <div class="absolute top-0 left-0 h-full w-full rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-gradient-to-bl 
+            from-[#FFF]/15
+            to-[#080411]/100 border border-[#383149]">
+            <div class="m-10 w-full h-full">
+              <h2 class="text-4xl mb-5">
+                Become a Partner!
+              </h2>
+              <form data-netlify="true" method="POST" name="contact" class="w-full h-full">
+                <div class="flex flex-col gap-5 w-full h-full items-start">
+                  <input placeholder="Name" class="border-2 border-[#4216A4] rounded-lg bg-[#1D0A4A] text-gray_text p-1 w-60"/>
+                  <input placeholder="Email address" class="border-2 border-[#4216A4] rounded-lg bg-[#1D0A4A] text-gray_text p-1 w-60"/>
+                  <textarea placeholder="Message" class="border-2 border-[#4216A4] rounded-lg bg-[#1D0A4A] text-gray_text p-1 w-[80%] h-[50%]"/>
+                  <button class="w-[100px] cursor-pointer rounded-2xl bg-[#39F8EB] pt-0.5 pb-0.5 font-semibold text-black lg:text-xl">
+                    Send
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
