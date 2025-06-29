@@ -4,6 +4,7 @@
   --color-gray_text: #d7dadc;
   --color-secondary-pink: #ea8df0;
   --breakpoint-xs: 30rem;
+  --breakpoint-3xl: 120rem;
 }
 
 .gradient-text {
