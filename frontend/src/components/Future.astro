@@ -1,0 +1,31 @@
+---
+import { Image } from "astro:assets";
+import glow from "../assets/glow-cut.png";
+---
+
+<div class="w-full flex flex-col items-center pb-[40vh]">
+  <Image src={glow} alt="effect" class="md:w-xl"/>
+  <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-semibold mb-3 md:mb-5">
+    The Future
+  </h2>
+  <div class="text-center md:w-2xl sm:text-lg md:text-xl lg:text-2xl space-y-[1em] text-gray_text">
+    <p>
+      Fusion is no longer just a scientific dream. It is becoming an engineering reality. 
+      The global fusion industry is rapidly evolving, with projections estimating a market value of nearly US$1 trillion by 2040.
+    </p>
+    <p>
+      This project supports research and development efforts for several fusion start-ups and helps pave the way toward a decarbonised energy future. 
+      We are not just imagining the future. We are building it, piece by piece.
+    </p>
+  </div>
+  
+  <a
+    href="https://www.unsw.edu.au/challeng/vertically-integrated-projects/explore-vertically-integrated-projects/atomcraft"
+  >
+    <button
+      class="cursor-pointer rounded-4xl bg-[#39F8EB] bg-gradient-to-r from-[#39F8EB] to-[#39bcf8] py-2.5 px-10 text-white lg:text-xl mt-10 font-semibold shadow-black/100 [text-shadow:0_2px_15px_var(--tw-shadow-color)]"
+    >
+      Build the future
+    </button>
+  </a>
+</div>

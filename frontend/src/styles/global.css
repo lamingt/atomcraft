@@ -1,1 +1,19 @@
 @import "tailwindcss";
+
+@theme {
+  --color-gray_text: #d7dadc;
+  --color-secondary-pink: #ea8df0;
+  --breakpoint-xs: 30rem;
+}
+
+.gradient-text {
+  @apply bg-clip-text text-transparent;
+  background-image: linear-gradient(170deg, #fff, #7656bd 50%, #fff);
+}
+
+@layer utilities {
+  .bg-clip-text {
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+}
