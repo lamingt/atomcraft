@@ -8,13 +8,13 @@ export const prerender = true
 ---
 
 <Layout>
-  <div class="mt-[20vh] max-w-[1500px] w-[90%] mx-auto">
-    <div class="flex">
-      <div>
-        <h1 class="xl:text-7xl 3xl:text-8xl">
+  <div class="mt-[10vh] lg:mt-[15vh] xl:mt-[20vh] max-w-[1500px] w-[90%] mx-auto">
+    <div class="flex flex-col lg:flex-row gap-10">
+      <div class="w-fit">
+        <h1 class="text-4xl md:text-5xl xl:text-7xl 3xl:text-8xl w-fit">
           <span class="text-transparent bg-clip-text bg-[linear-gradient(170deg,_#fff,_#7656BD_50%,_#fff)]">Partner</span> with Atomcraft
         </h1>
-        <p class="text-2xl mt-10 w-[90%] text-gray_text">
+        <p class="text-lg mt-5 lg:text-xl xl:text-2xl lg:mt-10 w-[90%] text-gray_text">
           Our partners provide the support and resources that make our research and engineering work possible, 
           enabling us to turn ambitious ideas into real-world fusion devices.
         </p>
@@ -22,12 +22,12 @@ export const prerender = true
       <Image src={partnerImage} alt="Team photo of AtomCraft" class="w-[90%] scale-auto rounded-xl"/>
     </div>
 
-    <div class="flex mx-auto w-fit mt-[20vh] gap-[5vw] justify-center">
-      <div class="flex flex-col text-gray_text w-[30%]">
-        <h2 class="text-white xl:text-5xl mb-5">
+    <div class="flex flex-col lg:flex-row mx-auto w-fit mt-[20vh] gap-[5vw] justify-center">
+      <div class="flex flex-col text-gray_text w-full lg:w-[30%]">
+        <h2 class="text-white md:text-3xl xl:text-5xl mb-5">
           We'd love to hear from you!
         </h2>
-        <p class="text-xl mb-2">
+        <p class="text-xl mb-2 w-[45%] xs:w-[60%] sm:w-[70%] lg:w-full">
           Whether you're curious about what we do or want to get involved, we'd love to chat.
         </p>
         <div class="flex">
@@ -37,7 +37,7 @@ export const prerender = true
           </p>
         </div>
       </div>
-      <div class="relative h-[600px] w-2xl bg-[#4216A4]/50 rounded-md z-10 mb-50">
+      <div class="relative h-[600px] md:w-2xl bg-[#4216A4]/50 rounded-md z-10 mb-50">
         <div class="absolute top-0 left-0 h-full w-full rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-gradient-to-tr 
           from-[#FFF]/25
           to-[#080411]/25 border border-[#383149]">
@@ -45,7 +45,7 @@ export const prerender = true
             from-[#FFF]/15
             to-[#080411]/100 border border-[#383149]">
             <div class="m-10 w-full h-full">
-              <h2 class="text-4xl mb-5">
+              <h2 class="text-2xl xs:text-3xl lg:text-4xl mb-5">
                 Become a Partner!
               </h2>
               <form data-netlify="true" data-netlify-honeypot="bot-field" method="POST" name="contact" class="w-full h-full">
@@ -56,10 +56,10 @@ export const prerender = true
                     </label>
                   </p>
                   <input type="hidden" name="form-name" value="contact" />
-                  <input placeholder="Name" name="name" class="border-2 border-[#4216A4] rounded-lg bg-[#1D0A4A] text-gray_text p-1 w-60"/>
-                  <input placeholder="Email address" name="email" class="border-2 border-[#4216A4] rounded-lg bg-[#1D0A4A] text-gray_text p-1 w-60"/>
-                  <textarea placeholder="Message" name="message" class="border-2 border-[#4216A4] rounded-lg bg-[#1D0A4A] text-gray_text p-1 w-[80%] h-[50%]"/>
-                  <button class="w-[100px] cursor-pointer rounded-2xl bg-[#39F8EB] pt-0.5 pb-0.5 font-semibold text-black lg:text-xl">
+                  <input placeholder="Name" name="name" class="border-2 border-[#4216A4] rounded-lg bg-[#1D0A4A] text-gray_text p-1 w-[70%] md:w-60"/>
+                  <input placeholder="Email address" name="email" class="border-2 border-[#4216A4] rounded-lg bg-[#1D0A4A] text-gray_text p-1 w-[70%] md:w-60"/>
+                  <textarea placeholder="Message" name="message" class="border-2 border-[#4216A4] rounded-lg bg-[#1D0A4A] text-gray_text p-1 w-[70%] md:w-[80%] h-[50%]"/>
+                  <button class="w-[80px] sm:w-[100px] cursor-pointer rounded-2xl bg-[#39F8EB] pt-0.5 pb-0.5 font-semibold text-black lg:text-xl">
                     Send
                   </button>
                 </div>
