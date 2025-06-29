@@ -59,7 +59,6 @@ import backgroundVideo from "../assets/atomcraft-video.mp4";
 
     // const line1Split = SplitText.create("#line-1", { type: "words" })
     // const line2Split = SplitText.create("#line-2", { type: "words" })
-
     const timeline = gsap.timeline({
       scrollTrigger: {
         start: "top 80%",
@@ -68,36 +67,38 @@ import backgroundVideo from "../assets/atomcraft-video.mp4";
       },
     });
 
-    timeline.from("#hero-logo", {
-      scale: 0.5,
-      opacity: 0,
-      rotation: 0.001, // prevents the hero logo from being jittery on animation
-      duration: 1,
-      ease: "power3.out",
-    });
-
-    timeline.from(
-      "#line-1",
-      {
-        y: 30,
-        opacity: 0,
-        // stagger: 0.1,
-        duration: 1.5,
-        ease: "power3.out",
-      },
-      "0.6",
+    timeline.fromTo("#hero-logo", 
+      { scale: 0.5, autoAlpha: 0 },
+      { 
+        scale: 1, 
+        autoAlpha: 1, 
+        rotation: 0.001, // prevents the hero logo from being jittery on animation
+        duration: 1, 
+        ease: "power3.out" 
+      }
     );
 
-    timeline.from(
-      "#line-2",
-      {
-        y: 30,
-        opacity: 0,
-        stagger: 0.1,
-        duration: 1.5,
-        ease: "power3.out",
+    timeline.fromTo("#line-1",
+      { y: 30, autoAlpha: 0 },
+      { 
+        y: 0, 
+        autoAlpha: 1, 
+        duration: 1.5, 
+        ease: "power3.out" 
       },
-      "1",
+      "0.6"
+    );
+
+    timeline.fromTo("#line-2",
+      { y: 30, autoAlpha: 0 },
+      { 
+        y: 0, 
+        autoAlpha: 1, 
+        stagger: 0.1, 
+        duration: 1.5, 
+        ease: "power3.out" 
+      },
+      "1"
     );
   });
 </script>
