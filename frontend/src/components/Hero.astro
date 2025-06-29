@@ -1,0 +1,102 @@
+---
+import "./src/styles/global.css";
+import backgroundVideo from "../assets/atomcraft-video.mp4";
+---
+
+<div class="relative h-screen w-full overflow-hidden">
+  <video
+    class="absolute top-0 left-0 z-1 h-full w-full object-cover"
+    crossorigin="anonymous"
+    playsinline
+    preload="auto"
+    muted
+    loop
+    autoplay
+    src={backgroundVideo}
+  ></video>
+
+  <div class="relative z-3 flex h-full w-full items-center justify-center md:mt-[100px]">
+    <div class="flex w-full flex-col items-center gap-5 md:pb-[25vh]">
+      <div id="hero-logo" class="z-3 mb-[-30px] w-[200px] will-change-transform sm:mb-[-50px] md:mb-[-70px] md:w-[300px] lg:w-[400px]">
+        <img src="hero-logo.svg" alt="atomcraft logo"/>
+      </div>
+
+      <div
+        class="relative flex w-full flex-col items-center gap-1 py-[30px] sm:gap-3 sm:py-[50px] md:py-[100px]"
+      >
+        <div
+          class="absolute inset-0 z-0 rounded-lg bg-[linear-gradient(to_bottom,transparent_0%,rgba(0,0,0,0.4)_25%,rgba(0,0,0,0.4)_75%,transparent_100%)] md:bg-[linear-gradient(to_bottom,transparent_0%,rgba(0,0,0,0.6)_25%,rgba(0,0,0,0.6)_75%,transparent_100%)]"
+        >
+        </div>
+        <h1
+          id="line-1"
+          class="text-3xl font-bold text-white will-change-transform sm:text-5xl md:text-6xl lg:text-8xl"
+        >
+          Crafting the <span class="text-transparent bg-clip-text bg-[linear-gradient(170deg,_#fff,_#7656BD_50%,_#fff)]">Future</span>
+        </h1>
+        <h1
+          id="line-2"
+          class="text-3xl font-bold will-change-transform sm:text-5xl md:text-6xl lg:text-8xl text-transparent bg-clip-text bg-[linear-gradient(170deg,_#fff,_#7656BD_50%,_#fff)] pb-5"
+        >
+          <!-- bottom padding prevents text from being hidden at the start of animation -->
+          of Fusion
+        </h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  // import { SplitText } from "gsap/SplitText";
+
+  gsap.registerPlugin(ScrollTrigger);
+  document.addEventListener("DOMContentLoaded", () => {
+    // SplitText combined with bg-clip-text breaks on chrome but works on firefox
+    // idk why ill figure it out later
+
+    // const line1Split = SplitText.create("#line-1", { type: "words" })
+    // const line2Split = SplitText.create("#line-2", { type: "words" })
+
+    const timeline = gsap.timeline({
+      scrollTrigger: {
+        start: "top 80%",
+        trigger: "#hero-logo",
+        once: true,
+      },
+    });
+
+    timeline.from("#hero-logo", {
+      scale: 0.5,
+      opacity: 0,
+      rotation: 0.001, // prevents the hero logo from being jittery on animation
+      duration: 1,
+      ease: "power3.out",
+    });
+
+    timeline.from(
+      "#line-1",
+      {
+        y: 30,
+        opacity: 0,
+        // stagger: 0.1,
+        duration: 1.5,
+        ease: "power3.out",
+      },
+      "0.6",
+    );
+
+    timeline.from(
+      "#line-2",
+      {
+        y: 30,
+        opacity: 0,
+        stagger: 0.1,
+        duration: 1.5,
+        ease: "power3.out",
+      },
+      "1",
+    );
+  });
+</script>

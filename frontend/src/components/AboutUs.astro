@@ -1,0 +1,60 @@
+---
+import { Image } from "astro:assets"
+import teamPhoto from "../assets/team-photo.png"
+---
+
+<div class="pb-50">
+  <div>
+    <h3 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl pb-5">
+      ABOUT US
+    </h3>
+    <div class="flex flex-col lg:flex-row gap-10">
+      <p class="text-gray_text sm:text-lg lg:text-xl xl:text-2xl min-[2000px]:!text-3xl">
+        AtomCraft is the world&apos;s first undergraduate-led project dedicated to designing, building, and 
+        operating a tokamak—a cutting-edge fusion device that uses electromagnetic fields to confine superheated 
+        plasma and replicate the conditions of the Sun. Bridging disciplines across advanced physics and engineering, 
+        our multidisciplinary team is tackling one of the greatest challenges in sustainable energy: achieving stable 
+        and sustained environment for plasma confinement. By pushing the boundaries of fusion research, AtomCraft 
+        is training the next generation of innovators to tackle the final frontier of sustainable energy.
+      </p>
+      <Image src={teamPhoto} alt="Photo of AtomCraft team" class="lg:w-[45vw] 2xl:w-[30vw] aspect-auto rounded-2xl"/>
+    </div>
+  </div>
+
+  <div class="flex w-full justify-between mt-15 md:mt-30 lg:mt-50 xl:mt-60 gap-10">
+    <div>
+      <h1 id="members" class="text-5xl sm:text-7xl lg:text-8xl xl:text-9xl font-bold gradient-text">
+        0 
+      </h1>
+      <p class="font-semibold sm:text-2xl lg:text-3xl xl:text-5xl">
+        Team Members
+      </p>
+    </div>
+    <div>
+      <h1 id="teams" class="text-5xl sm:text-7xl lg:text-8xl xl:text-9xl font-bold gradient-text">
+        0
+      </h1>
+      <p class="font-semibold sm:text-2xl lg:text-3xl xl:text-5xl">
+        Teams
+      </p>
+    </div>
+    <div>
+      <h1 id="disciplines" class="text-5xl sm:text-7xl lg:text-8xl xl:text-9xl font-bold gradient-text">
+        0
+      </h1>
+      <p class="font-semibold sm:text-2xl lg:text-3xl xl:text-5xl">
+        Academic Disciplines
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { createCounterAnimation } from "../helpers";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    createCounterAnimation("#members", 63);
+    createCounterAnimation("#teams", 8);
+    createCounterAnimation("#disciplines", 6);
+  });
+</script>

@@ -2,12 +2,13 @@
 
 ---
 
-<div class="fixed top-0 left-0 z-4 w-full">
+<header class="absolute top-0 left-0 z-4 w-full">
   <div
-    class="absolute top-0 left-1/2 z-5 h-[120px] w-[120vw] -translate-x-1/2 bg-[radial-gradient(ellipse_at_top,_rgba(41,14,101,0.9)_0%,_transparent_100%)] blur-2xl lg:h-[150px] lg:w-[150vw] xl:h-[200px] xl:w-[200vw]"
+    class="absolute top-0 left-1/2 z-5 h-20 sm:h-30 w-full -translate-x-1/2 bg-[linear-gradient(to_bottom,rgba(41,14,101,1)_0%,rgba(41,14,101,0.8)_50%,transparent_100%)]
+    blur-2xl lg:h-25 xl:h-30 2xl:h-40"
   >
   </div>
-  <!-- <div class="drop-shadow-indigo-500 drop-shadow-xl w-[100vw] bg-red-500">a</div> -->
+
   <div
     class="relative z-10 mt-5 mr-5 ml-5 flex items-center justify-between xl:mr-[5vw] xl:ml-[5vw]"
   >
@@ -76,7 +77,7 @@
 
       <div
         id="mobile-menu"
-        class="invisible absolute top-full right-[-10] max-h-0 w-[100px] overflow-hidden opacity-0 transition-all duration-300 ease-in-out sm:hidden"
+        class="invisible absolute top-full right-[-20] max-h-0 w-[100px] overflow-hidden opacity-0 transition-all duration-300 ease-in-out sm:hidden"
       >
         <div
           class="flex flex-col items-center gap-5 rounded-2xl bg-black/70 pt-2 pb-2"
@@ -89,7 +90,7 @@
       </div>
     </div>
   </div>
-</div>
+</header>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {

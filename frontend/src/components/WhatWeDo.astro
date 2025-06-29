@@ -1,0 +1,43 @@
+<div class="pt-10 md:pb-50 pb-20">
+  <p id="question-text" class="text-[#EA8DF0] text-xl md:text-2xl lg:text-3xl mb-1 will-change-transform">
+    What do we do?
+  </p>
+  <p id="answer-text" class="font-medium text-2xl md:text-3xl lg:text-4xl xl:text-5xl will-change-transform">
+    We are building the world&apos;s first student-led fusion energy device, designed, built, and operated entirely by students. 
+    Fusion energy is the ultimate solution to clean, sustainable power, and it's closer than you think.
+  </p>
+</div>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger)
+  document.addEventListener("DOMContentLoaded", () => {
+    console.log("hi")
+    const timeline = gsap.timeline({
+      paused: true,
+      scrollTrigger: {
+        start: "top 80%",
+        once: true,
+        trigger: "#question-text",
+        onEnter: () => timeline.play()
+      }
+    })
+
+    timeline.from("#question-text", {
+      y: 50,
+      opacity: 0,
+      duration: 1.5,
+      ease: "power3.out",
+    })
+
+    timeline.from("#answer-text", {
+      y: 50,
+      opacity: 0,
+      duration: 1.5,
+      ease: "power3.out",
+    }, "<0.6")
+  })
+
+</script>

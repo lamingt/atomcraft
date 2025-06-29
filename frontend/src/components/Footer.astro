@@ -1,0 +1,38 @@
+---
+import { Image } from "astro:assets";
+import unswLogo from "../assets/unsw-logo.svg";
+import footerLogo from "../assets/footer-logo.svg";
+---
+
+<footer class="relative w-full min-h-[100px]">
+  <div
+    class="absolute bottom-0 left-1/2 h-50 sm:h-60 md:h-70 lg:h-70 xl:h-80 2xl:h-96 w-full -translate-x-1/2 bg-gradient-to-t from-[#4216A4] to-[#080411]"
+  />
+
+  <div class="relative z-5 w-full h-full flex items-center justify-center">
+    <div class="flex flex-col items-center absolute bottom-5 gap-3">
+      <div class="flex gap-10 items-center justify-center">
+        <a href="https://www.unsw.edu.au/">
+          <Image src={unswLogo} alt="UNSW logo" class="max-w-[30vw]"/>
+        </a>
+        <a href="/">
+          <Image src={footerLogo} alt="AtomCraft logo" class="max-w-[30vw]"/>
+        </a>
+      </div>
+      <div class="flex gap-5 text-sm sm:text-lg">
+        <a href="/news" class="font-semibold hover:underline">
+          News
+        </a>
+        <a href="/roles" class="font-semibold hover:underline">
+          Roles
+        </a>
+        <a href="/partners" class="font-semibold hover:underline">
+          Partners
+        </a>
+      </div>
+      <p class="text-sm sm:text-lg">
+        © 2023 by AtomCraft. 
+      </p>
+    </div>
+  </div>
+</footer>
