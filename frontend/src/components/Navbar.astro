@@ -1,5 +1,6 @@
 ---
-
+import { Image } from "astro:assets"
+import logo from "../assets/logo.svg"
 ---
 
 <header class="absolute top-0 left-0 z-4 w-full">
@@ -16,9 +17,10 @@
     class="relative z-10 mt-5 mr-5 ml-5 flex items-center justify-between xl:mr-[5vw] xl:ml-[5vw]"
   >
     <a href="/">
-      <img
-        src="/logo.svg"
+      <Image
+        src={logo}
         alt="logo"
+        loading="eager"
         class="z-10 w-[200px] sm:w-[250px] md:w-[300px] lg:w-[400px] 3xl:w-[15vw]"
       />
     </a>

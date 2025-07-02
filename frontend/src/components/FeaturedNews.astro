@@ -12,7 +12,7 @@ import rightArrow from "../assets/right-arrow.svg";
   <div class="flex overflow-x-hidden gap-20 relative">
     <FeaturedNewsCard
       imageSrc={abc}
-      imageAlt="ABC news photo"
+      imageAlt="A man in a suit stands on stage, gesturing with his hands in front of a screen displaying the word 'Atomcraft'"
       title="ABC News"
       tags={[
         {
@@ -26,7 +26,7 @@ import rightArrow from "../assets/right-arrow.svg";
     />
     <FeaturedNewsCard
       imageSrc={openstar}
-      imageAlt="Openstar visit group photo"
+      imageAlt="Team members of AtomCraft lined up"
       title="Openstar Visit"
       tags={[
         {
@@ -40,7 +40,7 @@ import rightArrow from "../assets/right-arrow.svg";
     />
     <FeaturedNewsCard
       imageSrc={csiro}
-      imageAlt="Group picture of AtomCraft members"
+      imageAlt="Team members of AtomCraft and CSIRO lined up"
       title="CSIRO Visit"
       tags={[
         {
@@ -55,10 +55,10 @@ import rightArrow from "../assets/right-arrow.svg";
   </div>
   <div class="flex items-center justify-between w-full mt-1">
     <button id="prev-btn" class="cursor-pointer p-2 rounded-full transition-colors duration-200 active:bg-slate-500/50 hover:bg-slate-500/30">
-      <Image src={leftArrow} alt="left arrow" class="w-7 md:w-10"/>
+      <Image src={leftArrow} alt="left arrow" class="w-7 md:w-10" loading="eager"/>
     </button>
     <button id="next-btn" class="cursor-pointer p-2 rounded-full transition-colors duration-200 active:bg-slate-500/50 hover:bg-slate-500/30">
-      <Image src={rightArrow} alt="right arrow" class="w-7 md:w-10"/>
+      <Image src={rightArrow} alt="right arrow" class="w-7 md:w-10" loading="eager"/>
     </button>
   </div>
 </div>

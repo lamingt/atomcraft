@@ -21,7 +21,7 @@ const { imageSrc, imageAlt, title, date, tags, description, url } = Astro.props;
 
 <a href={url} target="_blank" class="shrink-0 w-full featured-news">
   <div class="relative">
-    <Image src={imageSrc} alt={imageAlt} class="w-full h-64 md:h-80 lg:h-96 object-cover rounded-2xl"/>
+    <Image src={imageSrc} alt={imageAlt} class="w-full h-64 md:h-80 lg:h-96 object-cover rounded-2xl" loading="eager"/>
     <div class="absolute bottom-0 bg-[rgba(0,0,0,0.5)] w-full p-3 h-fit">
       <div class="flex items-center gap-5">
         <h2 class="text-large md:text-xl font-bold">

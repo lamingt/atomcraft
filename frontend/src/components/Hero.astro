@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+import heroLogo from "../assets/hero-logo.svg"
 import backgroundVideo from "../assets/atomcraft-background.mp4";
 ---
 
@@ -17,7 +19,7 @@ import backgroundVideo from "../assets/atomcraft-background.mp4";
   <div class="relative z-3 flex h-full w-full items-center justify-center md:mt-[100px]">
     <div class="flex w-full flex-col items-center gap-5 md:pb-[25vh]">
       <div id="hero-logo" class="z-3 mb-[-30px] will-change-transform sm:mb-[-50px] md:mb-[-70px] invisible">
-        <img src="hero-logo.svg" alt="atomcraft logo" class="md:w-[300px] w-[200px] lg:w-[400px] 3xl:w-[15vw]"/>
+        <Image src={heroLogo} alt="atomcraft logo" class="md:w-[300px] w-[200px] lg:w-[400px] 3xl:w-[15vw]" loading="eager"/>
       </div>
 
       <div
@@ -37,13 +39,13 @@ import backgroundVideo from "../assets/atomcraft-background.mp4";
           id="line-2"
           class="text-3xl xs:text-5xl font-bold will-change-transform md:text-6xl lg:text-8xl 3xl:text-[4.5vw] text-transparent bg-clip-text bg-[linear-gradient(170deg,_#fff,_#7656BD_50%,_#fff)] pb-5 invisible"
         >
+          <!-- bottom padding prevents text from being hidden at the start of animation -->
           of Fusion
         </h1>
       </div>
     </div>
   </div>
 </div>
-          <!-- bottom padding prevents text from being hidden at the start of animation -->
 
 <script>
   import { gsap } from "gsap";
