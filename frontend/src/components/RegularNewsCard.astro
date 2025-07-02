@@ -1,0 +1,49 @@
+---
+import { Image } from "astro:assets";
+
+interface Tag {
+  text: string;
+  bgColor: string; 
+}
+
+export interface Props {
+  imageSrc: ImageMetadata;
+  imageAlt: string;
+  title: string;
+  tags: Tag[];
+  date: string;
+  description: string;
+  url: string;
+}
+
+const { imageSrc, imageAlt, title, date, tags, description, url } = Astro.props;
+---
+
+
+<div class="flex flex-col items-start gap-2 w-full max-h-[500px]">
+  <Image src={imageSrc} alt={imageAlt} class="w-full h-[200px] object-cover rounded-lg mb-1"/>
+  {
+    tags.map(tag => (
+      <div class:list={["px-4 text-center rounded-2xl flex justify-center items-center",  tag.bgColor ]}>
+        {tag.text}
+      </div>
+    ))
+  }
+  <div>
+    <p class="text-xl font-bold">{title}</p>
+    <p class="text-[#AAAAAA]">{date}</p>
+  </div>
+  <p class="text-gray_text leading-5">
+    {description}
+  </p>
+  <a href={url} target="_blank">
+    <span class="group inline-flex items-center text-blue-400 w-max">
+      <span class="group-hover:underline decoration-blue-400 transition-all">
+        Learn More
+      </span>
+      <span class="ml-1">
+        &gt;
+      </span>
+    </span>
+  </a>
+</div>

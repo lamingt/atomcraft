@@ -1,0 +1,47 @@
+---
+import { Image } from "astro:assets";
+
+interface Tag {
+  text: string;
+  bgColor: string; 
+}
+
+export interface Props {
+  imageSrc: ImageMetadata;
+  imageAlt: string;
+  title: string;
+  tags: Tag[];
+  date: string;
+  description: string;
+  url: string;
+}
+
+const { imageSrc, imageAlt, title, date, tags, description, url } = Astro.props;
+---
+
+<a href={url} target="_blank" class="shrink-0 w-full featured-news">
+  <div class="relative">
+    <Image src={imageSrc} alt={imageAlt} class="w-full h-64 md:h-80 lg:h-96 object-cover rounded-2xl"/>
+    <div class="absolute bottom-0 bg-[rgba(0,0,0,0.5)] w-full p-3 h-fit">
+      <div class="flex items-center gap-5">
+        <h2 class="text-large md:text-xl font-bold">
+          {title}
+        </h2>
+        {
+          // waiting on firefox to implement this... https://caniuse.com/css-text-box-trim
+          tags.map(tag => (
+            <div class:list={["px-2 text-sm md:px-4 text-center rounded-2xl flex justify-center items-center ",  tag.bgColor ]}>
+              {tag.text}
+            </div>
+          ))
+        }
+      </div>
+      <p class="text-sm md:text-base">
+        {date}
+      </p>
+      <p class="w-full text-sm md:w-[50%] md:text-base/5">
+        {description}
+      </p>
+    </div>
+  </div>
+</a>

@@ -125,7 +125,7 @@ export function horizontalLoop(items, config) {
 export function createCounterAnimation(elementIdentifier, endValue) {
   const element = document.querySelector(elementIdentifier);
   const counter = { value: 0 };
-  console.log("hi");
+
   gsap.to(counter, {
     value: endValue,
     duration: 3,
