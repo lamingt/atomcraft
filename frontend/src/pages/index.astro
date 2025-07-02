@@ -1,5 +1,4 @@
 ---
-import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
 import PartnerCarousel from "../components/PartnerCarousel.astro";
 import WhatWeDo from "../components/WhatWeDo.astro";
@@ -7,9 +6,10 @@ import Tokamak from "../components/Tokamak.astro";
 import AboutUs from "../components/AboutUs.astro";
 import Story from "../components/Story.astro";
 import Future from "../components/Future.astro";
+import IndexLayout from "../layouts/IndexLayout.astro";
 ---
 
-<Layout>
+<IndexLayout>
   <Hero/>
   <PartnerCarousel/>
   <div class="max-w-[1500px] w-[90%] mx-auto">
@@ -19,5 +19,5 @@ import Future from "../components/Future.astro";
     <Story/>
     <Future/>
   </div>
-</Layout>
+</IndexLayout>
 

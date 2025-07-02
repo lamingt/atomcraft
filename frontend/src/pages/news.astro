@@ -1,10 +1,10 @@
 ---
-import Layout from "../layouts/Layout.astro";
 import FeaturedNews from "../components/FeaturedNews.astro";
 import RegularNews from "../components/RegularNews.astro";
+import NewsLayout from "../layouts/NewsLayout.astro";
 ---
 
-<Layout>
+<NewsLayout>
   <div class="mt-[100px] lg:mt-[200px] max-w-[1500px] w-[90%] mx-auto flex flex-col items-center">
     <h1 class="text-3xl md:text-5xl xl:text-7xl mb-10 lg:mb-20">
       Stay updated with us!
@@ -12,4 +12,4 @@ import RegularNews from "../components/RegularNews.astro";
     <FeaturedNews/>
     <RegularNews/>
   </div>
-</Layout>
+</NewsLayout>
