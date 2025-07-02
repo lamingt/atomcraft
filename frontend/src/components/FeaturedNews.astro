@@ -1,7 +1,7 @@
 ---
-import openstar from "../assets/news/openstar.jpg"
+import openstar from "../assets/news/openstar.webp"
 import abc from "../assets/news/abc.avif"
-import csiro from "../assets/news/csiro.jpg"
+import csiro from "../assets/news/csiro.webp"
 import FeaturedNewsCard from "../components/FeaturedNewsCard.astro";
 import { Image } from "astro:assets";
 import leftArrow from "../assets/left-arrow.svg";
@@ -76,11 +76,16 @@ import rightArrow from "../assets/right-arrow.svg";
       paddingRight: 80,
     })
 
+    let isAnimating = false;
     const autoAdvance = () => {
+      if (isAnimating) return
+      isAnimating = true
+
       loop.next({
         duration: 1,
         ease: "power3.inOut",
         onComplete: () => {
+          isAnimating = false
           autoAdvanceTween = gsap.delayedCall(5, autoAdvance)
         }
       })
@@ -89,22 +94,28 @@ import rightArrow from "../assets/right-arrow.svg";
     let autoAdvanceTween = gsap.delayedCall(5, autoAdvance);
 
     document.querySelector("#next-btn")?.addEventListener("click", () => {
-      autoAdvanceTween.kill()
+      autoAdvanceTween.kill();
+      isAnimating = true;
+
       loop.next({
         duration: 1,
         ease: "power3.inOut",
         onComplete: () => {
+          isAnimating = false
           autoAdvanceTween = gsap.delayedCall(5, autoAdvance)
         }
       })
     })
 
     document.querySelector("#prev-btn")?.addEventListener("click", () => {
-      autoAdvanceTween.kill()
+      autoAdvanceTween.kill();
+      isAnimating = true;
+
       loop.previous({
         duration: 1,
         ease: "power3.inOut",
         onComplete: () => {
+          isAnimating = false
           autoAdvanceTween = gsap.delayedCall(5, autoAdvance)
         }
       })
