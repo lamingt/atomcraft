@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import heroLogo from "../assets/hero-logo.svg"
 import backgroundVideo from "../assets/atomcraft-background.mp4";
+import backgroundPoster from "../assets/atomcraft-background_000.jpg"
 ---
 
 <div class="relative h-screen w-full overflow-hidden">
@@ -13,6 +14,7 @@ import backgroundVideo from "../assets/atomcraft-background.mp4";
     muted
     loop
     autoplay
+    poster={backgroundPoster.src}
     src={backgroundVideo}
   ></video>
 
