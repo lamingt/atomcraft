@@ -3,128 +3,179 @@ import TimelineSVG from "../assets/timelinev2.svg";
 import TimelineSVGFilled from "../assets/timelinev2-filled.svg";
 ---
 
-<div class="w-full flex flex-col items-center gap-10">
-  <h1 class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold">
+<div class="flex w-full flex-col items-center gap-10">
+  <h1
+    class="text-4xl font-bold md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl"
+  >
     Our Story
   </h1>
-  <div id="timeline-container" class="relative w-full flex justify-center">
-    <TimelineSVG/>
+  <div id="timeline-container" class="relative flex w-full justify-center">
+    <TimelineSVG />
 
-    <div class="milestone-marker absolute rounded-full bg-secondary-pink w-3 h-3 top-38 translate-x-[17px]"/>
-    <div id="milestone-1" class="absolute top-18 translate-x-[95px] text-sm xs:text-base xs:translate-x-[135px] md:translate-x-[185px]">
-      <h2 class="font-bold xs:text-xl sm:text-2xl">
-        AtomCraft Begins
-      </h2>
-      <p class="text-secondary-pink">
-        January 2024
-      </p>
-      <p class="w-[140px] text-gray_text xs:w-[200px] md:w-[300px]">
-        AtomCraft was officially launched at the beginning of 2024, with a group of 15 students.
+    <div
+      class="milestone-marker bg-secondary-pink absolute top-38 h-3 w-3 translate-x-[17px] rounded-full"
+    >
+    </div>
+    <div
+      id="milestone-1"
+      class="xs:text-base xs:translate-x-[135px] absolute top-18 translate-x-[95px] text-sm md:translate-x-[185px]"
+    >
+      <h2 class="xs:text-xl font-bold sm:text-2xl">AtomCraft Begins</h2>
+      <p class="text-secondary-pink">January 2024</p>
+      <p class="text-gray_text xs:w-[200px] w-[140px] md:w-[300px]">
+        AtomCraft was officially launched at the beginning of 2024, with a group
+        of 15 students.
       </p>
     </div>
 
-    <div class="milestone-marker absolute rounded-full bg-secondary-pink w-3 h-3 top-90 -translate-x-[18px]"/>
-    <div id="milestone-2" class="absolute top-77 -translate-x-[93px] text-sm xs:text-base xs:-translate-x-[135px] md:-translate-x-[185px]">
-      <h2 class="font-bold text-right xs:text-xl sm:text-2xl">
-        First Plasma
-      </h2>
-      <p class="text-secondary-pink text-right">
-        September 2024
-      </p>
-      <p class="w-[140px] text-gray_text text-right xs:w-[200px] md:w-[300px]">
+    <div
+      class="milestone-marker bg-secondary-pink absolute top-90 h-3 w-3 -translate-x-[18px] rounded-full"
+    >
+    </div>
+    <div
+      id="milestone-2"
+      class="xs:text-base xs:-translate-x-[135px] absolute top-77 -translate-x-[93px] text-sm md:-translate-x-[185px]"
+    >
+      <h2 class="xs:text-xl text-right font-bold sm:text-2xl">First Plasma</h2>
+      <p class="text-secondary-pink text-right">September 2024</p>
+      <p class="text-gray_text xs:w-[200px] w-[140px] text-right md:w-[300px]">
         POT 1.0 saw AtomCraft create their first ever plasma!
       </p>
     </div>
 
-    <div class="milestone-marker absolute rounded-full bg-secondary-pink w-3 h-3 top-145 translate-x-[17px]"/>
-    <div id="milestone-3" class="absolute top-130 translate-x-[95px] text-sm xs:text-base xs:translate-x-[135px] md:translate-x-[185px]">
-      <h2 class="font-bold xs:text-xl sm:text-2xl">
-        First Null Field
-      </h2>
-      <p class="text-secondary-pink">
-        October 2024
-      </p>
-      <p class="w-[140px] text-gray_text xs:w-[200px] md:w-[300px]">
+    <div
+      class="milestone-marker bg-secondary-pink absolute top-145 h-3 w-3 translate-x-[17px] rounded-full"
+    >
+    </div>
+    <div
+      id="milestone-3"
+      class="xs:text-base xs:translate-x-[135px] absolute top-130 translate-x-[95px] text-sm md:translate-x-[185px]"
+    >
+      <h2 class="xs:text-xl font-bold sm:text-2xl">First Null Field</h2>
+      <p class="text-secondary-pink">October 2024</p>
+      <p class="text-gray_text xs:w-[200px] w-[140px] md:w-[300px]">
         The evolution of our plasma was successfully modelled!
       </p>
     </div>
 
-    <div class="milestone-marker absolute rounded-full bg-secondary-pink w-3 h-3 top-200 -translate-x-[18px]"/>
-    <div id="milestone-4" class="absolute top-185 -translate-x-[100px] text-sm xs:text-base xs:-translate-x-[145px] md:-translate-x-[185px] flex flex-col items-end">
-      <h2 class="font-bold text-right xs:text-xl sm:text-2xl  ">
+    <div
+      class="milestone-marker bg-secondary-pink absolute top-200 h-3 w-3 -translate-x-[18px] rounded-full"
+    >
+    </div>
+    <div
+      id="milestone-4"
+      class="xs:text-base xs:-translate-x-[145px] absolute top-185 flex -translate-x-[100px] flex-col items-end text-sm md:-translate-x-[185px]"
+    >
+      <h2 class="xs:text-xl text-right font-bold sm:text-2xl">
         First RF Experiment
       </h2>
-      <p class="text-secondary-pink text-right">
-        November 2024
-      </p>
-      <p class="w-[140px] text-gray_text text-right xs:w-[200px] md:w-[300px]">
+      <p class="text-secondary-pink text-right">November 2024</p>
+      <p class="text-gray_text xs:w-[200px] w-[140px] text-right md:w-[300px]">
         RF successfuly conducted their first experiment.
       </p>
     </div>
 
-    <div class="milestone-marker absolute rounded-full bg-secondary-pink w-3 h-3 top-255 translate-x-[17px]"/>
-    <div id="milestone-5" class="absolute top-242 translate-x-[95px] text-sm xs:text-base xs:translate-x-[145px] md:translate-x-[185px]">
-      <h2 class="font-bold xs:text-xl sm:text-2xl">
-        Exponential Growth
-      </h2>
-      <p class="text-secondary-pink">
-        January 2025
-      </p>
-      <p class="w-[140px] text-gray_text xs:w-[200px] md:w-[300px]">
+    <div
+      class="milestone-marker bg-secondary-pink absolute top-255 h-3 w-3 translate-x-[17px] rounded-full"
+    >
+    </div>
+    <div
+      id="milestone-5"
+      class="xs:text-base xs:translate-x-[145px] absolute top-242 translate-x-[95px] text-sm md:translate-x-[185px]"
+    >
+      <h2 class="xs:text-xl font-bold sm:text-2xl">Exponential Growth</h2>
+      <p class="text-secondary-pink">January 2025</p>
+      <p class="text-gray_text xs:w-[200px] w-[140px] md:w-[300px]">
         The beginning of the year saw our team grow to 75 students!
       </p>
     </div>
 
-    <div class="milestone-marker absolute rounded-full bg-secondary-pink w-3 h-3 top-305 -translate-x-[18px]"/>
-    <div id="milestone-6" class="absolute top-290 -translate-x-[100px] text-sm xs:text-base xs:-translate-x-[135px] md:-translate-x-[185px]">
-      <h2 class="font-bold text-right xs:text-xl sm:text-2xl">
-        GDC
-      </h2>
-      <p class="text-secondary-pink text-right">
-        February 2025
-      </p>
-      <p class="w-[140px] text-gray_text text-right xs:w-[200px] md:w-[300px]">
-        In our POT 2.0, we successfully achieved a Glow Discharge cleaning plasma!
+    <div
+      class="milestone-marker bg-secondary-pink absolute top-305 h-3 w-3 -translate-x-[18px] rounded-full"
+    >
+    </div>
+    <div
+      id="milestone-6"
+      class="xs:text-base xs:-translate-x-[135px] absolute top-290 -translate-x-[100px] text-sm md:-translate-x-[185px]"
+    >
+      <h2 class="xs:text-xl text-right font-bold sm:text-2xl">GDC</h2>
+      <p class="text-secondary-pink text-right">February 2025</p>
+      <p class="text-gray_text xs:w-[200px] w-[140px] text-right md:w-[300px]">
+        In our POT 2.0, we successfully achieved a Glow Discharge cleaning
+        plasma!
       </p>
     </div>
 
-    <div class="milestone-marker absolute rounded-full bg-secondary-pink w-3 h-3 top-360 translate-x-[17px]"/>
-    <div id="milestone-7" class="absolute top-340 translate-x-[95px] text-sm xs:text-base xs:translate-x-[135px] md:translate-x-[185px]">
-      <h2 class="font-bold xs:text-xl sm:text-2xl">
-        POT 3.0
-      </h2>
-      <p class="text-secondary-pink">
-        May 2025
-      </p>
-      <p class="w-[140px] text-gray_text xs:w-[200px] md:w-[300px]">
-        Beginning in March, the POT 3.0 is aimed to be completed in May, integrating several teams into one system.
+    <div
+      class="milestone-marker bg-secondary-pink absolute top-360 h-3 w-3 translate-x-[17px] rounded-full"
+    >
+    </div>
+    <div
+      id="milestone-7"
+      class="xs:text-base xs:translate-x-[135px] absolute top-340 translate-x-[95px] text-sm md:translate-x-[185px]"
+    >
+      <h2 class="xs:text-xl font-bold sm:text-2xl">POT 3.0</h2>
+      <p class="text-secondary-pink">May 2025</p>
+      <p class="text-gray_text xs:w-[200px] w-[140px] md:w-[300px]">
+        Beginning in March, the POT 3.0 is aimed to be completed in May,
+        integrating several teams into one system.
       </p>
     </div>
   </div>
 </div>
 
 <script>
-  import gsap from "gsap"
-  import MotionPathPlugin from "gsap/MotionPathPlugin"
+  import gsap from "gsap";
+  import MotionPathPlugin from "gsap/MotionPathPlugin";
   import MorphSVGPlugin from "gsap/MorphSVGPlugin";
   import ScrollTrigger from "gsap/ScrollTrigger";
   import DrawSVGPlugin from "gsap/DrawSVGPlugin";
-  gsap.registerPlugin(MotionPathPlugin, MorphSVGPlugin, ScrollTrigger, DrawSVGPlugin);
+  gsap.registerPlugin(
+    MotionPathPlugin,
+    MorphSVGPlugin,
+    ScrollTrigger,
+    DrawSVGPlugin,
+  );
+
+  let mm = gsap.matchMedia();
 
   document.addEventListener("DOMContentLoaded", () => {
-    gsap.fromTo("#timeline-path-filled",
-      { drawSVG: "0%" },
-      {
-        drawSVG: "100%",
-        ease: "none",
-        scrollTrigger: {
-          trigger: "#timeline-container",
-          start: "top 15%",
-          end: "bottom",
-          scrub: true,
-        }
-      }
-    );
-  })
+    mm.add("(min-width:800px)", () => {
+      gsap.fromTo(
+        "#timeline-path-filled",
+        { drawSVG: "0%" },
+        {
+          drawSVG: "100%",
+          ease: "none",
+          scrollTrigger: {
+            trigger: "#timeline-container",
+            start: "top 40%",
+            end: "bottom",
+            scrub: 2,
+            once: true,
+          },
+        },
+      );
+    });
 
+    mm.add("(max-width:799px)", () => {
+      gsap.fromTo(
+        "#timeline-path-filled",
+        { drawSVG: "0%" },
+        {
+          drawSVG: "100%",
+          ease: "none",
+          scrollTrigger: {
+            trigger: "#timeline-container",
+            start: "top 15%",
+            end: "bottom",
+            scrub: 2,
+            once: true,
+          },
+        },
+      );
+    });
+
+    
+  });
 </script>

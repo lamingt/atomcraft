@@ -1,0 +1,23 @@
+---
+import { Image } from 'astro:assets'
+
+
+export interface Props {
+  imageSrc: ImageMetadata,
+  imageAlt: string,
+  name: string,
+  role: string,
+}
+
+const { imageSrc, imageAlt, name, role } = Astro.props
+---
+
+<div class="flex flex-col items-center w-full">
+  <Image src={imageSrc} alt={imageAlt} />
+  <p class="text-3xl">
+    {name}
+  </p>
+  <p class="text-gray_text">
+    {role}
+  </p>
+</div>
