@@ -1,6 +1,5 @@
 ---
 import TimelineSVG from "../assets/timelinev2.svg";
-import TimelineSVGFilled from "../assets/timelinev2-filled.svg";
 ---
 
 <div class="flex w-full flex-col items-center gap-10">
@@ -126,18 +125,47 @@ import TimelineSVGFilled from "../assets/timelinev2-filled.svg";
 
 <script>
   import gsap from "gsap";
-  import MotionPathPlugin from "gsap/MotionPathPlugin";
-  import MorphSVGPlugin from "gsap/MorphSVGPlugin";
   import ScrollTrigger from "gsap/ScrollTrigger";
   import DrawSVGPlugin from "gsap/DrawSVGPlugin";
+  import { pathEase } from "../helpers";
+
   gsap.registerPlugin(
-    MotionPathPlugin,
-    MorphSVGPlugin,
     ScrollTrigger,
     DrawSVGPlugin,
   );
 
   let mm = gsap.matchMedia();
+
+  const milestoneAnimation = (id: string, right: boolean) => {
+    mm.add("(min-width:1024px)", () => {
+      gsap.from(id, {
+        autoAlpha: 0,
+        x: right ? 300 : -300,
+        
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: id,
+          start: "top 47%",
+          once: true,
+        }
+      });
+    })
+
+    mm.add("(max-width:799px)", () => {
+      gsap.from(id, {
+        autoAlpha: 0,
+        
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: id,
+          start: "top 37%",
+          once: true,
+        }
+      });
+    })
+  }
 
   document.addEventListener("DOMContentLoaded", () => {
     mm.add("(min-width:800px)", () => {
@@ -146,36 +174,43 @@ import TimelineSVGFilled from "../assets/timelinev2-filled.svg";
         { drawSVG: "0%" },
         {
           drawSVG: "100%",
-          ease: "none",
+          ease: pathEase("#timeline-path-filled", { smooth: true }),
+          duration: 1,
           scrollTrigger: {
             trigger: "#timeline-container",
             start: "top 40%",
-            end: "bottom",
-            scrub: 2,
+            end: "bottom 40%",
+            scrub: 0.5,
             once: true,
           },
         },
       );
     });
 
-    mm.add("(max-width:799px)", () => {
+    mm.add("(max-width:640px)", () => {
       gsap.fromTo(
         "#timeline-path-filled",
         { drawSVG: "0%" },
         {
           drawSVG: "100%",
-          ease: "none",
+          ease: pathEase("#timeline-path-filled", { smooth: true }),
           scrollTrigger: {
             trigger: "#timeline-container",
-            start: "top 15%",
-            end: "bottom",
-            scrub: 2,
+            start: "top 25%",
+            end: "bottom 25%",
+            scrub: 1,
             once: true,
           },
         },
       );
-    });
+    }); 
 
-    
+    milestoneAnimation("#milestone-1", true);
+    milestoneAnimation("#milestone-2", false);
+    milestoneAnimation("#milestone-3", true);
+    milestoneAnimation("#milestone-4", false);
+    milestoneAnimation("#milestone-5", true);
+    milestoneAnimation("#milestone-6", false);
+    milestoneAnimation("#milestone-7", true);
   });
 </script>
