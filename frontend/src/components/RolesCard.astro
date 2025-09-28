@@ -7,17 +7,19 @@ export interface Props {
   imageAlt: string,
   name: string,
   role: string,
+  nameSize: string,
+  imageSize?: string,
 }
 
-const { imageSrc, imageAlt, name, role } = Astro.props
+const { imageSrc, imageAlt, name, role, nameSize, imageSize = "" } = Astro.props
 ---
 
 <div class="flex flex-col items-center w-full">
-  <Image src={imageSrc} alt={imageAlt} />
-  <p class="text-3xl">
+  <Image src={imageSrc} alt={imageAlt} class={imageSize} />
+  <p class={nameSize}>
     {name}
   </p>
-  <p class="text-gray_text">
+  <p class="text-gray_text text-center">
     {role}
   </p>
 </div>
