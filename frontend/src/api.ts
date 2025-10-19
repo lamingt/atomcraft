@@ -1,53 +1,100 @@
 import { Client, isFullPage } from "@notionhq/client";
 
-export async function getDataFromSource(dataSourceId: string) {
+export type Member = {
+  name: string;
+  role: string;
+  imageUrl: string;
+  imageAlt: string;
+};
+
+export type Team = {
+  name: string;
+  description: string;
+  members: Member[];
+};
+
+export type Teams = Team[];
+
+function getPlainText(property: any, defaultValue = ""): string {
+  if (!property) return defaultValue;
+
+  switch (property.type) {
+    case "title":
+      return property.title?.[0]?.plain_text ?? defaultValue;
+    case "rich_text":
+      return property.rich_text?.[0]?.plain_text ?? defaultValue;
+    default:
+      return defaultValue;
+  }
+}
+
+function getImageUrl(filesProperty: any): string {
+  const fileItem = filesProperty?.files?.[0];
+  if (!fileItem) return "";
+
+  if (fileItem.type === "file") return fileItem.file.url;
+  if (fileItem.type === "external") return fileItem.external.url;
+  return "";
+}
+
+export async function getTeams(): Promise<Teams> {
   try {
     const notion = new Client({
       auth: import.meta.env.NOTION_API_KEY,
     });
 
-    const res = await notion.dataSources.query({
-      data_source_id: dataSourceId,
+    const teamsRes = await notion.dataSources.query({
+      data_source_id: import.meta.env.TEAMS_DATASOURCE_ID,
+      sorts: [
+        {
+          property: "Order",
+          direction: "ascending",
+        },
+      ],
     });
 
-    const fullPages = res.results.filter(isFullPage);
+    const teamsMap: Record<string, Team> = {};
 
-    return fullPages.map((row) => {
-      let name = "Unnamed";
-      let role = "Team Member";
-      let image = null;
-      let imageAlt = "";
-
-      const nameProperty = row.properties.Name;
-      const roleProperty = row.properties.Role;
-      const imageProperty = row.properties.Image;
-      const imageAltProperty = row.properties.ImageAlt;
-
-      if (nameProperty.type === "title") {
-        name = nameProperty.title[0]?.plain_text ?? name;
-      }
-      if (roleProperty.type === "rich_text") {
-        role = roleProperty.rich_text[0]?.plain_text ?? role;
-      }
-      if (imageProperty.type === "files") {
-        const firstFile = imageProperty.files[0];
-
-        if (firstFile.type === "external") {
-          image = firstFile.external.url;
-        } else if (firstFile.type === "file") {
-          image = firstFile.file.url;
-        }
-      }
-      if (imageAltProperty.type === "rich_text") {
-        imageAlt = imageAltProperty.rich_text[0]?.plain_text ?? role;
-      }
-
-      console.log(`Name: ${name}`);
-      console.log(`Role: ${role}`);
-      console.log(`Image: ${JSON.stringify(image)}`);
-      console.log(`ImageAlt: ${JSON.stringify(imageAlt)}`);
+    teamsRes.results.filter(isFullPage).forEach((teamPage) => {
+      const id = teamPage.id;
+      teamsMap[id] = {
+        name: getPlainText(teamPage.properties.Name, "Untitled"),
+        description: getPlainText(teamPage.properties.Team_Description),
+        members: [],
+      };
     });
+
+    // will need to somehow order team leads to be at the start of each team
+    const membersRes = await notion.dataSources.query({
+      data_source_id: import.meta.env.ROLES_DATASOURCE_ID,
+      // sorts: [
+      //   {
+      //     property: "Order",
+      //     direction: "ascending",
+      //   },
+      // ],
+    });
+
+    membersRes.results.filter(isFullPage).forEach((memberPage) => {
+      const memberName = getPlainText(memberPage.properties.Name, "Unknown");
+      const role = getPlainText(memberPage.properties.Role, "");
+      const imageUrl = getImageUrl(memberPage.properties.Photo);
+      const imageAlt = getPlainText(memberPage.properties.ImageAlt, "");
+
+      if (memberPage.properties.Team.type == "relation") {
+        const teamRelations = memberPage.properties.Team.relation || [];
+        teamRelations.forEach((teamRel) => {
+          const team = teamsMap[teamRel.id];
+          if (team) {
+            team.members.push({ name: memberName, role, imageUrl, imageAlt });
+          }
+        });
+      }
+    });
+
+    return Object.values(teamsMap);
   } catch (error) {
     console.log(error);
+    return [];
   }
 }
