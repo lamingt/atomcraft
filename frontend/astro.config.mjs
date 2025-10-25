@@ -11,4 +11,12 @@ export default defineConfig({
   },
   output: "server",
   adapter: netlify(),
+  image: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+      },
+    ],
+  },
 });

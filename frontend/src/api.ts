@@ -14,6 +14,8 @@ export type Team = {
 };
 
 export type Teams = Team[];
+let cache: Teams = [];
+let lastRetrieval = Date.now();
 
 function getPlainText(property: any, defaultValue = ""): string {
   if (!property) return defaultValue;
@@ -38,6 +40,11 @@ function getImageUrl(filesProperty: any): string {
 }
 
 export async function getTeams(): Promise<Teams> {
+  // Slightly less than one hour, as images on notion only last for one hour.
+  if (Date.now() - lastRetrieval <= 3500000 && cache.length != 0) {
+    return Promise.resolve(cache);
+  }
+
   try {
     const notion = new Client({
       auth: import.meta.env.NOTION_API_KEY,
@@ -64,15 +71,14 @@ export async function getTeams(): Promise<Teams> {
       };
     });
 
-    // will need to somehow order team leads to be at the start of each team
     const membersRes = await notion.dataSources.query({
       data_source_id: import.meta.env.ROLES_DATASOURCE_ID,
-      // sorts: [
-      //   {
-      //     property: "Order",
-      //     direction: "ascending",
-      //   },
-      // ],
+      sorts: [
+        {
+          property: "Order",
+          direction: "ascending",
+        },
+      ],
     });
 
     membersRes.results.filter(isFullPage).forEach((memberPage) => {
@@ -92,7 +98,8 @@ export async function getTeams(): Promise<Teams> {
       }
     });
 
-    return Object.values(teamsMap);
+    cache = Object.values(teamsMap);
+    return cache;
   } catch (error) {
     console.log(error);
     return [];
