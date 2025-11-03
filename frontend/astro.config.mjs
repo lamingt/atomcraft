@@ -15,7 +15,7 @@ export default defineConfig({
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "**",
+        hostname: "prod-files-secure.s3.us-west-2.amazonaws.com",
       },
     ],
   },

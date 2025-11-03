@@ -14,8 +14,25 @@ export type Team = {
 };
 
 export type Teams = Team[];
-let cache: Teams = [];
-let lastRetrieval = Date.now();
+type articleType = "Featured" | "Regular";
+
+export type Article = {
+  name: string;
+  description: string;
+  date: string;
+  categories: string[];
+  url: string;
+  imageUrl: string;
+  imageAlt: string;
+  type: articleType;
+};
+
+export type News = Article[];
+
+let teamsCache: Teams = [];
+let teamsLastRetrieval = Date.now();
+let newsCache: News = [];
+let newsLastRetrieval = Date.now();
 
 function getPlainText(property: any, defaultValue = ""): string {
   if (!property) return defaultValue;
@@ -39,10 +56,47 @@ function getImageUrl(filesProperty: any): string {
   return "";
 }
 
+function getDate(property: any, defaultValue = ""): string {
+  if (property.type === "date") {
+    return property.date.start;
+  } else {
+    return defaultValue;
+  }
+}
+
+function getURL(property: any, defaultValue = ""): string {
+  if (property.type === "url") {
+    return property.url;
+  } else {
+    return defaultValue;
+  }
+}
+
+function getSelect(
+  property: any,
+  defaultValue: articleType = "Regular",
+): articleType {
+  if (property.type === "select") {
+    return property.select.name;
+  } else {
+    return defaultValue;
+  }
+}
+
+function getCategories(property: any): string[] {
+  if (property.type === "multi_select") {
+    return property.multi_select.map(
+      (category: { id: string; name: string; color: string }) => category.name,
+    );
+  } else {
+    return [];
+  }
+}
+
 export async function getTeams(): Promise<Teams> {
   // Slightly less than one hour, as images on notion only last for one hour.
-  if (Date.now() - lastRetrieval <= 3500000 && cache.length != 0) {
-    return Promise.resolve(cache);
+  if (Date.now() - teamsLastRetrieval <= 3500000 && teamsCache.length != 0) {
+    return Promise.resolve(teamsCache);
   }
 
   try {
@@ -98,8 +152,61 @@ export async function getTeams(): Promise<Teams> {
       }
     });
 
-    cache = Object.values(teamsMap);
-    return cache;
+    teamsCache = Object.values(teamsMap);
+    teamsLastRetrieval = Date.now();
+    return teamsCache;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+}
+
+export async function getNews(): Promise<News> {
+  // Slightly less than one hour, as images on notion only last for one hour.
+  if (Date.now() - newsLastRetrieval <= 3500000 && newsCache.length != 0) {
+    return Promise.resolve(newsCache);
+  }
+
+  try {
+    const notion = new Client({
+      auth: import.meta.env.NOTION_API_KEY,
+    });
+
+    const newsRes = await notion.dataSources.query({
+      data_source_id: import.meta.env.NEWS_DATASOURCE_ID,
+      sorts: [
+        {
+          property: "Date",
+          direction: "descending",
+        },
+      ],
+    });
+    // console.log(newsRes);
+    const news: News = [];
+    newsRes.results.filter(isFullPage).forEach((newsPage) => {
+      const article: Article = {
+        name: "",
+        description: "",
+        date: "",
+        categories: [],
+        url: "",
+        imageUrl: "",
+        imageAlt: "",
+        type: "Regular",
+      };
+
+      article.name = getPlainText(newsPage.properties.Name, "Unknown");
+      article.description = getPlainText(newsPage.properties.Description);
+      article.date = getDate(newsPage.properties.Date);
+      article.categories = getCategories(newsPage.properties.Categories);
+      article.url = getURL(newsPage.properties.URL);
+      article.imageUrl = getImageUrl(newsPage.properties.Image);
+      article.imageAlt = getPlainText(newsPage.properties.ImageAlt);
+      article.type = getSelect(newsPage.properties.Type);
+      news.push(article);
+    });
+
+    return news;
   } catch (error) {
     console.log(error);
     return [];

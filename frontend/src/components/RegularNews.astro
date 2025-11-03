@@ -1,11 +1,18 @@
 ---
 import RegularNewsCard from "./RegularNewsCard.astro";
-import clampProtoype from "../assets/news/clamp.jpg";
-import glowDischarge from "../assets/news/glow-discharge.jpg"
+import clampProtoype from "../assets/news/clamp.webp";
+import glowDischarge from "../assets/news/glow-discharge.webp"
 import smh from "../assets/news/smh.webp";
-import createDigital from "../assets/news/create-digital.png";
-import newsCom from "../assets/news/news-com.jpg";
-import mia from "../assets/news/mia.jpg";
+import createDigital from "../assets/news/create-digital.webp";
+import newsCom from "../assets/news/news-com.webp";
+import mia from "../assets/news/mia.webp";
+import type { News } from "../api";
+
+export interface Props {
+  news: News;
+}
+
+const { news } = Astro.props;
 ---
 
 <div class="w-full max-w-[1200px] mb-52 lg:mb-96 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">

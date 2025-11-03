@@ -1,57 +1,27 @@
 ---
 import openstar from "../assets/news/openstar.webp"
-import abc from "../assets/news/abc.avif"
+import abc from "../assets/news/abc.webp"
 import csiro from "../assets/news/csiro.webp"
 import FeaturedNewsCard from "../components/FeaturedNewsCard.astro";
 import { Image } from "astro:assets";
 import leftArrow from "../assets/left-arrow.svg";
 import rightArrow from "../assets/right-arrow.svg";
+import type { News } from "../api";
+
+export interface Props {
+  news: News;
+}
+
+const { news } = Astro.props;
 ---
 
 <div class="w-full max-w-[1200px] mb-20">
   <div class="flex overflow-x-hidden gap-20 relative">
-    <FeaturedNewsCard
-      imageSrc={abc}
-      imageAlt="A man in a suit stands on stage, gesturing with his hands in front of a screen displaying the word 'Atomcraft'"
-      title="ABC News"
-      tags={[
-        {
-          text: "News",
-          bgColor: "bg-[#FC5245]"
-        }
-      ]}
-      date="08/06/2024"
-      description="UNSW students at work on small-scale fusion reactor as interest in nuclear power grows."
-      url="https://www.abc.net.au/news/2024-06-08/unsw-students-work-on-small-nuclear-fusion-reactor/103945790"
-    />
-    <FeaturedNewsCard
-      imageSrc={openstar}
-      imageAlt="Team members of AtomCraft lined up"
-      title="Openstar Visit"
-      tags={[
-        {
-          text: "Social",
-          bgColor: "bg-[#D53E91]"
-        }
-      ]}
-      date="03/06/2025"
-      description="Over the recent term break, AtomCraft had the unique opportunity to visit Openstar Technologies in New Zealand."
-      url="https://www.linkedin.com/posts/atomcraft_over-the-recent-term-break-atomcraft-had-activity-7335092998952669186-ivzc/"
-    />
-    <FeaturedNewsCard
-      imageSrc={csiro}
-      imageAlt="Team members of AtomCraft and CSIRO lined up"
-      title="CSIRO Visit"
-      tags={[
-        {
-          text: "Social",
-          bgColor: "bg-[#D53E91]"
-        }
-      ]}
-      date="10/06/2025"
-      description="During Week 11, AtomCraft members had the privilege of touring the CSIRO High Voltage Laboratories in partnership with the National Measurement Institute (NMI)."
-      url="https://www.linkedin.com/posts/atomcraft_during-week11-atomcraft-members-had-the-activity-7337976815656833024-STWE"
-    />
+    {
+      news.map(article => (
+        <FeaturedNewsCard article={article}/>
+      ))
+    }
   </div>
   <div class="flex items-center justify-between w-full mt-1">
     <button id="prev-btn" class="cursor-pointer p-2 rounded-full transition-colors duration-200 active:bg-slate-500/50 hover:bg-slate-500/30">

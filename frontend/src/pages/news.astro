@@ -1,7 +1,13 @@
 ---
+import type { News } from "../api";
+import { getNews } from "../api";
 import FeaturedNews from "../components/FeaturedNews.astro";
 import RegularNews from "../components/RegularNews.astro";
 import NewsLayout from "../layouts/NewsLayout.astro";
+
+const news: News = await getNews();
+const featuredNews = news.filter(article => article.type == "Featured");
+const regularNews = news.filter(article => article.type == "Regular");
 ---
 
 <NewsLayout>
@@ -9,7 +15,7 @@ import NewsLayout from "../layouts/NewsLayout.astro";
     <h1 class="text-3xl md:text-5xl xl:text-7xl mb-10 lg:mb-20">
       Stay updated with us!
     </h1>
-    <FeaturedNews/>
-    <RegularNews/>
+    <FeaturedNews news={featuredNews}/>
+    <RegularNews news={regularNews}/>
   </div>
 </NewsLayout>
