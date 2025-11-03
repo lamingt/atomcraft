@@ -1,0 +1,23 @@
+---
+export type Props = {
+  href: string;
+}
+
+const { href } = Astro.props;
+---
+
+<a href={href}>
+  <button id="primary-btn" class="px-[38px] py-[16.5px] bg-purple rounded-[100px] text-[18px] border-black cursor-pointer 
+      hover:bg-transparent
+      hover:border-purple border-2
+      hover:text-purple
+      active:opacity-60
+      active:bg-purple
+      active:text-white 
+      active:border-purple 
+      duration-100">
+    <slot/>
+  </button>
+</a>
+
+

@@ -1,16 +1,18 @@
 ---
 import { Image } from "astro:assets"
 import logo from "../assets/logo.svg"
+import SecondaryButton from "./buttons/SecondaryButton.astro"
+import PrimaryButton from "./buttons/PrimaryButton.astro"
 ---
 
-<header class="absolute top-0 left-0 z-4 w-full">
+<header class="fixed top-0 left-0 w-full z-100" id="navbar">
   <!-- <div
     class="absolute top-0 left-1/2 z-5 h-20 sm:h-30 w-full -translate-x-1/2 bg-[linear-gradient(to_bottom,rgba(41,14,101,1)_0%,rgba(41,14,101,0.8)_50%,transparent_100%)]
     blur-2xl lg:h-25 xl:h-30 2xl:h-40"
   >
   </div> -->
   <div
-    class="absolute top-0 left-1/2 z-[-5] h-20 lg:h-30 xl:h-40 w-full -translate-x-1/2 bg-gradient-to-b from-[rgba(66,22,164,0.8)] to-[rgba(8,4,17,0)] blur-2xl"
+    class="absolute top-0 left-1/2 z-[-5] h-30 w-full -translate-x-1/2 bg-gradient-to-b from-[rgba(41,14,101,0.7)] to-[rgba(8,4,17,0)]"
   />
 
   <div
@@ -26,10 +28,17 @@ import logo from "../assets/logo.svg"
     </a>
     <div class="z-10 hidden sm:block">
       <div class="flex items-center gap-5 3xl:gap-[1vw]">
-        <a href="/news" class="font-semibold hover:underline lg:text-xl 3xl:text-[1vw]">
+        <!-- <a href="/news" class="font-semibold hover:underline lg:text-xl 3xl:text-[1vw]">
           News
-        </a>
-        <a href="/roles" class="font-semibold hover:underline lg:text-xl 3xl:text-[1vw]">
+        </a> -->
+        <SecondaryButton href="/partners">
+          Partner With Us
+        </SecondaryButton>
+        <PrimaryButton href="/">
+          Join Our Team
+        </PrimaryButton>
+        
+        <!-- <a href="/roles" class="font-semibold hover:underline lg:text-xl 3xl:text-[1vw]">
           Roles
         </a>
         <a href="/partners" class="font-semibold hover:underline lg:text-xl 3xl:text-[1vw]">
@@ -43,7 +52,7 @@ import logo from "../assets/logo.svg"
           >
             Join Us
           </button>
-        </a>
+        </a> -->
       </div>
     </div>
 
@@ -98,6 +107,10 @@ import logo from "../assets/logo.svg"
 </header>
 
 <script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
   document.addEventListener("DOMContentLoaded", () => {
     const menuBtn = document.getElementById("mobile-menu-btn");
     const mobileMenu = document.getElementById("mobile-menu");
@@ -114,5 +127,21 @@ import logo from "../assets/logo.svg"
         mobileMenu.classList.toggle("max-h-screen");
       });
     }
+
+    
+
+    const showAnim = gsap.from('#navbar', { 
+      yPercent: -100,
+      paused: true,
+      duration: 0.2
+    }).progress(1);
+    
+    ScrollTrigger.create({
+      start: "top top",
+      end: "max",
+      onUpdate: (self) => {
+        self.direction == -1 ? showAnim.play() : showAnim.reverse();
+      }
+    })
   });
 </script>

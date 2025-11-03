@@ -5,6 +5,8 @@
   --color-secondary-pink: #ea8df0;
   --breakpoint-xs: 30rem;
   --breakpoint-3xl: 120rem;
+  --color-purple: #7843FF;
+  --color-cyan: #39F8EB;
 }
 
 .gradient-text {
