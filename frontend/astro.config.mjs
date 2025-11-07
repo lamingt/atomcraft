@@ -8,6 +8,9 @@ import netlify from "@astrojs/netlify/static";
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
+    server: {
+      allowedHosts: ["devserver-redesign--atomcraft-temp.netlify.app"],
+    },
   },
   output: "static",
   adapter: netlify(),
