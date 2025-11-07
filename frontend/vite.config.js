@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  server: {
+  preview: {
     allowedHosts: ["devserver-redesign--atomcraft-temp.netlify.app"],
   },
 });
