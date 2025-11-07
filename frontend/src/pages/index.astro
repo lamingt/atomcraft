@@ -7,17 +7,22 @@ import AboutUs from "../components/AboutUs.astro";
 import Story from "../components/Story.astro";
 import Future from "../components/Future.astro";
 import IndexLayout from "../layouts/IndexLayout.astro";
+import Collaborate from "../components/Collaborate.astro";
+import Mission from "../components/Mission.astro";
 ---
 
 <IndexLayout>
-  <Hero/>
-  <PartnerCarousel/>
-  <div class="max-w-[1500px] w-[90%] mx-auto">
-    <WhatWeDo/>
-    <Tokamak/>
-    <AboutUs/>
-    <Story/>
-    <Future/>
+  <Hero />
+
+  <div class="mx-auto max-w-[1920px] px-6 md:px-[120px] relative">
+    <div class="pointer-events-none absolute top-0 left-0 w-screen h-[100px] md:h-[220px] z-10 bg-gradient-to-b from-black to-transparent"></div>
+    <WhatWeDo />
+    <PartnerCarousel />
+    <Collaborate/>
+    <Mission/>
+    <Tokamak />
+    <AboutUs />
+    <Story />
+    <Future />
   </div>
 </IndexLayout>
-

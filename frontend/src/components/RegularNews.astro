@@ -1,14 +1,16 @@
 ---
 import RegularNewsCard from "./RegularNewsCard.astro";
 import clampProtoype from "../assets/news/clamp.jpg";
-import glowDischarge from "../assets/news/glow-discharge.jpg"
+import glowDischarge from "../assets/news/glow-discharge.jpg";
 import smh from "../assets/news/smh.webp";
 import createDigital from "../assets/news/create-digital.png";
 import newsCom from "../assets/news/news-com.jpg";
 import mia from "../assets/news/mia.jpg";
 ---
 
-<div class="w-full max-w-[1200px] mb-52 lg:mb-96 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+<div
+  class="mb-52 grid w-full max-w-[1200px] gap-10 sm:grid-cols-1 md:grid-cols-2 lg:mb-96 lg:grid-cols-3"
+>
   <RegularNewsCard
     imageSrc={clampProtoype}
     imageAlt="AtomCraft member welding"
@@ -17,8 +19,8 @@ import mia from "../assets/news/mia.jpg";
     tags={[
       {
         text: "Social",
-        bgColor: "bg-[#D53E91]"
-      }
+        bgColor: "bg-[#D53E91]",
+      },
     ]}
     description="Our structures team have been hard at work, and today marks the completion of our first clamp prototype!!"
     url="https://www.linkedin.com/posts/atomcraft_our-structures-team-have-been-hard-at-work-activity-7259357503308578816-JurT"
@@ -32,8 +34,8 @@ import mia from "../assets/news/mia.jpg";
     tags={[
       {
         text: "Social",
-        bgColor: "bg-[#D53E91]"
-      }
+        bgColor: "bg-[#D53E91]",
+      },
     ]}
     description="This past Friday, the Vacuum and Gas Delivery team ran the first Glow Discharge experiment, and here are the snazzy results!"
     url="https://www.linkedin.com/posts/atomcraft_le-glow-pot-this-past-friday-the-vacuum-activity-7258995116290228224-Uaio"
@@ -47,8 +49,8 @@ import mia from "../assets/news/mia.jpg";
     tags={[
       {
         text: "Social",
-        bgColor: "bg-[#D53E91]"
-      }
+        bgColor: "bg-[#D53E91]",
+      },
     ]}
     description="Our team dives into microwave disassembly, to harness radio frequencies that will heat the plasma inside our Tokamak."
     url="https://www.linkedin.com/posts/atomcraft_mia-microwaves-in-action-our-team-activity-7257904190058827776-qWtN"
@@ -62,8 +64,8 @@ import mia from "../assets/news/mia.jpg";
     tags={[
       {
         text: "News",
-        bgColor: "bg-[#FC5245]"
-      }
+        bgColor: "bg-[#FC5245]",
+      },
     ]}
     description="The first ever nuclear fusion device entirely designed and operated by students will be constructed at the University of New South Wales."
     url="https://createdigital.org.au/fusion-device-student-education/"
@@ -77,10 +79,10 @@ import mia from "../assets/news/mia.jpg";
     tags={[
       {
         text: "News",
-        bgColor: "bg-[#FC5245]"
-      }
+        bgColor: "bg-[#FC5245]",
+      },
     ]}
-    description="Sydney students are building a device capable of nuclear fusion &ndash; the process that powers stars and could unlock enormous amounts of carbon-free energy on Earth."
+    description="Sydney students are building a device capable of nuclear fusion – the process that powers stars and could unlock enormous amounts of carbon-free energy on Earth."
     url="https://www.smh.com.au/national/nsw/sydney-students-building-nuclear-device-to-unlock-the-energy-of-stars-20230913-p5e4fy.html"
   />
 
@@ -92,8 +94,8 @@ import mia from "../assets/news/mia.jpg";
     tags={[
       {
         text: "News",
-        bgColor: "bg-[#FC5245]"
-      }
+        bgColor: "bg-[#FC5245]",
+      },
     ]}
     description="Energy prices are a big part of the cost-of-living crisis crushing Australians, but some Sydney university students and tech visionaries are working on a new fuel that would eliminate power bills."
     url="https://www.news.com.au/technology/innovation/inventions/unsw-students-announce-fusion-power-product-which-they-say-will-drastically-reduce-power-bills/news-story/6a3e7afa55dbb1bc528e59d084e02f17"

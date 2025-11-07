@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 
 interface Tag {
   text: string;
-  bgColor: string; 
+  bgColor: string;
 }
 
 export interface Props {
@@ -19,12 +19,21 @@ export interface Props {
 const { imageSrc, imageAlt, title, date, tags, description, url } = Astro.props;
 ---
 
-
-<div class="flex flex-col items-start gap-2 w-full max-h-[500px]">
-  <Image src={imageSrc} alt={imageAlt} class="w-full h-[200px] object-cover rounded-lg mb-1" loading="eager"/>
+<div class="flex max-h-[500px] w-full flex-col items-start gap-2">
+  <Image
+    src={imageSrc}
+    alt={imageAlt}
+    class="mb-1 h-[200px] w-full rounded-lg object-cover"
+    loading="eager"
+  />
   {
-    tags.map(tag => (
-      <div class:list={["px-4 text-center rounded-2xl flex justify-center items-center",  tag.bgColor ]}>
+    tags.map((tag) => (
+      <div
+        class:list={[
+          "flex items-center justify-center rounded-2xl px-4 text-center",
+          tag.bgColor,
+        ]}
+      >
         {tag.text}
       </div>
     ))
@@ -37,13 +46,11 @@ const { imageSrc, imageAlt, title, date, tags, description, url } = Astro.props;
     {description}
   </p>
   <a href={url} target="_blank">
-    <span class="group inline-flex items-center text-blue-400 w-max">
-      <span class="group-hover:underline decoration-blue-400 transition-all">
+    <span class="group inline-flex w-max items-center text-blue-400">
+      <span class="decoration-blue-400 transition-all group-hover:underline">
         Learn More
       </span>
-      <span class="ml-1">
-        &gt;
-      </span>
+      <span class="ml-1"> &gt; </span>
     </span>
   </a>
 </div>

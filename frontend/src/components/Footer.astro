@@ -4,38 +4,38 @@ import unswLogo from "../assets/unsw-logo.svg";
 import footerLogo from "../assets/footer-logo.svg";
 ---
 
-<footer class="relative w-full min-h-[100px]">
+<footer class="relative min-h-[100px] w-full">
   <div
-    class="absolute bottom-0 left-1/2 h-50 sm:h-60 md:h-70 lg:h-70 xl:h-80 2xl:h-96 w-full -translate-x-1/2 bg-gradient-to-t from-[#4216A4] to-[#080411]"
-  />
+    class="absolute bottom-0 left-1/2 h-50 w-full -translate-x-1/2 bg-gradient-to-t from-[#4216A4] to-[#080411] sm:h-60 md:h-70 lg:h-70 xl:h-80 2xl:h-96"
+  >
+  </div>
 
-  <div class="relative z-5 w-full h-full flex items-center justify-center">
-    <div class="flex flex-col items-center absolute bottom-5 gap-3">
-      <div class="flex gap-10 items-center justify-center">
+  <div class="relative z-5 flex h-full w-full items-center justify-center">
+    <div class="absolute bottom-5 flex flex-col items-center gap-3">
+      <div class="flex items-center justify-center gap-10">
         <a href="https://www.unsw.edu.au/">
-          <Image src={unswLogo} alt="UNSW logo" class="max-w-[30vw]"/>
+          <Image src={unswLogo} alt="UNSW logo" class="max-w-[30vw]" />
         </a>
         <a href="/">
-          <Image src={footerLogo} alt="AtomCraft logo" class="max-w-[30vw] xl:max-w-[200px]"/>
+          <Image
+            src={footerLogo}
+            alt="AtomCraft logo"
+            class="max-w-[30vw] xl:max-w-[200px]"
+          />
         </a>
       </div>
       <div class="flex gap-5 text-sm sm:text-lg">
-        <a href="/news" class="font-semibold hover:underline">
-          News
-        </a>
-        <a href="/roles" class="font-semibold hover:underline">
-          Roles
-        </a>
-        <a href="/partners" class="font-semibold hover:underline">
-          Partners
-        </a>
+        <a href="/news" class="font-semibold hover:underline"> News </a>
+        <a href="/roles" class="font-semibold hover:underline"> Roles </a>
+        <a href="/partners" class="font-semibold hover:underline"> Partners </a>
       </div>
-      <p class="text-sm sm:text-lg">
-        © 2025 by AtomCraft. 
-      </p>
+      <p class="text-sm sm:text-lg">© 2025 by AtomCraft.</p>
     </div>
   </div>
   <!-- Cloudflare Web Analytics -->
-  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "f9495a939fc04cec8469f92d026f0fc9"}'></script>
+  <script
+    defer
+    src="https://static.cloudflareinsights.com/beacon.min.js"
+    data-cf-beacon='{"token": "f9495a939fc04cec8469f92d026f0fc9"}'></script>
   <!-- End Cloudflare Web Analytics -->
 </footer>

@@ -11,15 +11,18 @@ import "../styles/global.css";
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="description" content="AtomCraft is making the first fusion energy device wholly designed, built and operated by students, at the University of New South Wales (UNSW), in Sydney, Australia"/>
+    <meta
+      name="description"
+      content="AtomCraft is making the first fusion energy device wholly designed, built and operated by students, at the University of New South Wales (UNSW), in Sydney, Australia"
+    />
     <title>AtomCraft</title>
   </head>
-  <body class="flex flex-col min-h-screen">
+  <body class="flex min-h-screen flex-col">
     <Navbar />
     <main class="flex-grow">
       <slot />
     </main>
-    <Footer/>
+    <Footer />
   </body>
 </html>
 

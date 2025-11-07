@@ -15,16 +15,22 @@ import "../styles/global.css";
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="description" content="Stay updated with the latest news and breakthroughs from AtomCraft, the world’s first student-led fusion energy initiative at UNSW Sydney."/>
-    <meta name="keywords" content="AtomCraft, News, Updates, Announcements, UNSW, Tokamak, Fusion, Nuclear, Energy, Device, Students"/>
+    <meta
+      name="description"
+      content="Stay updated with the latest news and breakthroughs from AtomCraft, the world’s first student-led fusion energy initiative at UNSW Sydney."
+    />
+    <meta
+      name="keywords"
+      content="AtomCraft, News, Updates, Announcements, UNSW, Tokamak, Fusion, Nuclear, Energy, Device, Students"
+    />
     <title>News | AtomCraft</title>
   </head>
-  <body class="flex flex-col min-h-screen">
+  <body class="flex min-h-screen flex-col">
     <Navbar />
     <main class="flex-grow">
       <slot />
     </main>
-    <Footer/>
+    <Footer />
   </body>
 </html>
 

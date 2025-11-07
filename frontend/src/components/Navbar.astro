@@ -1,11 +1,11 @@
 ---
-import { Image } from "astro:assets"
-import logo from "../assets/logo.svg"
-import SecondaryButton from "./buttons/SecondaryButton.astro"
-import PrimaryButton from "./buttons/PrimaryButton.astro"
+import { Image } from "astro:assets";
+import logo from "../assets/logo.svg";
+import SecondaryButton from "./buttons/SecondaryButton.astro";
+import PrimaryButton from "./buttons/PrimaryButton.astro";
 ---
 
-<header class="fixed top-0 left-0 w-full z-100" id="navbar">
+<header class="fixed top-0 left-0 z-100 w-full" id="navbar">
   <!-- <div
     class="absolute top-0 left-1/2 z-5 h-20 sm:h-30 w-full -translate-x-1/2 bg-[linear-gradient(to_bottom,rgba(41,14,101,1)_0%,rgba(41,14,101,0.8)_50%,transparent_100%)]
     blur-2xl lg:h-25 xl:h-30 2xl:h-40"
@@ -13,53 +13,53 @@ import PrimaryButton from "./buttons/PrimaryButton.astro"
   </div> -->
   <div
     class="absolute top-0 left-1/2 z-[-5] h-30 w-full -translate-x-1/2 bg-gradient-to-b from-[rgba(41,14,101,0.7)] to-[rgba(8,4,17,0)]"
-  />
+  >
+  </div>
 
   <div
-    class="relative z-10 mt-5 mr-5 ml-5 flex items-center justify-between xl:mr-[5vw] xl:ml-[5vw]"
+    class="relative z-10 mx-[20px] mt-[30px] flex items-center justify-between lg:mx-[30px] xl:mx-[40px]"
   >
-    <a href="/">
-      <Image
-        src={logo}
-        alt="logo"
-        loading="eager"
-        class="z-10 w-[200px] sm:w-[250px] md:w-[300px] lg:w-[400px] 3xl:w-[15vw]"
-      />
-    </a>
-    <div class="z-10 hidden sm:block">
-      <div class="flex items-center gap-5 3xl:gap-[1vw]">
-        <!-- <a href="/news" class="font-semibold hover:underline lg:text-xl 3xl:text-[1vw]">
-          News
-        </a> -->
-        <SecondaryButton href="/partners">
-          Partner With Us
-        </SecondaryButton>
-        <PrimaryButton href="/">
-          Join Our Team
-        </PrimaryButton>
-        
-        <!-- <a href="/roles" class="font-semibold hover:underline lg:text-xl 3xl:text-[1vw]">
-          Roles
+    <div
+      class="md:text-md flex items-center md:gap-[20px] lg:gap-[40px] lg:text-xl xl:gap-[60px]"
+    >
+      <a href="/">
+        <Image
+          src={logo}
+          alt="logo"
+          loading="eager"
+          class="z-10 w-[200px] sm:w-[175px] lg:w-[208px]"
+        />
+      </a>
+      <div class="hidden md:flex md:gap-[20px] lg:gap-[40px] xl:gap-[60px]">
+        <a href="/news" class="font-semibold hover:underline active:opacity-60">
+          About Us
         </a>
-        <a href="/partners" class="font-semibold hover:underline lg:text-xl 3xl:text-[1vw]">
-          Partners
+        <a href="/news" class="font-semibold hover:underline active:opacity-60">
+          News
         </a>
         <a
-          href="https://www.unsw.edu.au/challeng/vertically-integrated-projects/explore-vertically-integrated-projects/atomcraft"
+          href="/members"
+          class="font-semibold hover:underline active:opacity-60"
         >
-          <button
-            class="w-[80px] cursor-pointer rounded-2xl bg-[#39F8EB] pt-0.5 pb-0.5 3xl:py-[0.1vw] 3xl:w-[5vw] 3xl:rounded-[1vw] font-semibold text-black lg:w-[100px] lg:text-xl 3xl:text-[1vw]"
-          >
-            Join Us
-          </button>
-        </a> -->
+          Members
+        </a>
       </div>
     </div>
 
-    <div class="z-10 flex flex-col items-center sm:hidden pr-2">
+    <div class="z-10 hidden md:block">
+      <div class="3xl:gap-[1vw] flex items-center gap-3 lg:gap-5">
+        <!-- <a href="/news" class="font-semibold hover:underline lg:text-xl 3xl:text-[1vw]">
+          News
+        </a> -->
+        <SecondaryButton href="/partners"> Partner With Us </SecondaryButton>
+        <PrimaryButton href="/"> Join Our Team </PrimaryButton>
+      </div>
+    </div>
+
+    <div class="z-10 flex flex-col items-center pr-2 md:hidden">
       <button
         id="mobile-menu-btn"
-        class="group inline-flex h-12 w-12 cursor-pointer items-center justify-center rounded text-center text-white shadow-[0_1px_0_theme(colors.slate.950/.04),0_1px_2px_theme(colors.slate.950/.12),inset_0_-2px_0_theme(colors.slate.950/.04)] transition hover:shadow-[0_1px_0_theme(colors.slate.950/.04),0_4px_8px_theme(colors.slate.950/.12),inset_0_-2px_0_theme(colors.slate.950/.04)] sm:hidden"
+        class="group inline-flex h-12 w-12 cursor-pointer items-center justify-center rounded text-center text-white shadow-[0_1px_0_theme(colors.slate.950/.04),0_1px_2px_theme(colors.slate.950/.12),inset_0_-2px_0_theme(colors.slate.950/.04)] transition hover:shadow-[0_1px_0_theme(colors.slate.950/.04),0_4px_8px_theme(colors.slate.950/.12),inset_0_-2px_0_theme(colors.slate.950/.04)] md:hidden"
         aria-pressed="false"
       >
         <span class="sr-only">Menu</span>
@@ -91,15 +91,16 @@ import PrimaryButton from "./buttons/PrimaryButton.astro"
 
       <div
         id="mobile-menu"
-        class="invisible absolute top-full right-[-20] max-h-0 w-[100px] overflow-hidden opacity-0 transition-all duration-300 ease-in-out sm:hidden"
+        class="invisible absolute top-full right-[-20] max-h-0 w-[100px] overflow-hidden opacity-0 transition-all duration-300 ease-in-out md:hidden"
       >
         <div
           class="flex flex-col items-center gap-5 rounded-2xl bg-black/70 pt-2 pb-2"
         >
+          <a href="/about-us" class="font-semibold"> About Us </a>
           <a href="/news" class="font-semibold"> News </a>
-          <a href="/roles" class="font-semibold"> Roles </a>
-          <a href="/partners" class="font-semibold"> Partners </a>
-          <a href="https://www.unsw.edu.au/challeng/vertically-integrated-projects/explore-vertically-integrated-projects/atomcraft" class="font-semibold"> Join Us </a>
+          <a href="/members" class="font-semibold"> Members </a>
+          <a href="/partners" class="font-semibold"> Partner </a>
+          <a href="/partners" class="font-semibold"> Join Us </a>
         </div>
       </div>
     </div>
@@ -116,32 +117,34 @@ import PrimaryButton from "./buttons/PrimaryButton.astro"
     const mobileMenu = document.getElementById("mobile-menu");
 
     if (menuBtn && mobileMenu) {
-      document.getElementById("mobile-menu-btn")?.addEventListener("click", () => {
-        const isPressed = menuBtn.getAttribute("aria-pressed") === "true";
-        menuBtn.setAttribute("aria-pressed", String(!isPressed));
+      document
+        .getElementById("mobile-menu-btn")
+        ?.addEventListener("click", () => {
+          const isPressed = menuBtn.getAttribute("aria-pressed") === "true";
+          menuBtn.setAttribute("aria-pressed", String(!isPressed));
 
-        mobileMenu.classList.toggle("opacity-0");
-        mobileMenu.classList.toggle("invisible");
+          mobileMenu.classList.toggle("opacity-0");
+          mobileMenu.classList.toggle("invisible");
 
-        mobileMenu.classList.toggle("max-h-0");
-        mobileMenu.classList.toggle("max-h-screen");
-      });
+          mobileMenu.classList.toggle("max-h-0");
+          mobileMenu.classList.toggle("max-h-screen");
+        });
     }
 
-    
+    const showAnim = gsap
+      .from("#navbar", {
+        yPercent: -100,
+        paused: true,
+        duration: 0.2,
+      })
+      .progress(1);
 
-    const showAnim = gsap.from('#navbar', { 
-      yPercent: -100,
-      paused: true,
-      duration: 0.2
-    }).progress(1);
-    
     ScrollTrigger.create({
       start: "top top",
       end: "max",
       onUpdate: (self) => {
         self.direction == -1 ? showAnim.play() : showAnim.reverse();
-      }
-    })
+      },
+    });
   });
 </script>

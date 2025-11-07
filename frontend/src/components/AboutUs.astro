@@ -1,53 +1,70 @@
 ---
-import { Image } from "astro:assets"
-import teamPhoto from "../assets/team-photo.webp"
+import { Image } from "astro:assets";
+import teamPhoto from "../assets/team-photo.webp";
 ---
 
 <div class="pb-50">
   <div>
-    <h3 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl pb-5">
-      ABOUT US
-    </h3>
-    <div class="flex flex-col lg:flex-row gap-10">
-      <p class="text-gray_text sm:text-lg lg:text-xl xl:text-2xl min-[2000px]:!text-3xl">
-        AtomCraft is the world&apos;s first undergraduate-led project dedicated to designing, building, and 
-        operating a tokamak—a cutting-edge fusion device that uses electromagnetic fields to confine superheated 
-        plasma and replicate the conditions of the Sun. Bridging disciplines across advanced physics and engineering, 
-        our multidisciplinary team is tackling one of the greatest challenges in sustainable energy: achieving stable 
-        and sustained environment for plasma confinement. By pushing the boundaries of fusion research, AtomCraft 
-        is training the next generation of innovators to tackle the final frontier of sustainable energy.
+    <h3 class="pb-5 text-3xl md:text-4xl lg:text-5xl xl:text-6xl">ABOUT US</h3>
+    <div class="flex flex-col gap-10 lg:flex-row">
+      <p
+        class="text-gray_text min-[2000px]:!text-3xl sm:text-lg lg:text-xl xl:text-2xl"
+      >
+        AtomCraft is the world&apos;s first undergraduate-led project dedicated
+        to designing, building, and operating a tokamak—a cutting-edge fusion
+        device that uses electromagnetic fields to confine superheated plasma
+        and replicate the conditions of the Sun. Bridging disciplines across
+        advanced physics and engineering, our multidisciplinary team is tackling
+        one of the greatest challenges in sustainable energy: achieving stable
+        and sustained environment for plasma confinement. By pushing the
+        boundaries of fusion research, AtomCraft is training the next generation
+        of innovators to tackle the final frontier of sustainable energy.
       </p>
-      <Image src={teamPhoto} alt="Rows of AtomCraft team members lined up making gestures" class="w-full lg:w-[45vw] 2xl:w-[30vw] max-w-[1000px] aspect-auto rounded-2xl"/>
+      <Image
+        src={teamPhoto}
+        alt="Rows of AtomCraft team members lined up making gestures"
+        class="aspect-auto w-full max-w-[1000px] rounded-2xl lg:w-[45vw] 2xl:w-[30vw]"
+      />
     </div>
   </div>
 
-  <div class="flex w-full justify-between mt-15 md:mt-30 lg:mt-50 xl:mt-60 gap-10 flex-1">
+  <div
+    class="mt-15 flex w-full flex-1 justify-between gap-10 md:mt-30 lg:mt-50 xl:mt-60"
+  >
     <div>
-      <h1 id="members" class="text-5xl sm:text-7xl lg:text-8xl xl:text-9xl font-bold gradient-text">
-        0 
+      <h1
+        id="members"
+        class="gradient-text text-5xl font-bold sm:text-7xl lg:text-8xl xl:text-9xl"
+      >
+        0
       </h1>
       <p class="font-semibold sm:text-2xl lg:text-3xl xl:text-5xl">
         Team Members
       </p>
     </div>
     <div>
-      <h1 id="teams" class="text-5xl sm:text-7xl lg:text-8xl xl:text-9xl font-bold gradient-text">
+      <h1
+        id="teams"
+        class="gradient-text text-5xl font-bold sm:text-7xl lg:text-8xl xl:text-9xl"
+      >
         0
       </h1>
-      <p class="font-semibold sm:text-2xl lg:text-3xl xl:text-5xl">
-        Teams
-      </p>
+      <p class="font-semibold sm:text-2xl lg:text-3xl xl:text-5xl">Teams</p>
     </div>
     <div class="w-fit">
-      <h1 id="disciplines" class="text-5xl sm:text-7xl lg:text-8xl xl:text-9xl font-bold gradient-text w-fit">
+      <h1
+        id="disciplines"
+        class="gradient-text w-fit text-5xl font-bold sm:text-7xl lg:text-8xl xl:text-9xl"
+      >
         0
       </h1>
-      <p class="font-semibold sm:text-2xl lg:text-3xl xl:text-5xl w-fit max-w-[90px] sm:max-w-[100vw]">
+      <p
+        class="w-fit max-w-[90px] font-semibold sm:max-w-[100vw] sm:text-2xl lg:text-3xl xl:text-5xl"
+      >
         Academic Disciplines
       </p>
     </div>
   </div>
-  
 </div>
 
 <script>

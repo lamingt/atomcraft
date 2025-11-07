@@ -2,65 +2,100 @@
 import { Image } from "astro:assets";
 import PartnersLayout from "../layouts/PartnersLayout.astro";
 import "../styles/global.css";
-import partnerImage from "../assets/partner.jpg"
+import partnerImage from "../assets/partner.jpg";
 import email from "../assets/email.svg";
-export const prerender = true
+export const prerender = true;
 ---
 
 <PartnersLayout>
-  <div class="mt-[100px] lg:mt-[150px] max-w-[1500px] w-[90%] mx-auto">
-    <div class="flex flex-col lg:flex-row gap-10">
+  <div class="mx-auto mt-[100px] w-[90%] max-w-[1500px] lg:mt-[150px]">
+    <div class="flex flex-col gap-10 lg:flex-row">
       <div class="w-fit flex-col items-center">
-        <h1 class="text-4xl md:text-5xl xl:text-7xl 3xl:text-8xl w-fit">
-          <span class="text-transparent bg-clip-text bg-[linear-gradient(170deg,_#fff,_#7656BD_50%,_#fff)]">Partner</span> with Atomcraft
+        <h1 class="3xl:text-8xl w-fit text-4xl md:text-5xl xl:text-7xl">
+          <span
+            class="bg-[linear-gradient(170deg,_#fff,_#7656BD_50%,_#fff)] bg-clip-text text-transparent"
+            >Partner</span
+          > with Atomcraft
         </h1>
-        <p class="text-lg mt-5 lg:text-xl xl:text-2xl lg:mt-10 w-full lg:w-[90%] text-gray_text">
-          Our partners provide the support and resources that make our research and engineering work possible, 
-          enabling us to turn ambitious ideas into real-world fusion devices.
+        <p
+          class="text-gray_text mt-5 w-full text-lg lg:mt-10 lg:w-[90%] lg:text-xl xl:text-2xl"
+        >
+          Our partners provide the support and resources that make our research
+          and engineering work possible, enabling us to turn ambitious ideas
+          into real-world fusion devices.
         </p>
       </div>
-      <Image src={partnerImage} alt="AtomCraft members with arms around each other's shoulders in front of a screen which reads 'Empowering Excellence Breakfast'" 
-      class="max-w-[700px] w-[90%] lg:w-[40%] xl:w-[90%] scale-auto rounded-xl" loading="eager"/>
+      <Image
+        src={partnerImage}
+        alt="AtomCraft members with arms around each other's shoulders in front of a screen which reads 'Empowering Excellence Breakfast'"
+        class="scale-auto w-[90%] max-w-[700px] rounded-xl lg:w-[40%] xl:w-[90%]"
+        loading="eager"
+      />
     </div>
 
-    <div class="flex flex-col lg:flex-row mx-auto w-fit mt-[20vh] gap-[5vw] justify-center">
-      <div class="flex flex-col text-gray_text w-full lg:w-[30%]">
-        <h2 class="text-white text-3xl xl:text-5xl mb-5">
+    <div
+      class="mx-auto mt-[20vh] flex w-fit flex-col justify-center gap-[5vw] lg:flex-row"
+    >
+      <div class="text-gray_text flex w-full flex-col lg:w-[30%]">
+        <h2 class="mb-5 text-3xl text-white xl:text-5xl">
           We'd love to hear from you!
         </h2>
-        <p class="text-xl mb-2 w-full lg:w-full">
-          Whether you're curious about what we do or want to get involved, we'd love to chat.
+        <p class="mb-2 w-full text-xl lg:w-full">
+          Whether you're curious about what we do or want to get involved, we'd
+          love to chat.
         </p>
         <div class="flex">
-          <Image src={email} alt="email svg" class="mr-2" loading="eager"/>
-          <p>
-            atomcraft@unsw.edu.au
-          </p>
+          <Image src={email} alt="email svg" class="mr-2" loading="eager" />
+          <p>atomcraft@unsw.edu.au</p>
         </div>
       </div>
-      <div class="relative h-[600px] md:w-2xl bg-[#4216A4]/50 rounded-md z-10 mb-50">
-        <div class="absolute top-0 left-0 h-full w-full rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-gradient-to-tr 
-          from-[#FFF]/25
-          to-[#080411]/25 border border-[#383149]">
-          <div class="absolute top-0 left-0 h-full w-full rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-gradient-to-bl 
-            from-[#FFF]/15
-            to-[#080411]/100 border border-[#383149]">
-            <div class="m-5 lg:m-10 w-full h-full">
-              <h2 class="text-2xl xs:text-3xl lg:text-4xl mb-5">
+      <div
+        class="relative z-10 mb-50 h-[600px] rounded-md bg-[#4216A4]/50 md:w-2xl"
+      >
+        <div
+          class="absolute top-0 left-0 h-full w-full rounded-md border border-[#383149] bg-gradient-to-tr from-[#FFF]/25 to-[#080411]/25 bg-clip-padding backdrop-blur-sm backdrop-filter"
+        >
+          <div
+            class="absolute top-0 left-0 h-full w-full rounded-md border border-[#383149] bg-gradient-to-bl from-[#FFF]/15 to-[#080411]/100 bg-clip-padding backdrop-blur-sm backdrop-filter"
+          >
+            <div class="m-5 h-full w-full lg:m-10">
+              <h2 class="xs:text-3xl mb-5 text-2xl lg:text-4xl">
                 Become a Partner!
               </h2>
-              <form data-netlify="true" data-netlify-honeypot="bot-field" method="POST" name="contact" class="w-full h-full">
-                <div class="flex flex-col gap-5 w-full h-full items-start">
+              <form
+                data-netlify="true"
+                data-netlify-honeypot="bot-field"
+                method="POST"
+                name="contact"
+                class="h-full w-full"
+              >
+                <div class="flex h-full w-full flex-col items-start gap-5">
                   <p class="hidden">
                     <label>
-                      Don&#44;t fill this out if you&#44;re human: <input name="bot-field" />
+                      Don&#44;t fill this out if you&#44;re human: <input
+                        name="bot-field"
+                      />
                     </label>
                   </p>
                   <input type="hidden" name="form-name" value="contact" />
-                  <input placeholder="Name" name="name" class="border-2 border-[#4216A4] rounded-lg bg-[#1D0A4A] text-gray_text p-1 w-[80%] md:w-60"/>
-                  <input placeholder="Email address" name="email" class="border-2 border-[#4216A4] rounded-lg bg-[#1D0A4A] text-gray_text p-1 w-[80%] md:w-60"/>
-                  <textarea placeholder="Message" name="message" class="border-2 border-[#4216A4] rounded-lg bg-[#1D0A4A] text-gray_text p-1 w-[80%] md:w-[80%] h-[50%]"/>
-                  <button class="w-[80px] sm:w-[100px] cursor-pointer rounded-2xl bg-[#39F8EB] pt-0.5 pb-0.5 font-semibold text-black lg:text-xl">
+                  <input
+                    placeholder="Name"
+                    name="name"
+                    class="text-gray_text w-[80%] rounded-lg border-2 border-[#4216A4] bg-[#1D0A4A] p-1 md:w-60"
+                  />
+                  <input
+                    placeholder="Email address"
+                    name="email"
+                    class="text-gray_text w-[80%] rounded-lg border-2 border-[#4216A4] bg-[#1D0A4A] p-1 md:w-60"
+                  />
+                  <textarea
+                    placeholder="Message"
+                    name="message"
+                    class="text-gray_text h-[50%] w-[80%] rounded-lg border-2 border-[#4216A4] bg-[#1D0A4A] p-1 md:w-[80%]"
+                  ></textarea>
+                  <button
+                    class="w-[80px] cursor-pointer rounded-2xl bg-[#39F8EB] pt-0.5 pb-0.5 font-semibold text-black sm:w-[100px] lg:text-xl"
+                  >
                     Send
                   </button>
                 </div>

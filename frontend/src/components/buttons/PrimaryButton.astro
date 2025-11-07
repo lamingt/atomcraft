@@ -1,23 +1,20 @@
 ---
 export type Props = {
   href: string;
-}
+  id?: string;
+  class?: string;
+};
 
-const { href } = Astro.props;
+const { href, id, class: extraClass = "" } = Astro.props;
 ---
 
-<a href={href}>
-  <button id="primary-btn" class="px-[38px] py-[16.5px] bg-cyan rounded-[100px] text-[18px] border-black cursor-pointer text-black 
-      hover:bg-transparent
-      hover:border-cyan border-2
-      hover:text-cyan
-      active:opacity-60
-      active:bg-cyan
-      active:text-black
-      active:border-cyan 
-      duration-100">
-    <slot/>
-  </button>
+<a
+  href={href}
+  id={id ? id : undefined}
+  class:list={[
+    "inline-block bg-cyan md:text-md border-cyan hover:border-cyan hover:text-cyan active:bg-cyan active:border-cyan cursor-pointer rounded-[100px] border-1 px-[25px] py-[10.87px] text-sm text-black duration-200 hover:bg-transparent active:text-black active:opacity-60 md:border-2 lg:px-[30px] lg:py-[13px] lg:text-lg xl:px-[38px] xl:py-[16.5px]",
+    extraClass,
+  ]}
+>
+  <slot />
 </a>
-
-

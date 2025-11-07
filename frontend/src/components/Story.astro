@@ -129,10 +129,7 @@ import TimelineSVG from "../assets/timelinev2.svg";
   import DrawSVGPlugin from "gsap/DrawSVGPlugin";
   import { pathEase } from "../helpers";
 
-  gsap.registerPlugin(
-    ScrollTrigger,
-    DrawSVGPlugin,
-  );
+  gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin);
 
   let mm = gsap.matchMedia();
 
@@ -141,31 +138,31 @@ import TimelineSVG from "../assets/timelinev2.svg";
       gsap.from(id, {
         autoAlpha: 0,
         x: right ? 300 : -300,
-        
+
         duration: 1,
         ease: "power2.out",
         scrollTrigger: {
           trigger: id,
           start: "top 47%",
           once: true,
-        }
+        },
       });
-    })
+    });
 
     mm.add("(max-width:799px)", () => {
       gsap.from(id, {
         autoAlpha: 0,
-        
+
         duration: 1,
         ease: "power2.out",
         scrollTrigger: {
           trigger: id,
           start: "top 37%",
           once: true,
-        }
+        },
       });
-    })
-  }
+    });
+  };
 
   document.addEventListener("DOMContentLoaded", () => {
     mm.add("(min-width:800px)", () => {
@@ -203,7 +200,7 @@ import TimelineSVG from "../assets/timelinev2.svg";
           },
         },
       );
-    }); 
+    });
 
     milestoneAnimation("#milestone-1", true);
     milestoneAnimation("#milestone-2", false);

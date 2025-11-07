@@ -8,21 +8,53 @@ import NuclearInnovation from "../assets/carousel/nuclear_innovation.svg";
 import TokamakEnergy from "../assets/carousel/tokamak_energy.svg";
 ---
 
-<div class="w-full m-auto overflow-hidden relative">
-  <p class="z-5 flex justify-center text-[#D7DADC] font-bold text-lg md:text-xl mt-[10vh] mb-[-5vh] 2xl:text-[1vw]">
+<div class="relative m-auto w-full overflow-hidden">
+  <p
+    class="z-5 mt-[10vh] mb-[-5vh] flex justify-center text-lg font-bold text-[#D7DADC] md:text-xl 2xl:text-[1vw]"
+  >
     Our Wonderful Partners
   </p>
-  <div class="flex w-full my-[10vh] xl:[200px] 2xl:ml-60 items-center justify-center">
-    <Image src={Hb11} alt="HB11" class="grayscale h-12 md:h-12 xl:h-15 2xl:h-20 w-auto flex-shrink-0 object-contain partner-logo mr-10 lg:mr-20"/>
-    <Image src={Allfastners} alt="Allfastners" class="grayscale h-12 md:h-12 xl:h-15 2xl:h-20 w-auto flex-shrink-0 object-contain partner-logo mr-10 lg:mr-20" />
-    <Image src={Ansys} alt="Ansys" class="grayscale h-12 md:h-12 xl:h-15 2xl:h-20 w-auto flex-shrink-0 object-contain partner-logo mr-10 lg:mr-20" />
-    <Image src={DigitalGrid} alt="Digital Grid" class="grayscale h-12 md:h-12 xl:h-15 2xl:h-20 w-auto flex-shrink-0 object-contain partner-logo  mr-10 lg:mr-20" />
-    <Image src={NuclearInnovation} alt="Nuclear Innovation" class="grayscale h-12 md:h-12 xl:h-15 2xl:h-20 w-auto flex-shrink-0 object-contain partner-logo  mr-10 lg:mr-20" />
-    <Image src={TokamakEnergy} alt="Tokamak Energy" class="grayscale h-12 md:h-12 xl:h-15 2xl:h-20 w-auto flex-shrink-0 object-contain partner-logo" />
+  <div
+    class="xl:[200px] mt-[10vh] flex w-full items-center justify-center 2xl:ml-60"
+  >
+    <Image
+      src={Hb11}
+      alt="HB11"
+      class="partner-logo mr-10 h-12 w-auto flex-shrink-0 object-contain grayscale md:h-12 lg:mr-20 xl:h-15 2xl:h-20"
+    />
+    <Image
+      src={Allfastners}
+      alt="Allfastners"
+      class="partner-logo mr-10 h-12 w-auto flex-shrink-0 object-contain grayscale md:h-12 lg:mr-20 xl:h-15 2xl:h-20"
+    />
+    <Image
+      src={Ansys}
+      alt="Ansys"
+      class="partner-logo mr-10 h-12 w-auto flex-shrink-0 object-contain grayscale md:h-12 lg:mr-20 xl:h-15 2xl:h-20"
+    />
+    <Image
+      src={DigitalGrid}
+      alt="Digital Grid"
+      class="partner-logo mr-10 h-12 w-auto flex-shrink-0 object-contain grayscale md:h-12 lg:mr-20 xl:h-15 2xl:h-20"
+    />
+    <Image
+      src={NuclearInnovation}
+      alt="Nuclear Innovation"
+      class="partner-logo mr-10 h-12 w-auto flex-shrink-0 object-contain grayscale md:h-12 lg:mr-20 xl:h-15 2xl:h-20"
+    />
+    <Image
+      src={TokamakEnergy}
+      alt="Tokamak Energy"
+      class="partner-logo h-12 w-auto flex-shrink-0 object-contain grayscale md:h-12 xl:h-15 2xl:h-20"
+    />
   </div>
-  <div class="absolute top-0 left-0 w-[10vw] sm:w-[20vw] xl:w-[25vw] 2xl:w-[30vw] 3xl:w-[40vw] h-full bg-[linear-gradient(to_right,rgb(8,4,17),rgba(8,4,17,0.95)_70%,_transparent_100%)] z-5 pointer-events-none">
+  <div
+    class="pointer-events-none absolute top-0 left-0 z-5 h-full w-[10vw] bg-[linear-gradient(to_right,rgb(8,4,17),rgba(8,4,17,0.95)_70%,_transparent_100%)]"
+  >
   </div>
-  <div class="absolute top-0 right-0 w-[10vw] sm:w-[20vw] xl:w-[25vw] 2xl:w-[30vw] 3xl:w-[40vw] h-full bg-[linear-gradient(to_left,rgb(8,4,17),rgba(8,4,17,0.95)_70%,_transparent_100%)] z-5 pointer-events-none">
+  <div
+    class="pointer-events-none absolute top-0 right-0 z-5 h-full w-[10vw] bg-[linear-gradient(to_left,rgb(8,4,17),rgba(8,4,17,0.95)_70%,_transparent_100%)]"
+  >
   </div>
 </div>
 
@@ -31,7 +63,7 @@ import TokamakEnergy from "../assets/carousel/tokamak_energy.svg";
   import { gsap } from "gsap/gsap-core";
 
   window.addEventListener("load", () => {
-    const mm = gsap.matchMedia()
+    const mm = gsap.matchMedia();
 
     mm.add("(min-width: 768px)", () => {
       horizontalLoop(gsap.utils.toArray(".partner-logo"), {
@@ -40,7 +72,7 @@ import TokamakEnergy from "../assets/carousel/tokamak_energy.svg";
         speed: 0.5,
         paddingRight: 80, // prevents the first and last item from being right next to each other
       });
-    })
+    });
 
     mm.add("(max-width: 767px)", () => {
       horizontalLoop(gsap.utils.toArray(".partner-logo"), {
@@ -49,6 +81,6 @@ import TokamakEnergy from "../assets/carousel/tokamak_energy.svg";
         speed: 0.5,
         paddingRight: 40, // prevents the first and last item from being right next to each other
       });
-    })
-  })
+    });
+  });
 </script>

@@ -1,18 +1,61 @@
-<div class="pt-10 md:pb-50 pb-20">
-  <p id="question-text" class="text-[#EA8DF0] text-xl md:text-2xl lg:text-3xl mb-1 will-change-transform">
-    What do we do?
-  </p>
-  <p id="answer-text" class="font-medium text-2xl md:text-3xl lg:text-4xl xl:text-5xl will-change-transform">
-    We are building the world&apos;s first student-led fusion energy device, designed, built, and operated entirely by students. 
-    Fusion energy is the ultimate solution to clean, sustainable power, and it's closer than you think.
-  </p>
-</div>
+---
+import { Image } from "astro:assets";
+import TokamakBackground from "../assets/tokamak-background.png";
+import SecondaryOutlineButton from "./buttons/SecondaryOutlineButton.astro";
+---
 
+<div class="relative w-full overflow-visible">
+  <Image
+    class="absolute top-0 left-1/2 max-w-screen -translate-x-1/2 object-cover mix-blend-color-dodge"
+    src={TokamakBackground}
+    alt="Large Sketched Tokamak"
+  />
+
+  <div class="relative flex flex-col items-center text-center lg:block lg:text-left z-10 pt-[50px] sm:pt-[100px] lg:pt-[150px] xl:pt-[250px] xs:pb-25 md:pb-50">
+    <p
+      id="question-text"
+      class="text-pink text-body lg:text-subheading-1 mb-1 md:text-2xl"
+    >
+      What do we do?
+    </p>
+    <p
+      id="answer-text"
+      class="text-heading-5 md:text-heading-4 lg:text-heading-3 xl:text-heading-2 pb-[32px] font-medium lg:w-[80%]"
+    >
+      We are building the world&apos;s first <span class="gradient-text-2"
+        >student-led</span
+      >
+      fusion energy device, designed, built, and operated entirely by students.
+    </p>
+    <div class="flex justify-center lg:justify-end" id="tokamak-btn">
+      <SecondaryOutlineButton href="/">
+        See the Tokamak
+      </SecondaryOutlineButton>
+    </div>
+  </div>
+</div>
+<!-- <div class="relative overflow-visible w-full">
+  <Image 
+    class="h-auto object-cover mix-blend-color-dodge w-[130%] relative left-1/2 -translate-x-1/2"
+    src={TokamakBackground} 
+    alt="Large Sketched Tokamak"
+  />
+
+  <div class="absolute inset-0 z-10 pt-10 md:pb-50 pb-20">
+    <p id="question-text" class="text-pink text-xl md:text-2xl lg:text-3xl mb-1">
+      What do we do?
+    </p>
+    <p id="answer-text" class="font-medium text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
+      We are building the world&apos;s first student-led fusion energy device, designed, built, and operated entirely by students. 
+      Fusion energy is the ultimate solution to clean, sustainable power, and it's closer than you think.
+    </p>
+  </div>
+</div> -->
 <script>
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-  gsap.registerPlugin(ScrollTrigger)
+  gsap.registerPlugin(ScrollTrigger);
   document.addEventListener("DOMContentLoaded", () => {
     const timeline = gsap.timeline({
       paused: true,
@@ -20,23 +63,37 @@
         start: "top 80%",
         once: true,
         trigger: "#question-text",
-        onEnter: () => timeline.play()
-      }
-    })
+        onEnter: () => timeline.play(),
+      },
+    });
 
     timeline.from("#question-text", {
       y: 50,
       opacity: 0,
       duration: 1.5,
       ease: "power3.out",
-    })
+    });
 
-    timeline.from("#answer-text", {
-      y: 50,
-      opacity: 0,
-      duration: 1.5,
-      ease: "power3.out",
-    }, "<0.6")
-  })
+    timeline.from(
+      "#answer-text",
+      {
+        y: 50,
+        opacity: 0,
+        duration: 1.5,
+        ease: "power3.out",
+      },
+      "<0.6",
+    );
 
+    timeline.from(
+      "#tokamak-btn",
+      {
+        y: 50,
+        opacity: 0,
+        duration: 1.5,
+        ease: "power3.out",
+      },
+      "<0.6",
+    );
+  });
 </script>

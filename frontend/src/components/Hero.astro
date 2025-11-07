@@ -1,8 +1,10 @@
 ---
 import { Image } from "astro:assets";
-import heroLogo from "../assets/hero-logo.svg"
+import heroLogo from "../assets/hero-logo.svg";
 import backgroundVideo from "../assets/atomcraft-background.mp4";
-import backgroundPoster from "../assets/atomcraft-background_000.jpg"
+import backgroundPoster from "../assets/atomcraft-background_000.jpg";
+import PrimaryButton from "./buttons/PrimaryButton.astro";
+import SecondaryOutlineButton from "./buttons/SecondaryOutlineButton.astro";
 ---
 
 <div class="relative h-screen w-full overflow-hidden">
@@ -15,17 +17,25 @@ import backgroundPoster from "../assets/atomcraft-background_000.jpg"
     loop
     autoplay
     poster={backgroundPoster.src}
-    src={backgroundVideo}
-  ></video>
-
-  <div class="relative z-3 flex h-full w-full items-center justify-center md:mt-[100px]">
+    src={backgroundVideo}></video>
+  <div
+    class="relative z-3 flex h-full w-full items-center justify-center md:mt-[100px]"
+  >
     <div class="flex w-full flex-col items-center gap-5 md:pb-[25vh]">
-      <div id="hero-logo" class="z-3 mb-[-30px] will-change-transform sm:mb-[-50px] md:mb-[-70px] invisible">
-        <Image src={heroLogo} alt="atomcraft logo" class="md:w-[300px] w-[200px] lg:w-[400px] 3xl:w-[15vw]" loading="eager"/>
+      <div
+        id="hero-logo"
+        class="invisible z-3 mb-[-30px] will-change-transform sm:mb-[-50px] md:mb-[-70px]"
+      >
+        <Image
+          src={heroLogo}
+          alt="atomcraft logo"
+          class="3xl:w-[15vw] w-[200px] md:w-[300px] lg:w-[400px]"
+          loading="eager"
+        />
       </div>
 
       <div
-        class="relative flex w-full flex-col items-center gap-1 py-[30px] sm:gap-3 sm:py-[50px] md:py-[100px]"
+        class="relative flex w-full flex-col items-center py-[30px] sm:py-[50px] md:py-[100px]"
       >
         <div
           class="absolute inset-0 z-0 rounded-lg bg-[linear-gradient(to_bottom,transparent_0%,rgba(0,0,0,0.4)_25%,rgba(0,0,0,0.4)_75%,transparent_100%)] md:bg-[linear-gradient(to_bottom,transparent_0%,rgba(0,0,0,0.6)_25%,rgba(0,0,0,0.6)_75%,transparent_100%)]"
@@ -33,17 +43,30 @@ import backgroundPoster from "../assets/atomcraft-background_000.jpg"
         </div>
         <h1
           id="line-1"
-          class="text-3xl xs:text-5xl font-bold text-white will-change-transform md:text-6xl lg:text-8xl 3xl:text-[4.5vw] invisible"
+          class="text-heading-4 sm:text-heading-3 md:text-heading-2 lg:text-heading-1 invisible font-bold will-change-transform"
         >
-          Crafting the <span class="text-transparent bg-clip-text bg-[linear-gradient(170deg,_#fff,_#7656BD_50%,_#fff)]">Future</span>
+          Crafting the
         </h1>
         <h1
           id="line-2"
-          class="text-3xl xs:text-5xl font-bold will-change-transform md:text-6xl lg:text-8xl 3xl:text-[4.5vw] text-transparent bg-clip-text bg-[linear-gradient(170deg,_#fff,_#7656BD_50%,_#fff)] pb-5 invisible"
+          class="text-heading-4 sm:text-heading-3 md:text-heading-2 lg:text-heading-1 gradient-text invisible font-bold will-change-transform"
         >
-          <!-- bottom padding prevents text from being hidden at the start of animation -->
-          of Fusion
+          Future of Fusion
         </h1>
+        <h2
+          id="line-3"
+          class="md:text-heading-5 lg:text-heading-4 invisible z-5 mb-[20px] md:mb-[60px]"
+        >
+          World's first student-led fusion energy device.
+        </h2>
+        <div class="z-5 flex gap-[29px]">
+          <PrimaryButton href="news" id="hero-button-1" class="invisible">
+            Apply Now
+          </PrimaryButton>
+          <SecondaryOutlineButton href="/" id="hero-button-2" class="invisible">
+            Learn More
+          </SecondaryOutlineButton>
+        </div>
       </div>
     </div>
   </div>
@@ -61,46 +84,78 @@ import backgroundPoster from "../assets/atomcraft-background_000.jpg"
 
     // const line1Split = SplitText.create("#line-1", { type: "words" })
     // const line2Split = SplitText.create("#line-2", { type: "words" })
+
     const timeline = gsap.timeline({
       scrollTrigger: {
         start: "top 80%",
-        trigger: "#hero-logo",
+        trigger: "#hero-line1",
         once: true,
       },
     });
 
-    timeline.fromTo("#hero-logo", 
-      { scale: 0.5, autoAlpha: 0 },
-      { 
-        scale: 1, 
-        autoAlpha: 1, 
-        rotation: 0.001, // prevents the hero logo from being jittery on animation
-        duration: 1, 
-        ease: "power3.out" 
-      }
+    timeline.fromTo(
+      "#line-1",
+      { y: 30, autoAlpha: 0 },
+      {
+        y: 0,
+        autoAlpha: 1,
+        duration: 1.5,
+        ease: "power3.out",
+      },
+      "0.6",
     );
 
-    timeline.fromTo("#line-1",
+    timeline.fromTo(
+      "#line-2",
       { y: 30, autoAlpha: 0 },
-      { 
-        y: 0, 
-        autoAlpha: 1, 
-        duration: 1.5, 
-        ease: "power3.out" 
+      {
+        y: 0,
+        autoAlpha: 1,
+        stagger: 0.1,
+        duration: 1.5,
+        ease: "power3.out",
       },
-      "0.6"
+      "1",
     );
 
-    timeline.fromTo("#line-2",
+    timeline.fromTo(
+      "#line-3",
       { y: 30, autoAlpha: 0 },
-      { 
-        y: 0, 
-        autoAlpha: 1, 
-        stagger: 0.1, 
-        duration: 1.5, 
-        ease: "power3.out" 
+      {
+        y: 0,
+        autoAlpha: 1,
+        stagger: 0.1,
+        duration: 1.5,
+        ease: "power3.out",
       },
-      "1"
+      "1.7",
+    );
+
+    timeline.fromTo(
+      "#hero-button-1",
+      { y: 30, autoAlpha: 0 },
+      {
+        y: 0,
+        autoAlpha: 1,
+        stagger: 0.1,
+        duration: 1.5,
+        ease: "power3.out",
+        opacity: 1,
+      },
+      "2",
+    );
+
+    timeline.fromTo(
+      "#hero-button-2",
+      { y: 30, autoAlpha: 0 },
+      {
+        y: 0,
+        autoAlpha: 1,
+        stagger: 0.1,
+        duration: 1.5,
+        ease: "power3.out",
+      },
+      "2.3",
     );
   });
 </script>

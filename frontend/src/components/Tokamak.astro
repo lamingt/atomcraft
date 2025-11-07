@@ -1,66 +1,111 @@
 ---
 import { Image } from "astro:assets";
-import part1 from "../assets/tokamak/tokamak-part1.png"
-import part2 from "../assets/tokamak/tokamak-part2.png"
-import part3 from "../assets/tokamak/tokamak-part3.png"
+import part1 from "../assets/tokamak/tokamak-part1.png";
+import part2 from "../assets/tokamak/tokamak-part2.png";
+import part3 from "../assets/tokamak/tokamak-part3.png";
 import rightArrow from "../assets/right-arrow.svg";
 import leftArrow from "../assets/left-arrow.svg";
 ---
 
-<div class="flex flex-col justify-center items-center pb-30 h-full">
-  <h2 id="title" class="text-4xl xl:text-7xl font-bold mb-5 lg:mb-20">
+<div class="flex h-full flex-col items-center justify-center pb-30">
+  <h2 id="title" class="mb-5 text-4xl font-bold lg:mb-20 xl:text-7xl">
     THE TOKAMAK
   </h2>
-  <div id="tokamak" class="flex overflow-x-hidden items-center relative w-[95%] md:w-[80%] xl:w-[50%]">
-    <div class="tokamak-part flex flex-col items-center w-full relative shrink-0 cursor-pointer">
+  <div
+    id="tokamak"
+    class="relative flex w-[95%] items-center overflow-x-hidden md:w-[80%] xl:w-[50%]"
+  >
+    <div
+      class="tokamak-part relative flex w-full shrink-0 cursor-pointer flex-col items-center"
+    >
       <h3 class="text-3xl font-medium md:text-4xl lg:text-5xl xl:text-6xl">
         SOUTH
       </h3>
-      <div class="relative w-[80%] aspect-square">
-        <Image src={part1} alt="Tokamak part" class="absolute inset-0 w-full h-full object-contain z-10"/>
-        <div class="absolute inset-5 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.8)_0%,transparent_90%)] blur-2xl"/>
+      <div class="relative aspect-square w-[80%]">
+        <Image
+          src={part1}
+          alt="Tokamak part"
+          class="absolute inset-0 z-10 h-full w-full object-contain"
+        />
+        <div
+          class="absolute inset-5 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.8)_0%,transparent_90%)] blur-2xl"
+        >
+        </div>
       </div>
-      <p class="text-center sm:text-xl xl:text-2xl text-gray_text font-medium">
-        The fusion device. Using carefully tuned magnetic fields, SOUTH (Student Operated University Tokamak) confines superheated plasma, 
-        replicating the conditions of the Sun. Bridging disciplines across advanced physics and engineering, our interdisciplinary team 
-        is tackling one of the greatest challenges in sustainable energy: achieving the stable and sustained environment for plasma confinement.
+      <p class="text-gray_text text-center font-medium sm:text-xl xl:text-2xl">
+        The fusion device. Using carefully tuned magnetic fields, SOUTH (Student
+        Operated University Tokamak) confines superheated plasma, replicating
+        the conditions of the Sun. Bridging disciplines across advanced physics
+        and engineering, our interdisciplinary team is tackling one of the
+        greatest challenges in sustainable energy: achieving the stable and
+        sustained environment for plasma confinement.
       </p>
     </div>
-    <div class="tokamak-part flex flex-col items-center w-full relative shrink-0 cursor-pointer">
+    <div
+      class="tokamak-part relative flex w-full shrink-0 cursor-pointer flex-col items-center"
+    >
       <h3 class="text-3xl font-medium md:text-4xl lg:text-5xl xl:text-6xl">
         Vacuum Vessel
       </h3>
-      <div class="relative w-[80%] aspect-square">
-        <Image src={part2} alt="Tokamak part" class="absolute inset-0 w-full h-full object-contain z-10"/>
-        <div class="absolute inset-5 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.8)_0%,transparent_90%)] blur-2xl"/>
+      <div class="relative aspect-square w-[80%]">
+        <Image
+          src={part2}
+          alt="Tokamak part"
+          class="absolute inset-0 z-10 h-full w-full object-contain"
+        />
+        <div
+          class="absolute inset-5 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.8)_0%,transparent_90%)] blur-2xl"
+        >
+        </div>
       </div>
-      <p class="text-center sm:text-xl xl:text-2xl text-gray_text font-medium">
-        Constructed of high calibre steel, mechanically polished, chemically cleaned, and plasma treated, the vacuum vessel contains 
-        and maintains the extreme yet pristine conditions needed for a tokamak plasma. With every dimension carefully optimised 
-        to ensure peak plasma performance, the vacuum vessel is truly the heart of the tokamak. 
+      <p class="text-gray_text text-center font-medium sm:text-xl xl:text-2xl">
+        Constructed of high calibre steel, mechanically polished, chemically
+        cleaned, and plasma treated, the vacuum vessel contains and maintains
+        the extreme yet pristine conditions needed for a tokamak plasma. With
+        every dimension carefully optimised to ensure peak plasma performance,
+        the vacuum vessel is truly the heart of the tokamak.
       </p>
     </div>
-    <div class="tokamak-part flex flex-col items-center w-full relative shrink-0 cursor-pointer">
+    <div
+      class="tokamak-part relative flex w-full shrink-0 cursor-pointer flex-col items-center"
+    >
       <h3 class="text-3xl font-medium md:text-4xl lg:text-5xl xl:text-6xl">
         Toroidal Field Coil
       </h3>
-      <div class="relative w-[80%] aspect-square">
-        <Image src={part3} alt="Tokamak part" class="absolute inset-0 w-full h-full object-contain z-10"/>
-        <div class="absolute inset-10 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.8)_0%,transparent_90%)] blur-2xl"/>
+      <div class="relative aspect-square w-[80%]">
+        <Image
+          src={part3}
+          alt="Tokamak part"
+          class="absolute inset-0 z-10 h-full w-full object-contain"
+        />
+        <div
+          class="absolute inset-10 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.8)_0%,transparent_90%)] blur-2xl"
+        >
+        </div>
       </div>
-      <p class="text-center sm:text-xl xl:text-2xl text-gray_text font-medium">
-        SOUTH&apos;s toroidal field coils carry intense kiloampere scale currents that generate magnetic 
-        fields capable of squeezing the superheated plasma into a toroidal or donut shape. Taking a Princeton D shape, 
-        these coils optimise magnetic field stability, providing precision critical to plasma control. 
+      <p class="text-gray_text text-center font-medium sm:text-xl xl:text-2xl">
+        SOUTH&apos;s toroidal field coils carry intense kiloampere scale
+        currents that generate magnetic fields capable of squeezing the
+        superheated plasma into a toroidal or donut shape. Taking a Princeton D
+        shape, these coils optimise magnetic field stability, providing
+        precision critical to plasma control.
       </p>
     </div>
   </div>
-  <div class="w-screen sm:w-[95%] md:w-[80%] xl:w-[50%] flex justify-between md:mt-10">
-    <button id="prev-btn" class="cursor-pointer p-2 rounded-full transition-colors duration-200 active:bg-slate-500/50 hover:bg-slate-500/30">
-      <Image src={leftArrow} alt="left arrow" class="w-7 md:w-10"/>
+  <div
+    class="flex w-screen justify-between sm:w-[95%] md:mt-10 md:w-[80%] xl:w-[50%]"
+  >
+    <button
+      id="prev-btn"
+      class="cursor-pointer rounded-full p-2 transition-colors duration-200 hover:bg-slate-500/30 active:bg-slate-500/50"
+    >
+      <Image src={leftArrow} alt="left arrow" class="w-7 md:w-10" />
     </button>
-    <button id="next-btn" class="cursor-pointer p-2 rounded-full transition-colors duration-200 active:bg-slate-500/50 hover:bg-slate-500/30">
-      <Image src={rightArrow} alt="right arrow" class="w-7 md:w-10"/>
+    <button
+      id="next-btn"
+      class="cursor-pointer rounded-full p-2 transition-colors duration-200 hover:bg-slate-500/30 active:bg-slate-500/50"
+    >
+      <Image src={rightArrow} alt="right arrow" class="w-7 md:w-10" />
     </button>
   </div>
 </div>
@@ -70,7 +115,7 @@ import leftArrow from "../assets/left-arrow.svg";
   import ScrollTrigger from "gsap/ScrollTrigger";
   import { horizontalLoop } from "../helpers";
 
-  gsap.registerPlugin(ScrollTrigger)
+  gsap.registerPlugin(ScrollTrigger);
 
   document.addEventListener("DOMContentLoaded", () => {
     gsap.from("#title", {
@@ -83,7 +128,7 @@ import leftArrow from "../assets/left-arrow.svg";
         trigger: "#title",
         start: "top 60%",
         once: true,
-      }
+      },
     });
 
     gsap.from("#tokamak", {
@@ -96,33 +141,35 @@ import leftArrow from "../assets/left-arrow.svg";
         trigger: "#tokamak",
         start: "top 60%",
         once: true,
-      }
+      },
     });
 
     const parts = gsap.utils.toArray(".tokamak-part") as HTMLElement[];
     const loop = horizontalLoop(parts, {
-      paused: true
+      paused: true,
     });
 
-    parts.forEach((part, i) => part.addEventListener("click", () => {
-      loop.next({
-        duration: 1,
-        ease: "power3.inOut",
-      })
-    }))
+    parts.forEach((part, i) =>
+      part.addEventListener("click", () => {
+        loop.next({
+          duration: 1,
+          ease: "power3.inOut",
+        });
+      }),
+    );
 
     document.querySelector("#next-btn")?.addEventListener("click", () => {
       loop.next({
         duration: 1,
         ease: "power3.inOut",
-      })
-    })
+      });
+    });
 
     document.querySelector("#prev-btn")?.addEventListener("click", () => {
       loop.previous({
         duration: 1,
         ease: "power3.inOut",
-      })
-    })
-  })
+      });
+    });
+  });
 </script>

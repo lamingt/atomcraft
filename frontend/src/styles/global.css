@@ -1,15 +1,47 @@
 @import "tailwindcss";
+@tailwind utilities;
 
 @theme {
   --color-gray_text: #d7dadc;
   --color-secondary-pink: #ea8df0;
   --breakpoint-xs: 30rem;
   --breakpoint-3xl: 120rem;
-  --color-purple: #7843FF;
-  --color-cyan: #39F8EB;
+  --color-purple: #7843ff;
+  --color-cyan: #39f8eb;
+  --color-pink: #ff47fc;
+
+  --text-heading-1: 96px;
+  --text-heading-2: 64px;
+  --text-heading-2_1: 60px;
+  --text-heading-3: 48px;
+  --text-heading-4: 32px;
+  --text-heading-5: 24px;
+  --text-body: 18px;
+  --text-subheading-1: 28px;
+  --text-subheading-2: 40px;
+
+  --text-heading-1--line-height: 110%;
+  --text-heading-2--line-height: 120%;
+  --text-heading-2_1--line-height: 120%;
+  --text-heading-3--line-height: 120%;
+  --text-heading-4--line-height: 123%;
+  --text-heading-5--line-height: 123%;
+  --text-body--line-height: 150%;
+  --text-subheading-2--line-height: 110%;
 }
 
 .gradient-text {
+  @apply bg-clip-text text-transparent;
+  background-image: linear-gradient(
+    to bottom,
+    #a37fff 25%,
+    #ffffff 44%,
+    #ffffff 50%,
+    #7843ff 85%
+  );
+}
+
+.gradient-text-2 {
   @apply bg-clip-text text-transparent;
   background-image: linear-gradient(170deg, #fff, #7656bd 50%, #fff);
 }
@@ -19,4 +51,33 @@
     -webkit-background-clip: text;
     background-clip: text;
   }
+  /* @variants responsive {
+    .text-heading-1 {
+      @apply text-[96px] leading-[110%];
+    }
+    .text-heading-2 {
+      @apply text-[64px] leading-[120%];
+    }
+    .text-heading-2_1 {
+      @apply text-[60px] leading-[120%];
+    }
+    .text-heading-3 {
+      @apply text-[48px] leading-[120%];
+    }
+    .text-heading-4 {
+      @apply text-[32px] leading-[123%];
+    }
+    .text-heading-5 {
+      @apply text-[34px] leading-[123%];
+    }
+    .text-body {
+      @apply text-[18px] leading-[150%];
+    }
+    .text-subheading-1 {
+      @apply text-[28px];
+    }
+    .text-subheading-2 {
+      @apply text-[40px] leading-[110%];
+    }
+  } */
 }

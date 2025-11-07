@@ -1,15 +1,15 @@
 ---
-import openstar from "../assets/news/openstar.webp"
-import abc from "../assets/news/abc.avif"
-import csiro from "../assets/news/csiro.webp"
+import openstar from "../assets/news/openstar.webp";
+import abc from "../assets/news/abc.avif";
+import csiro from "../assets/news/csiro.webp";
 import FeaturedNewsCard from "../components/FeaturedNewsCard.astro";
 import { Image } from "astro:assets";
 import leftArrow from "../assets/left-arrow.svg";
 import rightArrow from "../assets/right-arrow.svg";
 ---
 
-<div class="w-full max-w-[1200px] mb-20">
-  <div class="flex overflow-x-hidden gap-20 relative">
+<div class="mb-20 w-full max-w-[1200px]">
+  <div class="relative flex gap-20 overflow-x-hidden">
     <FeaturedNewsCard
       imageSrc={abc}
       imageAlt="A man in a suit stands on stage, gesturing with his hands in front of a screen displaying the word 'Atomcraft'"
@@ -17,8 +17,8 @@ import rightArrow from "../assets/right-arrow.svg";
       tags={[
         {
           text: "News",
-          bgColor: "bg-[#FC5245]"
-        }
+          bgColor: "bg-[#FC5245]",
+        },
       ]}
       date="08/06/2024"
       description="UNSW students at work on small-scale fusion reactor as interest in nuclear power grows."
@@ -31,8 +31,8 @@ import rightArrow from "../assets/right-arrow.svg";
       tags={[
         {
           text: "Social",
-          bgColor: "bg-[#D53E91]"
-        }
+          bgColor: "bg-[#D53E91]",
+        },
       ]}
       date="03/06/2025"
       description="Over the recent term break, AtomCraft had the unique opportunity to visit Openstar Technologies in New Zealand."
@@ -45,51 +45,65 @@ import rightArrow from "../assets/right-arrow.svg";
       tags={[
         {
           text: "Social",
-          bgColor: "bg-[#D53E91]"
-        }
+          bgColor: "bg-[#D53E91]",
+        },
       ]}
       date="10/06/2025"
       description="During Week 11, AtomCraft members had the privilege of touring the CSIRO High Voltage Laboratories in partnership with the National Measurement Institute (NMI)."
       url="https://www.linkedin.com/posts/atomcraft_during-week11-atomcraft-members-had-the-activity-7337976815656833024-STWE"
     />
   </div>
-  <div class="flex items-center justify-between w-full mt-1">
-    <button id="prev-btn" class="cursor-pointer p-2 rounded-full transition-colors duration-200 active:bg-slate-500/50 hover:bg-slate-500/30">
-      <Image src={leftArrow} alt="left arrow" class="w-7 md:w-10" loading="eager"/>
+  <div class="mt-1 flex w-full items-center justify-between">
+    <button
+      id="prev-btn"
+      class="cursor-pointer rounded-full p-2 transition-colors duration-200 hover:bg-slate-500/30 active:bg-slate-500/50"
+    >
+      <Image
+        src={leftArrow}
+        alt="left arrow"
+        class="w-7 md:w-10"
+        loading="eager"
+      />
     </button>
-    <button id="next-btn" class="cursor-pointer p-2 rounded-full transition-colors duration-200 active:bg-slate-500/50 hover:bg-slate-500/30">
-      <Image src={rightArrow} alt="right arrow" class="w-7 md:w-10" loading="eager"/>
+    <button
+      id="next-btn"
+      class="cursor-pointer rounded-full p-2 transition-colors duration-200 hover:bg-slate-500/30 active:bg-slate-500/50"
+    >
+      <Image
+        src={rightArrow}
+        alt="right arrow"
+        class="w-7 md:w-10"
+        loading="eager"
+      />
     </button>
   </div>
 </div>
 
-
-
 <script>
-  import gsap from "gsap"
-  import { horizontalLoop } from "../helpers"
+  import gsap from "gsap";
+  import { horizontalLoop } from "../helpers";
 
   document.addEventListener("DOMContentLoaded", () => {
-    const parts = gsap.utils.toArray(".featured-news") as HTMLElement[]
+    const parts = gsap.utils.toArray(".featured-news") as HTMLElement[];
     const loop = horizontalLoop(parts, {
       paused: true,
       paddingRight: 80,
-    })
+    });
 
     let isAnimating = false;
     const autoAdvance = () => {
-      if (isAnimating) return
-      isAnimating = true
+      if (isAnimating) return;
+      isAnimating = true;
 
       loop.next({
         duration: 1,
         ease: "power3.inOut",
         onComplete: () => {
-          isAnimating = false
-          autoAdvanceTween = gsap.delayedCall(5, autoAdvance)
-        }
-      })
-    }
+          isAnimating = false;
+          autoAdvanceTween = gsap.delayedCall(5, autoAdvance);
+        },
+      });
+    };
 
     let autoAdvanceTween = gsap.delayedCall(5, autoAdvance);
 
@@ -101,11 +115,11 @@ import rightArrow from "../assets/right-arrow.svg";
         duration: 1,
         ease: "power3.inOut",
         onComplete: () => {
-          isAnimating = false
-          autoAdvanceTween = gsap.delayedCall(5, autoAdvance)
-        }
-      })
-    })
+          isAnimating = false;
+          autoAdvanceTween = gsap.delayedCall(5, autoAdvance);
+        },
+      });
+    });
 
     document.querySelector("#prev-btn")?.addEventListener("click", () => {
       autoAdvanceTween.kill();
@@ -115,10 +129,10 @@ import rightArrow from "../assets/right-arrow.svg";
         duration: 1,
         ease: "power3.inOut",
         onComplete: () => {
-          isAnimating = false
-          autoAdvanceTween = gsap.delayedCall(5, autoAdvance)
-        }
-      })
-    })
-  })
+          isAnimating = false;
+          autoAdvanceTween = gsap.delayedCall(5, autoAdvance);
+        },
+      });
+    });
+  });
 </script>
