@@ -137,10 +137,10 @@ import SecondaryOutlineButton from "./buttons/SecondaryOutlineButton.astro";
     </div>
     <div class="flex gap-8">
       <SecondaryOutlineButton href="javascript:void(0)" class="z-10 group" id="prev-btn" >
-        <Image src={leftArrow} alt="left arrow" class="py-2 group-hover:invert"/>
+        <Image src={leftArrow} alt="left arrow" class="py-2 group-hover:invert group-active:invert-0"/>
       </SecondaryOutlineButton>
       <SecondaryOutlineButton href="javascript:void(0)" class="z-10 group" id="next-btn">
-        <Image src={rightArrow} alt="left arrow" class="py-2 group-hover:invert" />
+        <Image src={rightArrow} alt="left arrow" class="py-2 group-hover:invert group-active:invert-0" />
       </SecondaryOutlineButton>
     </div>
   </div>
@@ -218,9 +218,6 @@ import SecondaryOutlineButton from "./buttons/SecondaryOutlineButton.astro";
       }, {
         autoAlpha: 1,
         duration: 0.75,
-        onComplete: () => {
-          isAnimating = false;
-        }
       })
 
       if (isNextBtn) {
@@ -232,7 +229,10 @@ import SecondaryOutlineButton from "./buttons/SecondaryOutlineButton.astro";
           autoAlpha: 1,
           duration: 1,
           x: 0, 
-          ease: 'back.out(1)'
+          ease: 'back.out(1)',
+          onComplete: () => {
+            isAnimating = false;
+          }
         });
       } else {
         // fade to the left
@@ -243,7 +243,10 @@ import SecondaryOutlineButton from "./buttons/SecondaryOutlineButton.astro";
           autoAlpha: 1,
           duration: 1,
           x: 0, 
-          ease: 'back.out(1)'
+          ease: 'back.out(1)',
+          onComplete: () => {
+            isAnimating = false;
+          }
         });
       }
 
