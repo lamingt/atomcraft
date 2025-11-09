@@ -5,171 +5,331 @@ import part2 from "../assets/tokamak/tokamak-part2.png";
 import part3 from "../assets/tokamak/tokamak-part3.png";
 import rightArrow from "../assets/right-arrow.svg";
 import leftArrow from "../assets/left-arrow.svg";
+import SecondaryOutlineButton from "./buttons/SecondaryOutlineButton.astro";
 ---
 
-<div class="flex h-full flex-col items-center justify-center pb-30">
-  <h2 id="title" class="mb-5 text-4xl font-bold lg:mb-20 xl:text-7xl">
-    THE TOKAMAK
-  </h2>
-  <div
-    id="tokamak"
-    class="relative flex w-[95%] items-center overflow-x-hidden md:w-[80%] xl:w-[50%]"
-  >
-    <div
-      class="tokamak-part relative flex w-full shrink-0 cursor-pointer flex-col items-center"
-    >
-      <h3 class="text-3xl font-medium md:text-4xl lg:text-5xl xl:text-6xl">
-        SOUTH
-      </h3>
-      <div class="relative aspect-square w-[80%]">
+<section id="tokamak-slider" class="relative min-h-screen p-10 text-white">
+  <div class="relative h-[50vh]">
+    <div class="slide-content absolute top-0 left-0 w-full opacity-0" data-slide="0">
+      <div class="flex flex-col items-center lg:items-start justify-between lg:flex-row">
+        <div class="slide-text text-center lg:text-start lg:w-[400px] xl:ml-[52px] xl:w-[460px] 2xl:w-[500px]">
+          <h3
+            class="gradient-text mb-[30px] text-[30px] font-bold xl:mb-[40px] xl:text-[41px] 2xl:text-[50px]"
+          >
+            The Tokamak
+          </h3>
+          <h2
+            class="mb-[20px] leading-[120%] font-medium lg:text-[36px] xl:text-[48px] 2xl:text-[52px]"
+          >
+            Student Operated University Tokamak (SOUTH)
+          </h2>
+          <p class="text-gray_text text-base font-medium 2xl:text-[20px]">
+            The fusion device. Using carefully tuned magnetic fields, SOUTH
+            (Student Operated University Tokamak) confines superheated plasma,
+            replicating the conditions of the Sun.
+          </p>
+        </div>
         <Image
           src={part1}
-          alt="Tokamak part"
-          class="absolute inset-0 z-10 h-full w-full object-contain"
+          alt="Tokamak device"
+          class="slide-image md:w-[30vw] lg:w-[40vw] xl:w-[50%]"
         />
-        <div
-          class="absolute inset-5 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.8)_0%,transparent_90%)] blur-2xl"
-        >
-        </div>
       </div>
-      <p class="text-gray_text text-center font-medium sm:text-xl xl:text-2xl">
-        The fusion device. Using carefully tuned magnetic fields, SOUTH (Student
-        Operated University Tokamak) confines superheated plasma, replicating
-        the conditions of the Sun. Bridging disciplines across advanced physics
-        and engineering, our interdisciplinary team is tackling one of the
-        greatest challenges in sustainable energy: achieving the stable and
-        sustained environment for plasma confinement.
-      </p>
     </div>
+
     <div
-      class="tokamak-part relative flex w-full shrink-0 cursor-pointer flex-col items-center"
+      class="slide-content absolute top-0 left-0 w-full opacity-0"
+      data-slide="1"
     >
-      <h3 class="text-3xl font-medium md:text-4xl lg:text-5xl xl:text-6xl">
-        Vacuum Vessel
-      </h3>
-      <div class="relative aspect-square w-[80%]">
+      <div class="flex flex-col items-center lg:items-start justify-between lg:flex-row">
+        <div class="slide-text text-center lg:text-start lg:w-[400px] xl:ml-[52px] xl:w-[460px] 2xl:w-[500px]">
+          <h3
+            class="gradient-text mb-[30px] text-[30px] font-bold xl:mb-[40px] xl:text-[41px] 2xl:text-[50px]"
+          >
+            The Tokamak
+          </h3>
+          <h2
+            class="mb-[20px] leading-[120%] font-medium lg:text-[36px] xl:text-[48px] 2xl:text-[52px]"
+          >
+            Vacuum Vessel
+          </h2>
+          <p class="text-gray_text text-base font-medium 2xl:text-[20px]">
+            Constructed of high calibre steel, mechanically polished, chemically
+            cleaned, and plasma treated, the vacuum vessel contains and maintains
+            the extreme yet pristine conditions needed for a tokamak plasma. 
+            <br/>
+            <br/>
+            With every dimension carefully optimised to ensure peak plasma performance,
+            the vacuum vessel is truly the heart of the tokamak.
+          </p>
+        </div>
         <Image
           src={part2}
-          alt="Tokamak part"
-          class="absolute inset-0 z-10 h-full w-full object-contain"
+          alt="Vacuum Vessel"
+          class="slide-image md:w-[30vw] lg:w-[40vw] xl:w-[50%]"
         />
-        <div
-          class="absolute inset-5 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.8)_0%,transparent_90%)] blur-2xl"
-        >
-        </div>
       </div>
-      <p class="text-gray_text text-center font-medium sm:text-xl xl:text-2xl">
-        Constructed of high calibre steel, mechanically polished, chemically
-        cleaned, and plasma treated, the vacuum vessel contains and maintains
-        the extreme yet pristine conditions needed for a tokamak plasma. With
-        every dimension carefully optimised to ensure peak plasma performance,
-        the vacuum vessel is truly the heart of the tokamak.
-      </p>
     </div>
+
     <div
-      class="tokamak-part relative flex w-full shrink-0 cursor-pointer flex-col items-center"
+      class="slide-content absolute top-0 left-0 w-full opacity-0"
+      data-slide="2"
     >
-      <h3 class="text-3xl font-medium md:text-4xl lg:text-5xl xl:text-6xl">
-        Toroidal Field Coil
-      </h3>
-      <div class="relative aspect-square w-[80%]">
+      <div class="flex flex-col items-center lg:items-start justify-between lg:flex-row">
+        <div class="slide-text text-center lg:text-start lg:w-[400px] xl:ml-[52px] xl:w-[460px] 2xl:w-[500px]">
+          <h3
+            class="gradient-text mb-[30px] text-[30px] font-bold xl:mb-[40px] xl:text-[41px] 2xl:text-[50px]"
+          >
+            The Tokamak
+          </h3>
+          <h2
+            class="mb-[20px] leading-[120%] font-medium lg:text-[36px] xl:text-[48px] 2xl:text-[52px]"
+          >
+            Toroidal Field Coil
+          </h2>
+          <p class="text-gray_text text-base font-medium 2xl:text-[20px]">
+            SOUTH&apos;s toroidal field coils carry intense kiloampere scale
+            currents that generate magnetic fields capable of squeezing the
+            superheated plasma into a toroidal or donut shape. 
+            <br/>
+            <br/>
+            Taking a Princeton D shape, these coils optimise magnetic field stability, 
+            providing precision critical to plasma control.
+          </p>
+        </div>
         <Image
           src={part3}
-          alt="Tokamak part"
-          class="absolute inset-0 z-10 h-full w-full object-contain"
+          alt="Toroidal Field Coil"
+          class="slide-image md:w-[10vw] lg:w-[20vw] xl:w-[25%] -mt-[10%]"
         />
-        <div
-          class="absolute inset-10 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.8)_0%,transparent_90%)] blur-2xl"
-        >
-        </div>
       </div>
-      <p class="text-gray_text text-center font-medium sm:text-xl xl:text-2xl">
-        SOUTH&apos;s toroidal field coils carry intense kiloampere scale
-        currents that generate magnetic fields capable of squeezing the
-        superheated plasma into a toroidal or donut shape. Taking a Princeton D
-        shape, these coils optimise magnetic field stability, providing
-        precision critical to plasma control.
-      </p>
     </div>
   </div>
-  <div
-    class="flex w-screen justify-between sm:w-[95%] md:mt-10 md:w-[80%] xl:w-[50%]"
-  >
-    <button
-      id="prev-btn"
-      class="cursor-pointer rounded-full p-2 transition-colors duration-200 hover:bg-slate-500/30 active:bg-slate-500/50"
-    >
-      <Image src={leftArrow} alt="left arrow" class="w-7 md:w-10" />
-    </button>
-    <button
-      id="next-btn"
-      class="cursor-pointer rounded-full p-2 transition-colors duration-200 hover:bg-slate-500/30 active:bg-slate-500/50"
-    >
-      <Image src={rightArrow} alt="right arrow" class="w-7 md:w-10" />
-    </button>
+
+  <div id="nav-container" class="flex flex-col lg:flex-row items-center justify-between mt-[20vh] xl:ml-[52px]">
+    <div class="flex gap-5 w-full lg:w-[70%] 2xl:w-[60%]">
+      <button class="nav-item flex-1 text-left cursor-pointer" data-index="0">
+        <p class="text-gray_text text-[16px] 2xl:text-[20px] font-medium mb-[20px]">
+          01 | SOUTH
+        </p>
+        <div class="progress-container">
+          <div class="progress-bar"/>
+        </div>
+      </button>
+
+      <button class="nav-item flex-1 text-left cursor-pointer" data-index="1">
+        <p class="text-gray_text text-[16px] 2xl:text-[20px] font-medium mb-[20px]">
+          02 | Vacuum Vessel
+        </p>
+        <div class="progress-container">
+          <div class="progress-bar"/>
+        </div>
+      </button>
+
+      <button class="nav-item flex-1 text-left cursor-pointer" data-index="2">
+        <p class="text-gray_text text-[16px] 2xl:text-[20px] font-medium mb-[20px]">
+          03 | Toroidal Field Coil
+        </p>
+        <div class="progress-container">
+          <div class="progress-bar"/>
+        </div>
+      </button>
+    </div>
+    <div class="flex gap-8">
+      <SecondaryOutlineButton href="javascript:void(0)" class="z-10 group" id="prev-btn" >
+        <Image src={leftArrow} alt="left arrow" class="py-2 group-hover:invert"/>
+      </SecondaryOutlineButton>
+      <SecondaryOutlineButton href="javascript:void(0)" class="z-10 group" id="next-btn">
+        <Image src={rightArrow} alt="left arrow" class="py-2 group-hover:invert" />
+      </SecondaryOutlineButton>
+    </div>
   </div>
-</div>
+</section>
 
 <script>
-  import gsap from "gsap";
-  import ScrollTrigger from "gsap/ScrollTrigger";
-  import { horizontalLoop } from "../helpers";
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
 
   gsap.registerPlugin(ScrollTrigger);
-
   document.addEventListener("DOMContentLoaded", () => {
-    gsap.from("#title", {
-      y: 50,
-      opacity: 0,
-      duration: 1,
-      ease: "power3.out",
+    const slides: HTMLElement[] = gsap.utils.toArray(".slide-content");
+    const navItems: HTMLElement[] = gsap.utils.toArray(".nav-item");
+    const progressBars: HTMLElement[] = gsap.utils.toArray(".progress-bar");
+    const prevBtn: HTMLElement | null = document.getElementById("prev-btn");
+    const nextBtn: HTMLElement | null = document.getElementById("next-btn");
+    const navContainer: HTMLElement | null = document.getElementById("nav-container");
 
-      scrollTrigger: {
-        trigger: "#title",
-        start: "top 60%",
-        once: true,
-      },
-    });
+    const SLIDE_DURATION = 10;
+    let currentIndex = 0;
+    let currentTimeline: gsap.core.Tween | null = null;
+    let isAnimating = false;
+    let pausedTimeline = false;
 
-    gsap.from("#tokamak", {
-      y: 50,
-      opacity: 0,
-      duration: 3,
-      ease: "power3.out",
+    const goToSlide = (newIndex: number, firstLoad: boolean = false, isNextBtn: boolean = false) => {
+      if (isAnimating) return;
+      isAnimating = true;
 
-      scrollTrigger: {
-        trigger: "#tokamak",
-        start: "top 60%",
-        once: true,
-      },
-    });
+      if (currentTimeline) {
+        currentTimeline.kill();
+      }
 
-    const parts = gsap.utils.toArray(".tokamak-part") as HTMLElement[];
-    const loop = horizontalLoop(parts, {
-      paused: true,
-    });
+      let oldIndex = currentIndex;
+      const oldSlide = slides[oldIndex];
+      const newSlide = slides[newIndex];
+      const oldText = oldSlide.querySelector(".slide-text");
+      const newText = newSlide.querySelector(".slide-text");
+      const oldImage = oldSlide.querySelector(".slide-image");
+      const newImage = newSlide.querySelector(".slide-image");
 
-    parts.forEach((part, i) =>
-      part.addEventListener("click", () => {
-        loop.next({
-          duration: 1,
-          ease: "power3.inOut",
+      if (!firstLoad) {
+        gsap.to(oldText, { 
+          autoAlpha: 0,
+          duration: 0.75,
         });
-      }),
-    );
+        if (isNextBtn) {
+          // fade to the left
+          gsap.to(oldImage, { 
+            autoAlpha: 0,
+            duration: 1,
+            x: -1000, 
+          });
+        } else {
+          // fade to the right
+          gsap.to(oldImage, { 
+            autoAlpha: 0,
+            duration: 1,
+            x: 1000, 
+          });
+        }
+        gsap.to(oldSlide, {
+          autoAlpha: 0,
+          duration: 0.75,
+          delay: 0.1,
+        }); 
+      }
 
-    document.querySelector("#next-btn")?.addEventListener("click", () => {
-      loop.next({
-        duration: 1,
-        ease: "power3.inOut",
+      gsap.to(newSlide, {
+        autoAlpha: 1,
+        duration: 0,
+      })
+
+      gsap.fromTo(newText, {
+        autoAlpha: 0,
+      }, {
+        autoAlpha: 1,
+        duration: 0.75,
+        onComplete: () => {
+          isAnimating = false;
+        }
+      })
+
+      if (isNextBtn) {
+        // fade to the right
+        gsap.fromTo(newImage, {
+          autoAlpha: 0,
+          x: 1000,
+        }, { 
+          autoAlpha: 1,
+          duration: 1,
+          x: 0, 
+          ease: 'back.out(1)'
+        });
+      } else {
+        // fade to the left
+        gsap.fromTo(newImage, {
+          autoAlpha: 0,
+          x: -1000,
+        }, { 
+          autoAlpha: 1,
+          duration: 1,
+          x: 0, 
+          ease: 'back.out(1)'
+        });
+      }
+
+      if (!firstLoad) {
+        navItems[oldIndex].classList.remove('active');
+        gsap.set(progressBars[oldIndex], { width: '0%' });
+      }
+      navItems[newIndex].classList.add('active');
+
+      currentIndex = newIndex;
+      currentTimeline = gsap.to(progressBars[currentIndex], {
+        width: '100%',
+        duration: SLIDE_DURATION,
+        ease: 'none',
+        paused: pausedTimeline,
+        onComplete: () => {
+          goToSlide((currentIndex + 1) % slides.length);
+        }
+      })
+    }
+
+    // Clicking on progress bar navigates to those items
+    navItems.forEach((item, index) => {
+      item.addEventListener('click', () => {
+        if (index !== currentIndex) {
+          goToSlide(index);
+        }
       });
     });
 
-    document.querySelector("#prev-btn")?.addEventListener("click", () => {
-      loop.previous({
-        duration: 1,
-        ease: "power3.inOut",
-      });
+    nextBtn?.addEventListener('click', (e: MouseEvent) => {
+      goToSlide((currentIndex + 1) % slides.length, false, true);
     });
-  });
+    
+    prevBtn?.addEventListener('click', (e: MouseEvent) => {
+      goToSlide((currentIndex - 1 + slides.length) % slides.length);
+    });
+
+    // Pauses slide movement when mouse over slide or nav containers
+    navContainer?.addEventListener('mouseenter', () => {
+      if (currentTimeline) {
+        currentTimeline.pause();
+        pausedTimeline = true;
+      }
+    });
+
+    navContainer?.addEventListener('mouseleave', () => {
+      if (currentTimeline) {
+        currentTimeline.play();
+        pausedTimeline = false;
+      }
+    });
+
+
+    ScrollTrigger.create({
+      trigger: document.getElementById("tokamak-slider"),
+      start: "top 50%",
+      once: true,
+      onEnter: () => {
+        goToSlide(0, true);
+      }
+    })
+  })
 </script>
+
+<style>
+  .nav-item {
+    transition: opacity 0.3s ease;
+    opacity: 0.2;
+  }
+
+  .nav-item:hover {
+    opacity: 0.8;
+  }
+
+  .nav-item.active {
+    opacity: 1;
+  }
+  .nav-item .progress-container {
+    width: 100%;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  .nav-item .progress-bar {
+    width: 0%; /* GSAP will animate this */
+    height: 100%;
+    background-color: #39f8eb;
+  }
+</style>

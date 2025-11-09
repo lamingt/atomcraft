@@ -4,19 +4,24 @@ import teamPhoto from "../assets/collaborate.webp";
 import SecondaryButton from "./buttons/SecondaryButton.astro";
 ---
 
-<div class="pt-[50px] sm:pt-[100px] lg:pt-[220px]">
-  <div class="flex flex-col lg:flex-row justify-center gap-[60px] items-stretch">
-    <div class="flex flex-col w-full items-center text-center gap-5 lg:text-start justify-between 2xl:justify-center 2xl:gap-[50px] lg:items-start lg:w-[35%] flex-shrink-0">
-      <h3 class="text-heading-4 sm:text-heading-3 md:text-heading-2 lg:text-heading-3 xl:text-heading-2 ">Collaborate with us</h3>
-      <p
-        class="text-gray_text  sm:text-lg lg:text-body"
+<div class="pt-[50px] sm:pt-[100px] lg:pt-[220px] lg:pb-[100px]">
+  <div
+    class="flex flex-col items-stretch justify-center gap-[60px] lg:flex-row"
+  >
+    <div
+      class="flex w-full flex-shrink-0 flex-col items-center justify-between gap-5 text-center lg:w-[35%] lg:items-start lg:text-start 2xl:justify-center 2xl:gap-[50px]"
+    >
+      <h3
+        class="text-heading-4 sm:text-heading-3 md:text-heading-2 lg:text-heading-3 xl:text-heading-2"
       >
-        We are always looking to create new partnerships that provide the resources to fuel our learning beyond the classroom. 
-        If you would like to get in touch, we&apos;d love to hear from you.
+        Collaborate with us
+      </h3>
+      <p class="text-gray_text lg:text-body sm:text-lg">
+        We are always looking to create new partnerships that provide the
+        resources to fuel our learning beyond the classroom. If you would like
+        to get in touch, we&apos;d love to hear from you.
       </p>
-      <SecondaryButton href="/partners">
-        Partner With Us
-      </SecondaryButton>
+      <SecondaryButton href="/partners"> Partner With Us </SecondaryButton>
     </div>
     <Image
       src={teamPhoto}
@@ -29,7 +34,5 @@ import SecondaryButton from "./buttons/SecondaryButton.astro";
 <script>
   import { createCounterAnimation } from "../helpers";
 
-  document.addEventListener("DOMContentLoaded", () => {
-
-  });
+  document.addEventListener("DOMContentLoaded", () => {});
 </script>

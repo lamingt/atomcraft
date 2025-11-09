@@ -1,0 +1,142 @@
+---
+import SecondaryOutlineButton from "./buttons/SecondaryOutlineButton.astro";
+import PrimaryOutlineButton from "./buttons/PrimaryOutlineButton.astro";
+
+import Education from "../assets/objectives/education&talent.png";
+import Partnership from "../assets/objectives/partnership&engagement.png";
+import Technology from "../assets/objectives/technology&innovation.png";
+import { Image } from "astro:assets";
+---
+
+<section class="w-full pt-[80px] pb-[200px] md:pt-[130px]">
+  <div class="flex flex-col items-center gap-5 lg:flex-row lg:justify-between">
+    <h2 class="text-heading-4 sm:text-heading-2.1 lg:text-heading-2">
+      Our Objectives
+    </h2>
+    <SecondaryOutlineButton href="/about-us">
+      About AtomCraft
+    </SecondaryOutlineButton>
+  </div>
+  <div
+    id="objective-1"
+    class="flex flex-col items-center justify-between gap-[72px] pt-[50px] lg:flex-row lg:gap-[52px] lg:pt-[100px]"
+  >
+    <div class="flex w-full flex-1 flex-col items-center lg:items-start">
+      <PrimaryOutlineButton class="mb-[20px]"> 01 </PrimaryOutlineButton>
+      <h4
+        class="text-heading-5 sm:text-heading-4 lg:text-heading-5 xl:text-heading-4 mb-6 text-center lg:text-start xl:mb-[52px]"
+      >
+        Education & <br class="hidden lg:block 2xl:hidden" /> Talent <br
+          class="hidden md:block"
+        /> Development
+      </h4>
+      <Image
+        src={Education}
+        alt="Group of engineers conducting an experiment"
+        class="w-full"
+      />
+    </div>
+    <div
+      id="objective-2"
+      class="flex w-full flex-1 flex-col items-center lg:items-start"
+    >
+      <PrimaryOutlineButton class="mb-[20px]"> 02 </PrimaryOutlineButton>
+      <h4
+        class="text-heading-5 sm:text-heading-4 lg:text-heading-5 xl:text-heading-4 mb-6 text-center lg:text-start xl:mb-[52px]"
+      >
+        Technology <br class="hidden lg:block 2xl:hidden" /> Development & <br
+          class="hidden lg:block 2xl:hidden"
+        /> Innovation
+      </h4>
+      <Image
+        src={Technology}
+        alt="AtomCraft member soldering with protective gear"
+        class="w-full"
+      />
+    </div>
+    <div
+      id="objective-3"
+      class="flex w-full flex-1 flex-col items-center lg:items-start"
+    >
+      <PrimaryOutlineButton class="mb-[20px]"> 03 </PrimaryOutlineButton>
+      <h4
+        class="text-heading-5 sm:text-heading-4 lg:text-heading-5 xl:text-heading-4 mb-6 text-center lg:text-start xl:mb-[52px]"
+      >
+        Partnership & <br class="hidden lg:block 2xl:hidden" /> Public <br
+          class="hidden lg:block"
+        /> Engagement
+      </h4>
+      <Image
+        src={Partnership}
+        alt="Group of AtomCraft members standing behind Tokamak models at a showcase"
+        class="w-full"
+      />
+    </div>
+  </div>
+  <div
+    class="mt-[52px] h-[0px] border-1 border-[#FFFFFF] opacity-50 md:mt-[100px] xl:mt-[160px]"
+  >
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+  document.addEventListener("DOMContentLoaded", () => {
+    const fromConfig = {
+      y: 100,
+      autoAlpha: 0,
+    };
+    const toConfig = {
+      y: 0,
+      autoAlpha: 1,
+      duration: 2,
+      ease: "power3.out",
+    };
+
+    gsap.matchMedia().add(
+      {
+        isMobile: "(max-width: 1023px)",
+        isDesktop: "(min-width: 1024px)",
+      },
+      (context) => {
+        if (!context.conditions) {
+          return;
+        }
+        const { isMobile, isDesktop } = context.conditions;
+
+        if (isMobile) {
+          const elements = ["#objective-1", "#objective-2", "#objective-3"];
+
+          elements.forEach((el) => {
+            gsap.fromTo(el, fromConfig, {
+              ...toConfig,
+              duration: 1.5,
+              scrollTrigger: {
+                trigger: el,
+                start: "top 85%",
+                once: true,
+              },
+            });
+          });
+        }
+
+        if (isDesktop) {
+          const timeline = gsap.timeline({
+            scrollTrigger: {
+              trigger: "#objective-1",
+              start: "top 80%",
+              once: true,
+            },
+          });
+
+          timeline.fromTo("#objective-1", fromConfig, toConfig, "1");
+          timeline.fromTo("#objective-2", fromConfig, toConfig, "1.5");
+          timeline.fromTo("#objective-3", fromConfig, toConfig, "2.0");
+        }
+      },
+    );
+  });
+</script>

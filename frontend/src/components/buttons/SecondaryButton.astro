@@ -12,7 +12,7 @@ const { href, id, class: extraClass = "" } = Astro.props;
   href={href}
   id={id ? id : undefined}
   class:list={[
-    "inline-block bg-purple md:text-md hover:border-purple hover:text-purple active:bg-purple active:border-purple cursor-pointer rounded-[100px] border-2 border-black px-[25px] py-[10.87px] duration-200 hover:bg-transparent active:text-white active:opacity-60 lg:px-[30px] lg:py-[13px] lg:text-lg xl:px-[38px] xl:py-[16.5px]",
+    "bg-purple hover:border-purple hover:text-purple active:bg-purple active:border-purple inline-flex cursor-pointer items-center justify-center rounded-[100px] border-2 border-black px-[25px] py-[10.87px] text-sm duration-200 hover:bg-transparent active:text-white active:opacity-60 sm:text-[18px] lg:px-[30px] lg:py-[13px] xl:px-[38px] xl:py-[16.5px]",
     extraClass,
   ]}
 >

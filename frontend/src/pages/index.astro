@@ -9,17 +9,24 @@ import Future from "../components/Future.astro";
 import IndexLayout from "../layouts/IndexLayout.astro";
 import Collaborate from "../components/Collaborate.astro";
 import Mission from "../components/Mission.astro";
+import Objectives from "../components/Objectives.astro";
 ---
 
 <IndexLayout>
   <Hero />
 
-  <div class="mx-auto max-w-[1920px] px-6 md:px-[120px] relative">
-    <div class="pointer-events-none absolute top-0 left-0 w-screen h-[100px] md:h-[220px] z-10 bg-gradient-to-b from-black to-transparent"></div>
+  <div class="relative mx-auto max-w-[1920px] px-6 md:px-[120px]">
+    <div
+      class="pointer-events-none absolute inset-x-0 top-0 left-0 z-10 h-[100px] bg-gradient-to-b from-black to-transparent md:h-[220px]"
+    >
+    </div>
     <WhatWeDo />
     <PartnerCarousel />
-    <Collaborate/>
-    <Mission/>
+    <Collaborate />
+  </div>
+  <Mission />
+  <div class="relative mx-auto max-w-[1920px] px-6 md:px-[120px] overflow-x-hidden">
+    <Objectives />
     <Tokamak />
     <AboutUs />
     <Story />
