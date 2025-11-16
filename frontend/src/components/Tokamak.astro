@@ -8,22 +8,22 @@ import leftArrow from "../assets/left-arrow.svg";
 import SecondaryOutlineButton from "./buttons/SecondaryOutlineButton.astro";
 ---
 
-<section id="tokamak-slider" class="relative min-h-screen p-10 text-white">
-  <div class="relative h-[50vh]">
-    <div class="slide-content absolute top-0 left-0 w-full opacity-0" data-slide="0">
-      <div class="flex flex-col items-center lg:items-start justify-between lg:flex-row">
+<section id="tokamak-slider" class="relative text-white">
+  <div id="tokamak-container" class="relative h-[60vh] lg:h-[50vh]">
+    <div class="h-full slide-content absolute top-0 left-0 w-full opacity-0" data-slide="0">
+      <div class="h-full flex flex-col items-center lg:items-start justify-between lg:flex-row">
         <div class="slide-text text-center lg:text-start lg:w-[400px] xl:ml-[52px] xl:w-[460px] 2xl:w-[500px]">
           <h3
-            class="gradient-text mb-[30px] text-[30px] font-bold xl:mb-[40px] xl:text-[41px] 2xl:text-[50px]"
+            class="gradient-text mb-[5px] sm:mb-[15px] lg:mb-[30px] text-subheading-1 md:text-[30px] font-bold xl:mb-[40px] xl:text-[41px] 2xl:text-[50px]"
           >
             The Tokamak
           </h3>
           <h2
-            class="mb-[20px] leading-[120%] font-medium lg:text-[36px] xl:text-[48px] 2xl:text-[52px]"
+            class="mb-[10px] sm:mb-[20px] leading-[120%] font-medium text-[20px] md:text-[28px] lg:text-[36px] xl:text-[48px] 2xl:text-[52px]"
           >
             Student Operated University Tokamak (SOUTH)
           </h2>
-          <p class="text-gray_text text-base font-medium 2xl:text-[20px]">
+          <p class="text-gray_text text-xs xs:text-sm sm:text-base font-medium 2xl:text-[20px]">
             The fusion device. Using carefully tuned magnetic fields, SOUTH
             (Student Operated University Tokamak) confines superheated plasma,
             replicating the conditions of the Sun.
@@ -32,28 +32,28 @@ import SecondaryOutlineButton from "./buttons/SecondaryOutlineButton.astro";
         <Image
           src={part1}
           alt="Tokamak device"
-          class="slide-image md:w-[30vw] lg:w-[40vw] xl:w-[50%]"
+          class="slide-image mt-[3vh] lg:mt-0 w-full flex-1 min-h-0 object-contain lg:flex-none lg:h-full lg:w-[40vw] xl:w-[50%]"
         />
       </div>
     </div>
 
     <div
-      class="slide-content absolute top-0 left-0 w-full opacity-0"
+      class="h-full slide-content absolute top-0 left-0 w-full opacity-0"
       data-slide="1"
     >
-      <div class="flex flex-col items-center lg:items-start justify-between lg:flex-row">
+      <div class="h-full flex flex-col items-center lg:items-start justify-between lg:flex-row">
         <div class="slide-text text-center lg:text-start lg:w-[400px] xl:ml-[52px] xl:w-[460px] 2xl:w-[500px]">
           <h3
-            class="gradient-text mb-[30px] text-[30px] font-bold xl:mb-[40px] xl:text-[41px] 2xl:text-[50px]"
+            class="gradient-text mb-[5px] sm:mb-[15px] lg:mb-[30px] text-subheading-1 md:text-[30px] font-bold xl:mb-[40px] xl:text-[41px] 2xl:text-[50px]"
           >
             The Tokamak
           </h3>
           <h2
-            class="mb-[20px] leading-[120%] font-medium lg:text-[36px] xl:text-[48px] 2xl:text-[52px]"
+            class="mb-[10px] sm:mb-[20px] leading-[120%] font-medium text-[20px] md:text-[28px] lg:text-[36px] xl:text-[48px] 2xl:text-[52px]"
           >
             Vacuum Vessel
           </h2>
-          <p class="text-gray_text text-base font-medium 2xl:text-[20px]">
+          <p class="text-gray_text text-xs xs:text-sm sm:text-base font-medium 2xl:text-[20px]">
             Constructed of high calibre steel, mechanically polished, chemically
             cleaned, and plasma treated, the vacuum vessel contains and maintains
             the extreme yet pristine conditions needed for a tokamak plasma. 
@@ -66,28 +66,28 @@ import SecondaryOutlineButton from "./buttons/SecondaryOutlineButton.astro";
         <Image
           src={part2}
           alt="Vacuum Vessel"
-          class="slide-image md:w-[30vw] lg:w-[40vw] xl:w-[50%]"
+          class="slide-image mt-[3vh] lg:mt-0 w-full flex-1 min-h-0 object-contain lg:flex-none lg:h-full lg:w-[40vw] xl:w-[50%]"
         />
       </div>
     </div>
 
     <div
-      class="slide-content absolute top-0 left-0 w-full opacity-0"
+      class="h-full slide-content absolute top-0 left-0 w-full opacity-0"
       data-slide="2"
     >
-      <div class="flex flex-col items-center lg:items-start justify-between lg:flex-row">
+      <div class="h-full flex flex-col items-center lg:items-start justify-between lg:flex-row">
         <div class="slide-text text-center lg:text-start lg:w-[400px] xl:ml-[52px] xl:w-[460px] 2xl:w-[500px]">
           <h3
-            class="gradient-text mb-[30px] text-[30px] font-bold xl:mb-[40px] xl:text-[41px] 2xl:text-[50px]"
+            class="gradient-text mb-[5px] sm:mb-[15px] lg:mb-[30px] text-subheading-1 md:text-[30px] font-bold xl:mb-[40px] xl:text-[41px] 2xl:text-[50px]"
           >
             The Tokamak
           </h3>
           <h2
-            class="mb-[20px] leading-[120%] font-medium lg:text-[36px] xl:text-[48px] 2xl:text-[52px]"
+            class="mb-[10px] sm:mb-[20px] leading-[120%] font-medium text-[20px] md:text-[28px] lg:text-[36px] xl:text-[48px] 2xl:text-[52px]"
           >
             Toroidal Field Coil
           </h2>
-          <p class="text-gray_text text-base font-medium 2xl:text-[20px]">
+          <p class="text-gray_text text-xs xs:text-sm sm:text-base font-medium 2xl:text-[20px]">
             SOUTH&apos;s toroidal field coils carry intense kiloampere scale
             currents that generate magnetic fields capable of squeezing the
             superheated plasma into a toroidal or donut shape. 
@@ -100,16 +100,16 @@ import SecondaryOutlineButton from "./buttons/SecondaryOutlineButton.astro";
         <Image
           src={part3}
           alt="Toroidal Field Coil"
-          class="slide-image md:w-[10vw] lg:w-[20vw] xl:w-[25%] -mt-[10%]"
+          class="slide-image w-full flex-1 min-h-0 object-contain lg:flex-none lg:h-full lg:w-[20vw] xl:w-[25%]"
         />
       </div>
     </div>
   </div>
 
-  <div id="nav-container" class="flex flex-col lg:flex-row items-center justify-between mt-[200px] 2xl:mt-[30vh] xl:ml-[52px]">
-    <div class="flex gap-5 w-full lg:w-[70%] 2xl:w-[60%]">
+  <div id="nav-container" class="flex flex-col gap-10 lg:gap-0 lg:flex-row items-center justify-between mt-[7vh] xl:mt-[10vh] xl:ml-[52px]">
+    <div class="flex items-end gap-5 w-full lg:w-[70%] 2xl:w-[60%]">
       <button class="nav-item flex-1 text-left cursor-pointer" data-index="0">
-        <p class="text-gray_text text-[16px] 2xl:text-[20px] font-medium mb-[20px]">
+        <p class="text-gray_text text-sm lg:text-[16px] 2xl:text-[20px] font-medium mb-[20px]">
           01 | SOUTH
         </p>
         <div class="progress-container">
@@ -118,7 +118,7 @@ import SecondaryOutlineButton from "./buttons/SecondaryOutlineButton.astro";
       </button>
 
       <button class="nav-item flex-1 text-left cursor-pointer" data-index="1">
-        <p class="text-gray_text text-[16px] 2xl:text-[20px] font-medium mb-[20px]">
+        <p class="text-gray_text text-sm lg:text-[16px] 2xl:text-[20px] font-medium mb-[20px]">
           02 | Vacuum Vessel
         </p>
         <div class="progress-container">
@@ -127,7 +127,7 @@ import SecondaryOutlineButton from "./buttons/SecondaryOutlineButton.astro";
       </button>
 
       <button class="nav-item flex-1 text-left cursor-pointer" data-index="2">
-        <p class="text-gray_text text-[16px] 2xl:text-[20px] font-medium mb-[20px]">
+        <p class="text-gray_text text-sm lg:text-[16px] 2xl:text-[20px] font-medium mb-[20px]">
           03 | Toroidal Field Coil
         </p>
         <div class="progress-container">
@@ -149,166 +149,174 @@ import SecondaryOutlineButton from "./buttons/SecondaryOutlineButton.astro";
 <script>
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { Observer } from "gsap/Observer";
 
-  gsap.registerPlugin(ScrollTrigger);
-  document.addEventListener("DOMContentLoaded", () => {
-    const slides: HTMLElement[] = gsap.utils.toArray(".slide-content");
-    const navItems: HTMLElement[] = gsap.utils.toArray(".nav-item");
-    const progressBars: HTMLElement[] = gsap.utils.toArray(".progress-bar");
-    const prevBtn: HTMLElement | null = document.getElementById("prev-btn");
-    const nextBtn: HTMLElement | null = document.getElementById("next-btn");
-    const navContainer: HTMLElement | null = document.getElementById("nav-container");
+  gsap.registerPlugin(ScrollTrigger, Observer);
+  const slides: HTMLElement[] = gsap.utils.toArray(".slide-content");
+  const navItems: HTMLElement[] = gsap.utils.toArray(".nav-item");
+  const progressBars: HTMLElement[] = gsap.utils.toArray(".progress-bar");
+  const prevBtn: HTMLElement | null = document.getElementById("prev-btn");
+  const nextBtn: HTMLElement | null = document.getElementById("next-btn");
+  const navContainer: HTMLElement | null = document.getElementById("nav-container");
 
-    const SLIDE_DURATION = 10;
-    let currentIndex = 0;
-    let currentTimeline: gsap.core.Tween | null = null;
-    let isAnimating = false;
-    let pausedTimeline = false;
+  const SLIDE_DURATION = 10;
+  let currentIndex = 0;
+  let currentTimeline: gsap.core.Tween | null = null;
+  let isAnimating = false;
+  let pausedTimeline = false;
 
-    const goToSlide = (newIndex: number, firstLoad: boolean = false, isNextBtn: boolean = false) => {
-      if (isAnimating) return;
-      isAnimating = true;
+  const goToSlide = (newIndex: number, firstLoad: boolean = false, isNextBtn: boolean = false) => {
+    if (isAnimating) return;
+    isAnimating = true;
 
-      if (currentTimeline) {
-        currentTimeline.kill();
-      }
-
-      let oldIndex = currentIndex;
-      const oldSlide = slides[oldIndex];
-      const newSlide = slides[newIndex];
-      const oldText = oldSlide.querySelector(".slide-text");
-      const newText = newSlide.querySelector(".slide-text");
-      const oldImage = oldSlide.querySelector(".slide-image");
-      const newImage = newSlide.querySelector(".slide-image");
-
-      if (!firstLoad) {
-        gsap.to(oldText, { 
-          autoAlpha: 0,
-          duration: 0.75,
-        });
-        if (isNextBtn) {
-          // fade to the left
-          gsap.to(oldImage, { 
-            autoAlpha: 0,
-            duration: 1,
-            x: -1000, 
-          });
-        } else {
-          // fade to the right
-          gsap.to(oldImage, { 
-            autoAlpha: 0,
-            duration: 1,
-            x: 1000, 
-          });
-        }
-        gsap.to(oldSlide, {
-          autoAlpha: 0,
-          duration: 0.75,
-          delay: 0.1,
-        }); 
-      }
-
-      gsap.to(newSlide, {
-        autoAlpha: 1,
-        duration: 0,
-      })
-
-      gsap.fromTo(newText, {
-        autoAlpha: 0,
-      }, {
-        autoAlpha: 1,
-        duration: 0.75,
-      })
-
-      if (isNextBtn) {
-        // fade to the right
-        gsap.fromTo(newImage, {
-          autoAlpha: 0,
-          x: 1000,
-        }, { 
-          autoAlpha: 1,
-          duration: 1,
-          x: 0, 
-          ease: 'back.out(1)',
-          onComplete: () => {
-            isAnimating = false;
-          }
-        });
-      } else {
-        // fade to the left
-        gsap.fromTo(newImage, {
-          autoAlpha: 0,
-          x: -1000,
-        }, { 
-          autoAlpha: 1,
-          duration: 1,
-          x: 0, 
-          ease: 'back.out(1)',
-          onComplete: () => {
-            isAnimating = false;
-          }
-        });
-      }
-
-      if (!firstLoad) {
-        navItems[oldIndex].classList.remove('active');
-        gsap.set(progressBars[oldIndex], { width: '0%' });
-      }
-      navItems[newIndex].classList.add('active');
-
-      currentIndex = newIndex;
-      currentTimeline = gsap.to(progressBars[currentIndex], {
-        width: '100%',
-        duration: SLIDE_DURATION,
-        ease: 'none',
-        paused: pausedTimeline,
-        onComplete: () => {
-          goToSlide((currentIndex + 1) % slides.length);
-        }
-      })
+    if (currentTimeline) {
+      currentTimeline.kill();
     }
 
-    // Clicking on progress bar navigates to those items
-    navItems.forEach((item, index) => {
-      item.addEventListener('click', () => {
-        if (index !== currentIndex) {
-          goToSlide(index);
+    let oldIndex = currentIndex;
+    const oldSlide = slides[oldIndex];
+    const newSlide = slides[newIndex];
+    const oldText = oldSlide.querySelector(".slide-text");
+    const newText = newSlide.querySelector(".slide-text");
+    const oldImage = oldSlide.querySelector(".slide-image");
+    const newImage = newSlide.querySelector(".slide-image");
+
+    if (!firstLoad) {
+      gsap.to(oldText, { 
+        autoAlpha: 0,
+        duration: 0.75,
+      });
+      if (isNextBtn) {
+        // fade to the left
+        gsap.to(oldImage, { 
+          autoAlpha: 0,
+          duration: 1,
+          x: -1000, 
+        });
+      } else {
+        // fade to the right
+        gsap.to(oldImage, { 
+          autoAlpha: 0,
+          duration: 1,
+          x: 1000, 
+        });
+      }
+      gsap.to(oldSlide, {
+        autoAlpha: 0,
+        duration: 0.75,
+        delay: 0.1,
+      }); 
+    }
+
+    gsap.to(newSlide, {
+      autoAlpha: 1,
+      duration: 0,
+    })
+
+    gsap.fromTo(newText, {
+      autoAlpha: 0,
+    }, {
+      autoAlpha: 1,
+      duration: 0.75,
+    })
+
+    if (isNextBtn) {
+      // fade to the right
+      gsap.fromTo(newImage, {
+        autoAlpha: 0,
+        x: 1000,
+      }, { 
+        autoAlpha: 1,
+        duration: 1,
+        x: 0, 
+        ease: 'back.out(1)',
+        onComplete: () => {
+          isAnimating = false;
         }
       });
-    });
+    } else {
+      // fade to the left
+      gsap.fromTo(newImage, {
+        autoAlpha: 0,
+        x: -1000,
+      }, { 
+        autoAlpha: 1,
+        duration: 1,
+        x: 0, 
+        ease: 'back.out(1)',
+        onComplete: () => {
+          isAnimating = false;
+        }
+      });
+    }
 
-    nextBtn?.addEventListener('click', (e: MouseEvent) => {
-      goToSlide((currentIndex + 1) % slides.length, false, true);
-    });
-    
-    prevBtn?.addEventListener('click', (e: MouseEvent) => {
-      goToSlide((currentIndex - 1 + slides.length) % slides.length);
-    });
+    if (!firstLoad) {
+      navItems[oldIndex].classList.remove('active');
+      gsap.set(progressBars[oldIndex], { width: '0%' });
+    }
+    navItems[newIndex].classList.add('active');
 
-    // Pauses slide movement when mouse over slide or nav containers
-    navContainer?.addEventListener('mouseenter', () => {
-      if (currentTimeline) {
-        currentTimeline.pause();
-        pausedTimeline = true;
-      }
-    });
-
-    navContainer?.addEventListener('mouseleave', () => {
-      if (currentTimeline) {
-        currentTimeline.play();
-        pausedTimeline = false;
-      }
-    });
-
-
-    ScrollTrigger.create({
-      trigger: document.getElementById("tokamak-slider"),
-      start: "top 50%",
-      once: true,
-      onEnter: () => {
-        goToSlide(0, true);
+    currentIndex = newIndex;
+    currentTimeline = gsap.to(progressBars[currentIndex], {
+      width: '100%',
+      duration: SLIDE_DURATION,
+      ease: 'none',
+      paused: pausedTimeline,
+      onComplete: () => {
+        goToSlide((currentIndex + 1) % slides.length, false, true);
       }
     })
+  }
+
+  // Clicking on progress bar navigates to those items
+  navItems.forEach((item, index) => {
+    item.addEventListener('click', () => {
+      if (index !== currentIndex) {
+        goToSlide(index);
+      }
+    });
+  });
+
+  nextBtn?.addEventListener('click', (e: MouseEvent) => {
+    goToSlide((currentIndex + 1) % slides.length, false, true);
+  });
+  
+  prevBtn?.addEventListener('click', (e: MouseEvent) => {
+    goToSlide((currentIndex - 1 + slides.length) % slides.length);
+  });
+
+  // Pauses slide movement when mouse over slide or nav containers
+  navContainer?.addEventListener('mouseenter', () => {
+    if (currentTimeline) {
+      currentTimeline.pause();
+      pausedTimeline = true;
+    }
+  });
+
+  navContainer?.addEventListener('mouseleave', () => {
+    if (currentTimeline) {
+      currentTimeline.play();
+      pausedTimeline = false;
+    }
+  });
+
+
+  Observer.create({
+    type: "touch,pointer",
+    target: document.getElementById("tokamak-container"),
+    onLeft: () => goToSlide((currentIndex + 1) % slides.length, false, true),
+    onRight: () => goToSlide((currentIndex - 1 + slides.length) % slides.length),
+    tolerance: 100,
+    preventDefault: true,
+  });
+  
+  ScrollTrigger.create({
+    trigger: document.getElementById("tokamak-slider"),
+    start: "top 50%",
+    once: true,
+    onEnter: () => {
+      goToSlide(0, true);
+    }
   })
 </script>
 

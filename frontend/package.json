@@ -3,6 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
+    "prebuild": "node src/prebuild.js",
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
@@ -11,15 +12,20 @@
   "dependencies": {
     "@astrojs/netlify": "^6.4.0",
     "@fontsource/inter": "^5.2.6",
+    "@notionhq/client": "^5.4.0",
     "@tailwindcss/vite": "^4.1.10",
     "astro": "^5.10.0",
+    "dotenv": "^17.2.3",
     "gsap": "^3.13.0",
+    "notion-astro-loader": "^0.4.0",
     "split-type": "^0.3.4",
     "tailwindcss": "^4.1.10"
   },
   "devDependencies": {
     "prettier": "3.6.0",
     "prettier-plugin-astro": "0.14.1",
-    "prettier-plugin-tailwindcss": "^0.6.13"
+    "prettier-plugin-tailwindcss": "^0.6.13",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
   }
 }

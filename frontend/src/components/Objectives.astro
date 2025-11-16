@@ -8,7 +8,7 @@ import Technology from "../assets/objectives/technology&innovation.png";
 import { Image } from "astro:assets";
 ---
 
-<section class="w-full pt-[80px] pb-[200px] md:pt-[130px]">
+<section class="w-full pt-[80px] mb-20 lg:mb-45 md:pt-[130px]">
   <div class="flex flex-col items-center gap-5 lg:flex-row lg:justify-between">
     <h2 class="text-heading-4 sm:text-heading-2.1 lg:text-heading-2">
       Our Objectives
@@ -127,14 +127,14 @@ import { Image } from "astro:assets";
           const timeline = gsap.timeline({
             scrollTrigger: {
               trigger: "#objective-1",
-              start: "top 90%",
+              start: "top 60%",
               once: true,
             },
           });
 
-          timeline.fromTo("#objective-1", fromConfig, toConfig, "1");
-          timeline.fromTo("#objective-2", fromConfig, toConfig, "1.5");
-          timeline.fromTo("#objective-3", fromConfig, toConfig, "2.0");
+          timeline.fromTo("#objective-1", fromConfig, toConfig, "0.3");
+          timeline.fromTo("#objective-2", fromConfig, toConfig, "0.8");
+          timeline.fromTo("#objective-3", fromConfig, toConfig, "1.3");
         }
       },
     );

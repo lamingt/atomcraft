@@ -58,44 +58,42 @@ import SecondaryOutlineButton from "./buttons/SecondaryOutlineButton.astro";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
 
   gsap.registerPlugin(ScrollTrigger);
-  document.addEventListener("DOMContentLoaded", () => {
-    const timeline = gsap.timeline({
-      paused: true,
-      scrollTrigger: {
-        start: "top 80%",
-        once: true,
-        trigger: "#question-text",
-        onEnter: () => timeline.play(),
-      },
-    });
+  const timeline = gsap.timeline({
+    paused: true,
+    scrollTrigger: {
+      start: "top 80%",
+      once: true,
+      trigger: "#question-text",
+      onEnter: () => timeline.play(),
+    },
+  });
 
-    timeline.from("#question-text", {
+  timeline.from("#question-text", {
+    y: 50,
+    opacity: 0,
+    duration: 1.5,
+    ease: "power3.out",
+  });
+
+  timeline.from(
+    "#answer-text",
+    {
       y: 50,
       opacity: 0,
       duration: 1.5,
       ease: "power3.out",
-    });
+    },
+    "<0.6",
+  );
 
-    timeline.from(
-      "#answer-text",
-      {
-        y: 50,
-        opacity: 0,
-        duration: 1.5,
-        ease: "power3.out",
-      },
-      "<0.6",
-    );
-
-    timeline.from(
-      "#tokamak-btn",
-      {
-        y: 50,
-        opacity: 0,
-        duration: 1.5,
-        ease: "power3.out",
-      },
-      "<0.6",
-    );
-  });
+  timeline.from(
+    "#tokamak-btn",
+    {
+      y: 50,
+      opacity: 0,
+      duration: 1.5,
+      ease: "power3.out",
+    },
+    "<0.6",
+  );
 </script>

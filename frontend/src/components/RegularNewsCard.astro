@@ -1,16 +1,16 @@
 ---
 import { Image } from "astro:assets";
 
-interface Tag {
-  text: string;
-  bgColor: string;
-}
+// interface Tag {
+//   text: string;
+//   bgColor: string;
+// }
 
 export interface Props {
   imageSrc: ImageMetadata;
   imageAlt: string;
   title: string;
-  tags: Tag[];
+  tags: string[];
   date: string;
   description: string;
   url: string;
@@ -19,38 +19,30 @@ export interface Props {
 const { imageSrc, imageAlt, title, date, tags, description, url } = Astro.props;
 ---
 
-<div class="flex max-h-[500px] w-full flex-col items-start gap-2">
-  <Image
-    src={imageSrc}
-    alt={imageAlt}
-    class="mb-1 h-[200px] w-full rounded-lg object-cover"
-    loading="eager"
-  />
-  {
-    tags.map((tag) => (
-      <div
-        class:list={[
-          "flex items-center justify-center rounded-2xl px-4 text-center",
-          tag.bgColor,
-        ]}
-      >
-        {tag.text}
-      </div>
-    ))
-  }
-  <div>
-    <p class="text-xl font-bold">{title}</p>
-    <p class="text-[#AAAAAA]">{date}</p>
+<a href={url} target="_blank" class="regular-news">
+  <div class="flex w-[270px] xs:w-[400px] flex-col items-start gap-3 md:gap-5 group">
+    <Image
+      src={imageSrc}
+      alt={imageAlt}
+      class="h-[200px] w-full object-cover"
+    />
+    <div class="flex w-full justify-between">
+      {
+        tags.map((tag) => (
+          <div class:list={["px-2 text-sm md:px-4 text-center rounded-2xl flex justify-center items-center ",  tag === "News" ? "bg-red" : "bg-pink" ]}>
+            {tag}
+          </div>
+        ))
+      }
+      <p class="text-[#AAAAAA]">{date}</p>
+    </div>
+
+    <div>
+      <p class="text-xl font-medium md:text-heading-5 group-hover:underline">{title}</p>
+    </div>
+    <p class="text-gray_text text-[13px] leading-[140%]">
+      {description}
+    </p>
+
   </div>
-  <p class="text-gray_text leading-5">
-    {description}
-  </p>
-  <a href={url} target="_blank">
-    <span class="group inline-flex w-max items-center text-blue-400">
-      <span class="decoration-blue-400 transition-all group-hover:underline">
-        Learn More
-      </span>
-      <span class="ml-1"> &gt; </span>
-    </span>
-  </a>
-</div>
+</a>

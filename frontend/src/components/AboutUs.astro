@@ -1,44 +1,55 @@
 ---
 import { Image } from "astro:assets";
-import teamPhoto from "../assets/team-photo.webp";
+import teamPhoto from "../assets/team-photov2.png";
+import PrimaryButton from "./buttons/PrimaryButton.astro";
 ---
 
-<div class="pb-50">
+<div class="mb-20 sm:mb-30 md:mb-40 xl:mb-51 mt-20 lg:mt-60 xl:mx-13">
   <div>
-    <h3 class="pb-5 text-3xl md:text-4xl lg:text-5xl xl:text-6xl">ABOUT US</h3>
-    <div class="flex flex-col gap-10 lg:flex-row">
-      <p
-        class="text-gray_text min-[2000px]:!text-3xl sm:text-lg lg:text-xl xl:text-2xl"
-      >
-        AtomCraft is the world&apos;s first undergraduate-led project dedicated
-        to designing, building, and operating a tokamak—a cutting-edge fusion
-        device that uses electromagnetic fields to confine superheated plasma
-        and replicate the conditions of the Sun. Bridging disciplines across
-        advanced physics and engineering, our multidisciplinary team is tackling
-        one of the greatest challenges in sustainable energy: achieving stable
-        and sustained environment for plasma confinement. By pushing the
-        boundaries of fusion research, AtomCraft is training the next generation
-        of innovators to tackle the final frontier of sustainable energy.
-      </p>
+    <div class="flex flex-col-reverse text-center lg:text-start gap-15 xl:gap-[102px] lg:flex-row items-center">
       <Image
         src={teamPhoto}
         alt="Rows of AtomCraft team members lined up making gestures"
-        class="aspect-auto w-full max-w-[1000px] rounded-2xl lg:w-[45vw] 2xl:w-[30vw]"
+        class="w-full rounded-[10px] lg:w-[40vw] 2xl:w-[35vw]"
       />
+      <div class="w-full xl:w-[40%]">
+        <h3 class="text-3xl md:text-4xl lg:text-heading-3 xl:text-heading-2 mb-4 lg:mb-6 xl:mb-8">About us</h3>
+        <p
+          class="text-gray_text text-body lg:text-[16px] font-medium xl:text-body 2xl:text-heading-5 mb-6 lg:mb-10 xl:mb-13"
+        >
+          Bridging disciplines across advanced physics and engineering, our multidisciplinary team is tackling one of the greatest challenges in sustainable energy: 
+          achieving stable and sustained environment for plasma confinement.
+          <br/>
+          <br/>
+          By pushing the boundaries of fusion research, AtomCraft is training the next generation of innovators to tackle the final frontier of sustainable energy.
+        </p>
+        <PrimaryButton href="/join">
+          Join Our Team
+        </PrimaryButton>
+      </div>
     </div>
   </div>
+</div>
 
+<div
+  class="h-[0px] border-1 border-[#FFFFFF] opacity-50 md:mt-[100px] mt-20 xl:mt-35"
+>
+</div>
+
+<div class="mb-20 sm:mb-30 md:mb-40 xl:mb-51 mt-20 lg:mt-60 xl:mx-13">
   <div
-    class="mt-15 flex w-full flex-1 justify-between gap-10 md:mt-30 lg:mt-50 xl:mt-60"
+    class="flex w-full flex-1 justify-between gap-5 mt-10 md:mt-15 lg:mt-20 xl:mt-26"
   >
     <div>
-      <h1
-        id="members"
-        class="gradient-text text-5xl font-bold sm:text-7xl lg:text-8xl xl:text-9xl"
-      >
-        0
+      <h1 class="gradient-text text-5xl font-bold sm:text-7xl lg:text-8xl xl:text-9xl">
+        <span
+          id="members"
+        >
+          0
+        </span>+
       </h1>
-      <p class="font-semibold sm:text-2xl lg:text-3xl xl:text-5xl">
+
+      <p class="font-semibold sm:text-xl lg:text-3xl xl:text-[36px] 2xl:text-heading-3">
         Team Members
       </p>
     </div>
@@ -49,7 +60,7 @@ import teamPhoto from "../assets/team-photo.webp";
       >
         0
       </h1>
-      <p class="font-semibold sm:text-2xl lg:text-3xl xl:text-5xl">Teams</p>
+      <p class="font-semibold sm:text-xl lg:text-3xl xl:text-[36px] 2xl:text-heading-3">Teams</p>
     </div>
     <div class="w-fit">
       <h1
@@ -59,7 +70,7 @@ import teamPhoto from "../assets/team-photo.webp";
         0
       </h1>
       <p
-        class="w-fit max-w-[90px] font-semibold sm:max-w-[100vw] sm:text-2xl lg:text-3xl xl:text-5xl"
+        class="w-fit max-w-[90px] font-semibold sm:max-w-[100vw] sm:text-xl lg:text-3xl xl:text-[36px] 2xl:text-heading-3"
       >
         Academic Disciplines
       </p>
@@ -71,7 +82,7 @@ import teamPhoto from "../assets/team-photo.webp";
   import { createCounterAnimation } from "../helpers";
 
   document.addEventListener("DOMContentLoaded", () => {
-    createCounterAnimation("#members", 63);
+    createCounterAnimation("#members", 60);
     createCounterAnimation("#teams", 8);
     createCounterAnimation("#disciplines", 6);
   });
