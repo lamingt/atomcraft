@@ -1,21 +1,44 @@
 ---
 import { Image } from "astro:assets";
-import unswLogo from "../assets/unsw-logo.svg";
+import unswLogo from "../assets/UNSW_logo_white_small.svg";
+import vipLogo from "../assets/vip-logo.svg";
 import footerLogo from "../assets/footer-logo.svg";
 ---
 
 <footer class="relative min-h-[100px] w-full">
-  <div
+  <!-- <div
     class="relative bottom-0 left-1/2 h-50 w-full -translate-x-1/2 bg-[#080411] sm:h-60 md:h-70 lg:h-127"
   >
     <div
       class="absolute inset-0 bg-gradient-to-t from-dark-purple to-[#080411]"
     >
     </div>
+  </div> -->
+  <div
+      class="absolute bottom-28 h-50 left-0 w-screen bg-gradient-to-t from-dark-purple to-[#080411]"
+  >
   </div>
-
-  <div class="relative z-5 flex h-full w-full items-center justify-center">
-    <div class="absolute bottom-5 flex flex-col items-center gap-3">
+  <div class="relative z-5 flex h-full w-full items-center justify-between">
+    <div class="absolute w-screen bottom-0 h-28 flex justify-between items-center px-[61px]">
+      <p>© 2025 by AtomCraft.</p>
+      <div class="flex max-w-[200px] gap-4 items-center">
+        <a href="https://www.unsw.edu.au/" target="_blank">
+          <Image src={unswLogo} alt="UNSW logo" class="flex-1" />
+        </a>
+        <a href="https://www.vip-consortium.org/" target="_blank">
+          <Image src={vipLogo} alt="VIP logo" class="flex-1" />
+        </a>
+      </div>
+      <div class="tracking-tighter">
+        <p>
+          Designed by Jasmine Duan.
+        </p>
+        <p>
+          Developed by Justin Xia.
+        </p>
+      </div>
+    </div>
+    <!-- <div class="absolute bottom-5 flex flex-col items-center gap-3">
       <div class="flex items-center justify-center gap-10">
         <a href="https://www.unsw.edu.au/">
           <Image src={unswLogo} alt="UNSW logo" class="max-w-[30vw]" />
@@ -34,7 +57,7 @@ import footerLogo from "../assets/footer-logo.svg";
         <a href="/partners" class="font-semibold hover:underline"> Partners </a>
       </div>
       <p class="text-sm sm:text-lg">© 2025 by AtomCraft.</p>
-    </div>
+    </div> -->
   </div>
   <!-- Cloudflare Web Analytics -->
   <script
