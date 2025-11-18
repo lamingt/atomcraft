@@ -8,7 +8,9 @@ import leftArrow from "../assets/left-arrow.svg";
 import { Image } from "astro:assets";
 
 const news = await getCollection("news");
-const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/notion-images/news/*.{jpeg,jpg,png,svg,webp}');
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/notion-images/news/*.{jpeg,jpg,png,svg,webp}",
+);
 const imageLookup: Record<string, ImageMetadata> = {};
 
 for (const path in images) {
@@ -19,34 +21,48 @@ for (const path in images) {
 ---
 
 <section class="w-full">
-  <div class="flex justify-between mb-6 md:mb-12">
-    <h3 class="text-heading-3">
-      News
-    </h3>
-    <SecondaryOutlineButton href="/news">
-      View All
-    </SecondaryOutlineButton>
+  <div class="mb-6 flex justify-between md:mb-12">
+    <h3 class="text-heading-3">News</h3>
+    <SecondaryOutlineButton href="/news"> View All </SecondaryOutlineButton>
   </div>
   <div class="flex gap-9 overflow-x-hidden" id="news-slider-container">
-    {news.map(article => (
-      <RegularNewsCard 
-        imageSrc={imageLookup[article.id]} 
-        title={article.data.name} 
-        imageAlt={article.data.imageAlt} 
-        tags={article.data.categories} 
-        description={article.data.description}
-        date={article.data.date}
-        url={article.data.url}
-      />
-    ))}
+    {
+      news.map((article) => (
+        <RegularNewsCard
+          imageSrc={imageLookup[article.id]}
+          title={article.data.name}
+          imageAlt={article.data.imageAlt}
+          tags={article.data.categories}
+          description={article.data.description}
+          date={article.data.date}
+          url={article.data.url}
+        />
+      ))
+    }
   </div>
 
-  <div class="w-full flex justify-center lg:justify-end gap-8 mt-5">
-    <SecondaryOutlineButton href="javascript:void(0)" class="z-10 group" id="news-prev-btn" >
-      <Image src={leftArrow} alt="left arrow" class="py-2 group-hover:invert group-active:invert-0"/>
+  <div class="mt-5 flex w-full justify-center gap-8 lg:justify-end">
+    <SecondaryOutlineButton
+      href="javascript:void(0)"
+      class="group z-10"
+      id="news-prev-btn"
+    >
+      <Image
+        src={leftArrow}
+        alt="left arrow"
+        class="py-2 group-hover:invert group-active:invert-0"
+      />
     </SecondaryOutlineButton>
-    <SecondaryOutlineButton href="javascript:void(0)" class="z-10 group" id="news-next-btn">
-      <Image src={rightArrow} alt="left arrow" class="py-2 group-hover:invert group-active:invert-0" />
+    <SecondaryOutlineButton
+      href="javascript:void(0)"
+      class="group z-10"
+      id="news-next-btn"
+    >
+      <Image
+        src={rightArrow}
+        alt="left arrow"
+        class="py-2 group-hover:invert group-active:invert-0"
+      />
     </SecondaryOutlineButton>
   </div>
 </section>

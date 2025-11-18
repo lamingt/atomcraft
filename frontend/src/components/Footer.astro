@@ -1,27 +1,96 @@
 ---
 import { Image } from "astro:assets";
-import unswLogo from "../assets/UNSW_logo_white_small.svg";
-import vipLogo from "../assets/vip-logo.svg";
-import footerLogo from "../assets/footer-logo.svg";
+import unswLogo from "../assets/footer/UNSW_logo_white_small.svg";
+import vipLogo from "../assets/footer/vip-logo.svg";
+import atomcraftLogo from "../assets/logo.svg";
+import instagramLogo from "../assets/footer/instagram-white.svg";
+import linkedinLogo from "../assets/footer/linkedin-white.svg";
+import arcLogo from "../assets/footer/arc-logo.svg";
+import SecondaryOutlineButton from "./buttons/SecondaryOutlineButton.astro";
+import { Tooltip, TooltipTrigger, TooltipContent } from "./starwind/tooltip";
 ---
 
-<footer class="relative min-h-[100px] w-full">
-  <!-- <div
-    class="relative bottom-0 left-1/2 h-50 w-full -translate-x-1/2 bg-[#080411] sm:h-60 md:h-70 lg:h-127"
-  >
-    <div
-      class="absolute inset-0 bg-gradient-to-t from-dark-purple to-[#080411]"
-    >
-    </div>
-  </div> -->
+<footer class="relative w-full">
   <div
-      class="absolute bottom-28 h-50 left-0 w-screen bg-gradient-to-t from-dark-purple to-[#080411]"
+    class="from-dark-purple left-0 h-127 w-full bg-gradient-to-t to-[#080411]"
   >
+    <div class="grid grid-cols-[1fr_4fr] items-stretch gap-x-5 lg:gap-x-16 mx-7 lg:mx-14 my-15 sm:h-[200px]">
+      <div class="h-full">
+        <div class="mb-6 h-[0px] border-1 border-[#FFFFFF] opacity-50"></div>
+        <div class="flex h-full flex-col justify-between px-1">
+          <a class="footer-text" href="/"> Home </a>
+          <a class="footer-text" href="/about-us"> About us </a>
+          <a class="footer-text" href="/news"> News </a>
+          <a class="footer-text" href="/members"> Members </a>
+        </div>
+      </div>
+
+      <div class="h-full">
+        <div class="mb-6 h-[0px] border-1 border-[#FFFFFF] opacity-50"></div>
+        <div class="h-full flex justify-between">
+          <div class="h-full">
+            <div class="flex h-full flex-col">
+              <div class="mb-auto flex flex-col gap-[26px] px-1">
+                <a class="footer-text" href="/partners"> Partner with us </a>
+                <a class="footer-text" href="/join"> Join our team </a>
+              </div>
+
+              <div class="mb-6 h-[0px] border-1 border-[#FFFFFF] opacity-50"></div>
+
+              <Tooltip openDelay={100} closeDelay={10}>
+                <TooltipTrigger>
+                  <a class="footer-text" id="email-link">atomcraft@unsw.edu.au</a>
+                </TooltipTrigger>
+                <TooltipContent side="bottom">
+                  <span id="tooltip-content">Copy Text</span>
+                </TooltipContent>
+              </Tooltip>
+            </div>
+          </div>
+          <div class="flex-col items-end flex">
+            <Image src={atomcraftLogo} alt="AtomCraft Logo" class="w-50 md:w-70 lg:w-80 2xl:w-90 mb-10 hidden xs:block"/>
+            <span class="hidden sm:block">
+              <SecondaryOutlineButton blank={true} href="https://www.unsw.edu.au/challeng/vertically-integrated-projects/explore-vertically-integrated-projects/atomcraft">
+                Apply through ChallENG
+              </SecondaryOutlineButton>
+            </span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="md:mt-20 px-7 lg:px-14 w-full flex flex-col justify-center items-end sm:hidden gap-4 mb-4">
+      <Image src={atomcraftLogo} alt="AtomCraft Logo" class="w-50 xs:hidden"/>
+      <SecondaryOutlineButton blank={true} href="https://www.unsw.edu.au/challeng/vertically-integrated-projects/explore-vertically-integrated-projects/atomcraft">
+        Apply through ChallENG
+      </SecondaryOutlineButton>
+    </div>
+    <div class="mx-7 lg:mx-14 flex justify-between items-end">
+      <div class="flex flex-col xs:flex-row gap-5 xs:gap-10">
+        <a href="https://www.linkedin.com/company/atomcraft/" target="_blank">
+          <Image src={linkedinLogo} alt="linkedin logo" class="cursor-pointer"/>
+        </a>
+        <a href="https://www.instagram.com/atomcraftunsw/" target="_blank">
+          <Image src={instagramLogo} alt="instagram logo" class="cursor-pointer"/>
+        </a>
+      </div>
+      <div class="flex flex-col items-center">
+        <p class="mb-4">
+          Looking for a different role?
+        </p>
+        <SecondaryOutlineButton href="https://campus.hellorubric.com/?s=12442" blank={true}>
+          Apply through <Image src={arcLogo} alt="arc logo" class="ml-2"/>
+        </SecondaryOutlineButton>
+      </div>
+    </div>
   </div>
-  <div class="relative z-5 flex h-full w-full items-center justify-between">
-    <div class="absolute w-screen bottom-0 h-28 flex justify-between items-center px-[61px]">
-      <p>© 2025 by AtomCraft.</p>
-      <div class="flex max-w-[200px] gap-4 items-center">
+
+  <div class="relative z-5 flex w-full items-center justify-between">
+    <div
+      class="flex h-28 w-full items-center justify-between px-7 lg:px-14 gap-5 sm:gap-10"
+    >
+      <p class="text-xs sm:text-sm lg:text-base">© 2025 by AtomCraft.</p>
+      <div class="flex flex-col md:flex-row max-w-[200px] items-center gap-4">
         <a href="https://www.unsw.edu.au/" target="_blank">
           <Image src={unswLogo} alt="UNSW logo" class="flex-1" />
         </a>
@@ -29,35 +98,11 @@ import footerLogo from "../assets/footer-logo.svg";
           <Image src={vipLogo} alt="VIP logo" class="flex-1" />
         </a>
       </div>
-      <div class="tracking-tighter">
-        <p>
-          Designed by Jasmine Duan.
-        </p>
-        <p>
-          Developed by Justin Xia.
-        </p>
+      <div class="text-xs sm:text-sm lg:text-base text-end tracking-tighter">
+        <p>Designed by <br class="sm:hidden"/> Jasmine Duan.</p>
+        <p>Developed by <br class="sm:hidden"/> Justin Xia.</p>
       </div>
     </div>
-    <!-- <div class="absolute bottom-5 flex flex-col items-center gap-3">
-      <div class="flex items-center justify-center gap-10">
-        <a href="https://www.unsw.edu.au/">
-          <Image src={unswLogo} alt="UNSW logo" class="max-w-[30vw]" />
-        </a>
-        <a href="/">
-          <Image
-            src={footerLogo}
-            alt="AtomCraft logo"
-            class="max-w-[30vw] xl:max-w-[200px]"
-          />
-        </a>
-      </div>
-      <div class="flex gap-5 text-sm sm:text-lg">
-        <a href="/news" class="font-semibold hover:underline"> News </a>
-        <a href="/roles" class="font-semibold hover:underline"> Roles </a>
-        <a href="/partners" class="font-semibold hover:underline"> Partners </a>
-      </div>
-      <p class="text-sm sm:text-lg">© 2025 by AtomCraft.</p>
-    </div> -->
   </div>
   <!-- Cloudflare Web Analytics -->
   <script
@@ -66,3 +111,37 @@ import footerLogo from "../assets/footer-logo.svg";
     data-cf-beacon='{"token": "f9495a939fc04cec8469f92d026f0fc9"}'></script>
   <!-- End Cloudflare Web Analytics -->
 </footer>
+
+<script>
+  
+  document.addEventListener("DOMContentLoaded", () => {
+    const copyButton = document.getElementById("email-link");
+    copyButton?.addEventListener("click", () => {
+      navigator.clipboard.writeText("atomcraft@unsw.edu.au");
+    });
+  });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const copyButton = document.getElementById("email-link");
+  const tooltipContent = document.getElementById("tooltip-content");
+  if (!copyButton || !tooltipContent) {
+    return;
+  }
+
+  const originalText = tooltipContent.textContent;
+
+  copyButton.addEventListener("click", () => {
+    try {
+      navigator.clipboard.writeText("atomcraft@unsw.edu.au")
+
+      tooltipContent.textContent = "Copied!";
+      // Change text back
+      setTimeout(() => {
+        tooltipContent.textContent = originalText;
+      }, 1000);
+    } catch (e) {
+      console.error("Failed to copy text: ", e);
+    }
+  });
+});
+</script>

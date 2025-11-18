@@ -6,7 +6,7 @@ import netlify from "@astrojs/netlify";
 
 // https://astro.build/config
 export default defineConfig({
-  vite: {
+	vite: {
     plugins: [tailwindcss()],
     server: {
       allowedHosts: ["devserver-redesign--atomcraft-temp.netlify.app"],

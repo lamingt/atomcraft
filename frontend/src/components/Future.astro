@@ -6,37 +6,40 @@ import SecondaryButton from "./buttons/SecondaryButton.astro";
 import PrimaryButton from "./buttons/PrimaryButton.astro";
 ---
 
-<section class="relative h-screen overflow-x-hidden flex-col justify-center mb-[50vh]">
+<section
+  class="relative xl:mt-[110px] mb-20 lg:mb-31 h-screen flex-col justify-center"
+>
   <div class="absolute inset-0">
     <Image src={Tokamak} alt="Large Purple Tokamak" class="h-full w-full" />
   </div>
 
   <div
-    class="relative z-10 mx-auto flex h-full max-w-[1450px] w-full flex-col items-center justify-center px-6 text-center md:px-[120px] "
+    class="relative z-10 mx-auto flex h-full w-full max-w-[1450px] flex-col items-center justify-center px-6 text-center md:px-[120px]"
   >
-    <p class="text-body sm:text-heading-5 lg:text-subheading-1 text-cyan mb-3 lg:mb-5 mt-20 lg:mt-32">
+    <p
+      class="text-body sm:text-heading-5 lg:text-subheading-1 text-cyan mt-20 mb-3 lg:mt-32 lg:mb-5"
+    >
       The Future
     </p>
     <h1
-      class="font-medium text-[18px] xs:text-heading-5 sm:text-heading-4 lg:text-heading-3 xl:text-heading-2.1 mx-auto mb-5 lg:mb-7"
+      class="xs:text-heading-5 sm:text-heading-4 lg:text-heading-3 xl:text-heading-2.1 mx-auto mb-5 text-[18px] font-medium lg:mb-7"
     >
-      Fusion is no longer just a scientific dream. It&apos;s becoming an engineering reality
+      Fusion is no longer just a scientific dream. It&apos;s becoming an
+      engineering reality
     </h1>
-    <h2 class="text-[14px] xs:text-[16px] sm:text-[20px] lg:text-heading-5 xl:text-heading-4">
-      This project supports research and development efforts for several fusion start-ups and helps pave the 
-      way toward a decarbonised energy future. We are not just imagining the future. We are building it, piece by piece.
+    <h2
+      class="xs:text-[16px] lg:text-heading-5 xl:text-heading-4 text-[14px] sm:text-[20px]"
+    >
+      This project supports research and development efforts for several fusion
+      start-ups and helps pave the way toward a decarbonised energy future. We
+      are not just imagining the future. We are building it, piece by piece.
     </h2>
-    <div class="flex flex-col xs:flex-row gap-3 xs:gap-8 mt-4 xs:mt-8 lg:mt-13">
-      <SecondaryButton href="/partners">
-        Partner With Us
-      </SecondaryButton>
-      <PrimaryButton href="/join">
-        Join Our Team
-      </PrimaryButton>
+    <div class="xs:flex-row xs:gap-8 xs:mt-8 mt-4 flex flex-col gap-3 lg:mt-13">
+      <SecondaryButton href="/partners"> Partner With Us </SecondaryButton>
+      <PrimaryButton href="/join"> Join Our Team </PrimaryButton>
     </div>
   </div>
 </section>
-
 
 <!-- <div class="flex w-full flex-col items-center pb-40 sm:pb-56 lg:pb-96">
   <Image src={glow} alt="effect" class="md:w-xl" />

@@ -1,16 +1,11 @@
 ---
 import { Image } from "astro:assets";
 
-interface Tag {
-  text: string;
-  bgColor: string;
-}
-
 export interface Props {
   imageSrc: ImageMetadata;
   imageAlt: string;
   title: string;
-  tags: Tag[];
+  tags: string[];
   date: string;
   description: string;
   url: string;
@@ -38,10 +33,10 @@ const { imageSrc, imageAlt, title, date, tags, description, url } = Astro.props;
             <div
               class:list={[
                 "flex items-center justify-center rounded-2xl px-2 text-center text-sm md:px-4",
-                tag.bgColor,
+                tag === "News" ? "bg-red" : "bg-pink",
               ]}
             >
-              {tag.text}
+              {tag}
             </div>
           ))
         }
@@ -55,3 +50,38 @@ const { imageSrc, imageAlt, title, date, tags, description, url } = Astro.props;
     </div>
   </div>
 </a>
+<!-- <a href={url} target="_blank" class="regular-news">
+  <div
+    class="xs:w-[400px] group flex w-[270px] flex-col items-start gap-3 md:gap-5"
+  >
+    <Image
+      src={imageSrc}
+      alt={imageAlt}
+      class="h-[200px] w-full object-cover"
+    />
+    <div class="flex w-full justify-between">
+      {
+        tags.map((tag) => (
+          <div
+            class:list={[
+              "flex items-center justify-center rounded-2xl px-2 text-center text-sm md:px-4",
+              tag === "News" ? "bg-red" : "bg-pink",
+            ]}
+          >
+            {tag}
+          </div>
+        ))
+      }
+      <p class="text-[#AAAAAA]">{date}</p>
+    </div>
+
+    <div>
+      <p class="md:text-heading-5 text-xl font-medium group-hover:underline">
+        {title}
+      </p>
+    </div>
+    <p class="text-gray_text text-[13px] leading-[140%]">
+      {description}
+    </p>
+  </div>
+</a> -->

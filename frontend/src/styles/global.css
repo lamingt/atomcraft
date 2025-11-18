@@ -72,6 +72,10 @@
   background-image: linear-gradient(170deg, #fff, #7656bd 50%, #fff);
 }
 
+.footer-text {
+  @apply cursor-pointer text-base duration-100 hover:underline active:text-[#A5A5A5] lg:text-[20px];
+}
+
 .text-balance {
   text-wrap: balance;
 }

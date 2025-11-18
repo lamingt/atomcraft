@@ -5,7 +5,10 @@ import SecondaryButton from "./buttons/SecondaryButton.astro";
 import PrimaryButton from "./buttons/PrimaryButton.astro";
 ---
 
-<header class="fixed top-0 left-0 z-100 w-full bg-dark-purple flex items-center h-20 lg:h-26" id="navbar">
+<header
+  class="bg-dark-purple fixed top-0 left-0 z-100 flex h-20 w-full items-center lg:h-26"
+  id="navbar"
+>
   <!-- <div
     class="absolute top-0 left-1/2 z-5 h-20 sm:h-30 w-full -translate-x-1/2 bg-[linear-gradient(to_bottom,rgba(41,14,101,1)_0%,rgba(41,14,101,0.8)_50%,transparent_100%)]
     blur-2xl lg:h-25 xl:h-30 2xl:h-40"
@@ -17,7 +20,7 @@ import PrimaryButton from "./buttons/PrimaryButton.astro";
   </div> -->
 
   <div
-    class="relative z-10 mx-[20px] flex items-center justify-between lg:mx-[30px] xl:mx-[40px] w-full"
+    class="relative z-10 mx-[20px] flex w-full items-center justify-between lg:mx-[30px] xl:mx-[40px]"
   >
     <div
       class="md:text-md flex items-center md:gap-[20px] lg:gap-[40px] lg:text-xl xl:gap-[60px]"
@@ -33,9 +36,7 @@ import PrimaryButton from "./buttons/PrimaryButton.astro";
       <div class="smd:flex hidden gap-5 lg:gap-5 2xl:gap-10">
         <a href="/news" class="hover:underline"> About Us </a>
         <a href="/news" class="hover:underline"> News </a>
-        <a href="/members" class="hover:underline">
-          Members
-        </a>
+        <a href="/members" class="hover:underline"> Members </a>
         <!-- <a href="/partners" class="hover:underline">
           Partners
         </a>
