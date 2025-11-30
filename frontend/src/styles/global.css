@@ -65,6 +65,14 @@
     #ffffff 50%,
     #7843ff 85%
   );
+
+  /* Forces GSAP split characters to inherit the gradient */
+  & .hero-char {
+    background: inherit;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
 }
 
 .gradient-text-2 {

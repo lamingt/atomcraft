@@ -2,6 +2,80 @@
 import Footer from "../components/Footer.astro";
 import Navbar from "../components/Navbar.astro";
 import "../styles/global.css";
+import "@fontsource/inter/500.css";
+import "@fontsource/inter/800.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  // image?: string;
+}
+
+const { 
+  title = "AtomCraft | Crafting the future of fusion",
+  description = "AtomCraft is making the first fusion energy device wholly designed, built and operated by undergraduate students, at the University of New South Wales (UNSW), in Sydney, Australia",
+  // image = "/og-image.jpg"
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="generator" content={Astro.generator} />
+
+    <link rel="canonical" href={canonicalURL} />
+
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta 
+      name="keywords" 
+      content="AtomCraft, UNSW, Fusion Energy, Tokamak, Student Project, Nuclear Engineering, Clean Energy, Sydney, VIP" 
+    />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <!-- <meta property="og:image" content={new URL(image, Astro.url)} /> -->
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <!-- <meta property="twitter:image" content={new URL(image, Astro.url)} /> -->
+  </head>
+  <body class="flex min-h-screen flex-col bg-[#080411] text-white">
+    <Navbar />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  html {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background: #080411;
+  }
+</style>
+
+<!-- ---
+import Footer from "../components/Footer.astro";
+import Navbar from "../components/Navbar.astro";
+import "../styles/global.css";
 ---
 
 <!doctype html>
@@ -35,4 +109,4 @@ import "../styles/global.css";
     background: #080411;
     color: white;
   }
-</style>
+</style> -->

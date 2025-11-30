@@ -5,9 +5,9 @@ import PrimaryButton from "./buttons/PrimaryButton.astro";
 import SecondaryOutlineButton from "./buttons/SecondaryOutlineButton.astro";
 ---
 
-<div class="relative h-screen w-full overflow-hidden">
+<div class="relative h-screen w-full overflow-hidden bg-black">
   <video
-    class="absolute top-0 left-0 z-1 h-full w-full object-cover"
+    class="absolute top-0 left-0 z-0 h-full w-full object-cover opacity-60"
     crossorigin="anonymous"
     playsinline
     preload="auto"
@@ -16,6 +16,7 @@ import SecondaryOutlineButton from "./buttons/SecondaryOutlineButton.astro";
     autoplay
     poster={backgroundPoster.src}
     src={backgroundVideo}></video>
+
   <div
     class="relative z-3 flex h-full w-full items-center justify-center md:mt-[100px]"
   >
@@ -24,122 +25,84 @@ import SecondaryOutlineButton from "./buttons/SecondaryOutlineButton.astro";
         class="relative flex w-full flex-col items-center py-[30px] sm:py-[50px] md:py-[100px]"
       >
         <div
-          class="absolute inset-0 z-0 rounded-lg bg-[linear-gradient(to_bottom,transparent_0%,rgba(0,0,0,0.4)_25%,rgba(0,0,0,0.4)_75%,transparent_100%)] md:bg-[linear-gradient(to_bottom,transparent_0%,rgba(0,0,0,0.6)_25%,rgba(0,0,0,0.6)_75%,transparent_100%)]"
+          class="absolute inset-0 z-0 rounded-lg bg-[linear-gradient(to_bottom,transparent_0%,rgba(0,0,0,0.4)_25%,rgba(0,0,0,0.4)_75%,transparent_100%)]"
         >
         </div>
+
         <h1
-          id="line-1"
-          class="text-heading-4 sm:text-heading-3 md:text-heading-2 lg:text-heading-1 invisible font-bold will-change-transform"
+          class="hero-line text-heading-4 sm:text-heading-3 md:text-heading-2 lg:text-heading-1 invisible relative z-10 overflow-hidden pb-2"
         >
           Crafting the
         </h1>
+
         <h1
-          id="line-2"
-          class="text-heading-4 sm:text-heading-3 md:text-heading-2 lg:text-heading-1 gradient-text invisible font-bold will-change-transform"
+          class="hero-line gradient-text text-heading-4 sm:text-heading-3 md:text-heading-2 lg:text-heading-1 invisible relative z-10 overflow-hidden pb-2"
         >
           Future of Fusion
         </h1>
-        <h2
-          id="line-3"
-          class="md:text-heading-5 lg:text-heading-4 invisible z-5 mb-[20px] text-center md:mb-[60px]"
-        >
-          World's first student-led fusion energy device.
-        </h2>
-        <div class="z-5 flex gap-[29px]">
-          <PrimaryButton href="news" id="hero-button-1" class="invisible">
-            Apply Now
-          </PrimaryButton>
-          <SecondaryOutlineButton href="/" id="hero-button-2" class="invisible">
-            Learn More
-          </SecondaryOutlineButton>
+
+        <div class="flex flex-col items-center">
+          <h2
+            class="hero-detail md:text-heading-5 lg:text-heading-4 invisible relative z-10 mb-5 text-center md:mb-[60px]"
+          >
+            World's first student-led fusion energy device.
+          </h2>
+
+          <div class="hero-detail invisible relative z-10 flex gap-[29px]">
+            <PrimaryButton href="news"> Apply Now </PrimaryButton>
+            <SecondaryOutlineButton href="/about"> Learn More </SecondaryOutlineButton>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
+<style is:global>
+  .gradient-text .hero-char {
+    background: inherit;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+</style>
+
 <script>
   import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
   import { SplitText } from "gsap/SplitText";
 
-  gsap.registerPlugin(ScrollTrigger, SplitText);
-  // SplitText combined with bg-clip-text breaks on chrome but works on firefox
-  // idk why ill figure it out later
+  gsap.registerPlugin(SplitText);
 
-  // const line1Split = SplitText.create("#line-1", { type: "words" })
-  // const line2Split = SplitText.create("#line-2", { type: "words" })
-
-  const timeline = gsap.timeline({
-    scrollTrigger: {
-      start: "top 80%",
-      trigger: "#line-1",
-      once: true,
-    },
+  const split = new SplitText(".hero-line", { 
+    type: "chars", 
+    charsClass: "hero-char" 
   });
 
-  timeline.fromTo(
-    "#line-1",
-    { y: 30, autoAlpha: 0 },
-    {
-      y: 0,
-      autoAlpha: 1,
-      duration: 1.5,
-      ease: "power3.out",
-    },
-    "0.3",
-  );
+  gsap.set(".hero-line", { autoAlpha: 1 });
 
-  timeline.fromTo(
-    "#line-2",
-    { y: 30, autoAlpha: 0 },
-    {
-      y: 0,
-      autoAlpha: 1,
-      stagger: 0.1,
-      duration: 1.5,
-      ease: "power3.out",
-    },
-    "0.7",
-  );
+  gsap.from(split.chars, {
+    duration: 1.2,
+    y: 100,
+    autoAlpha: 0,
+    rotateX: -90,
+    stagger: 0.03,
+    transformOrigin: "50% 100%", 
+    ease: "power4.out",
+  });
 
-  timeline.fromTo(
-    "#line-3",
-    { y: 30, autoAlpha: 0 },
-    {
-      y: 0,
-      autoAlpha: 1,
-      stagger: 0.1,
-      duration: 1.5,
-      ease: "power3.out",
+  // Animates subtexts and buttons
+  gsap.fromTo(".hero-detail",
+    { 
+      y: 30, 
+      autoAlpha: 0 
     },
-    "1.3",
-  );
-
-  timeline.fromTo(
-    "#hero-button-1",
-    { y: 30, autoAlpha: 0 },
-    {
-      y: 0,
-      autoAlpha: 1,
-      stagger: 0.1,
-      duration: 1.5,
-      ease: "power3.out",
-      opacity: 1,
-    },
-    "1.5",
-  );
-
-  timeline.fromTo(
-    "#hero-button-2",
-    { y: 30, autoAlpha: 0 },
-    {
-      y: 0,
-      autoAlpha: 1,
-      stagger: 0.1,
-      duration: 1.5,
-      ease: "power3.out",
-    },
-    "1.7",
+    { 
+      y: 0, 
+      autoAlpha: 1, 
+      duration: 1.5, 
+      delay: 1.1, // starts slightly after the first two lines are done
+      stagger: 0.2, 
+      ease: "power2.out" 
+    }
   );
 </script>

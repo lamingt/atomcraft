@@ -3,10 +3,15 @@ import { Image } from "astro:assets";
 import logo from "../assets/logo.svg";
 import SecondaryButton from "./buttons/SecondaryButton.astro";
 import PrimaryButton from "./buttons/PrimaryButton.astro";
+
+const isHome = Astro.url.pathname === "/";
 ---
 
 <header
-  class="bg-dark-purple fixed top-0 left-0 z-100 flex h-20 w-full items-center lg:h-26"
+  class:list={[
+    "bg-dark-purple fixed top-0 left-0 z-100 flex h-20 w-full items-center lg:h-26",
+    { invisible: isHome },
+  ]}
   id="navbar"
 >
   <!-- <div
@@ -20,21 +25,21 @@ import PrimaryButton from "./buttons/PrimaryButton.astro";
   </div> -->
 
   <div
-    class="relative z-10 mx-[20px] flex w-full items-center justify-between lg:mx-[30px] xl:mx-[40px]"
+    class="relative z-10 mx-5 flex w-full items-center justify-between lg:mx-[30px] xl:mx-10"
   >
     <div
-      class="md:text-md flex items-center md:gap-[20px] lg:gap-[40px] lg:text-xl xl:gap-[60px]"
+      class="md:text-md flex items-center md:gap-5 lg:gap-10 lg:text-xl xl:gap-[60px]"
     >
       <a href="/">
         <Image
           src={logo}
           alt="logo"
           loading="eager"
-          class="z-10 w-[200px] sm:w-[175px] lg:w-[208px]"
+          class="z-10 w-[200px] sm:w-[175px] lg:w-52"
         />
       </a>
       <div class="smd:flex hidden gap-5 lg:gap-5 2xl:gap-10">
-        <a href="/news" class="hover:underline"> About Us </a>
+        <a href="/about" class="hover:underline"> About Us </a>
         <a href="/news" class="hover:underline"> News </a>
         <a href="/members" class="hover:underline"> Members </a>
         <!-- <a href="/partners" class="hover:underline">
@@ -97,7 +102,7 @@ import PrimaryButton from "./buttons/PrimaryButton.astro";
         <div
           class="flex flex-col items-center gap-5 rounded-2xl bg-black/70 pt-2 pb-2"
         >
-          <a href="/about-us"> About Us </a>
+          <a href="/about"> About Us </a>
           <a href="/news"> News </a>
           <a href="/members"> Members </a>
           <a href="/partners"> Partner </a>
@@ -113,39 +118,71 @@ import PrimaryButton from "./buttons/PrimaryButton.astro";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
 
   gsap.registerPlugin(ScrollTrigger);
+
   document.addEventListener("DOMContentLoaded", () => {
+    // Mobile menu logic 
     const menuBtn = document.getElementById("mobile-menu-btn");
     const mobileMenu = document.getElementById("mobile-menu");
 
-    if (menuBtn && mobileMenu) {
-      document
-        .getElementById("mobile-menu-btn")
-        ?.addEventListener("click", () => {
-          const isPressed = menuBtn.getAttribute("aria-pressed") === "true";
-          menuBtn.setAttribute("aria-pressed", String(!isPressed));
+  if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener("click", () => {
+        const isPressed = menuBtn.getAttribute("aria-pressed") === "true";
+        menuBtn.setAttribute("aria-pressed", String(!isPressed));
 
-          mobileMenu.classList.toggle("opacity-0");
-          mobileMenu.classList.toggle("invisible");
-
-          mobileMenu.classList.toggle("max-h-0");
-          mobileMenu.classList.toggle("max-h-screen");
-        });
+        mobileMenu.classList.toggle("opacity-0");
+        mobileMenu.classList.toggle("invisible");
+        mobileMenu.classList.toggle("max-h-0");
+        mobileMenu.classList.toggle("max-h-screen");
+      });
     }
 
-    const showAnim = gsap
+    // --- ANIMATION LOGIC ---
+
+    // 1. Define the SCROLL Animation (Fast)
+    const scrollAnim = gsap
       .from("#navbar", {
         yPercent: -100,
         paused: true,
         duration: 0.2,
+        ease: "power2.out",
       })
       .progress(1);
 
-    ScrollTrigger.create({
-      start: "top top",
-      end: "max",
-      onUpdate: (self) => {
-        self.direction == -1 ? showAnim.play() : showAnim.reverse();
-      },
-    });
+    const isHome = window.location.pathname === "/";
+
+    if (isHome) {
+      // 2. Run the INTRO Animation (Slow) ONLY on Home Page
+      gsap.fromTo(
+        "#navbar",
+        {
+          yPercent: -100,
+          autoAlpha: 0, // Starts invisible
+        },
+        {
+          yPercent: 0,
+          autoAlpha: 1, // Becomes visible
+          duration: 1.5, // Slow duration for the initial drop
+          delay: 1.6,
+          ease: "power4.out",
+          onComplete: () => {
+            initScrollTrigger();
+          },
+        }
+      );
+    } else {
+      // On other pages, ensure it's visible and init scroll trigger immediately
+      gsap.set("#navbar", { yPercent: 0, autoAlpha: 1 });
+      initScrollTrigger();
+    }
+
+    function initScrollTrigger() {
+      ScrollTrigger.create({
+        start: "top top",
+        end: "max",
+        onUpdate: (self) => {
+          self.direction === -1 ? scrollAnim.play() : scrollAnim.reverse();
+        },
+      });
+    }
   });
 </script>

@@ -1,0 +1,63 @@
+---
+import { Image } from "astro:assets";
+import Team from "../../assets/about/what.png";
+---
+
+<section class="w-full" id="what">
+  <div
+    class="xs:pb-25 relative z-10 flex flex-col items-center pt-[50px] text-center sm:pt-[100px] md:pb-50 lg:block lg:pt-[150px] lg:text-left xl:pt-[250px]"
+  >
+    <p
+      id="question-text"
+      class="text-pink text-body lg:text-subheading-1 mb-1 md:text-2xl"
+    >
+      What do we do?
+    </p>
+    <p
+      id="answer-text"
+      class="text-heading-5 md:text-heading-4 lg:text-heading-3 xl:text-heading-2 pb-8 font-medium"
+    >
+      AtomCraft aims make the world&apos;s first tokamak entirely designed, built, and operated by undergraduate students within 2 years. 
+    </p>
+  </div>
+  <div class="flex gap-30 items-end">
+    <Image src={Team} alt="AtomCraft members standing behind models of the tokamak"/>
+    <p class="text-heading-4">
+      Students will develop innovative solutions to engineering challenges and work closely with industry partners, and push the boundaries of what is possible with fusion energy. 
+    </p>
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+  const timeline = gsap.timeline({
+    paused: true,
+    scrollTrigger: {
+      start: "top 80%",
+      once: true,
+      trigger: "#question-text",
+      onEnter: () => timeline.play(),
+    },
+  });
+
+  timeline.from("#question-text", {
+    y: 50,
+    opacity: 0,
+    duration: 1.5,
+    ease: "power3.out",
+  });
+
+  timeline.from(
+    "#answer-text",
+    {
+      y: 50,
+      opacity: 0,
+      duration: 1.5,
+      ease: "power3.out",
+    },
+    "<0.6",
+  );
+</script>

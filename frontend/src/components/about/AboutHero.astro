@@ -1,0 +1,85 @@
+---
+import { Image } from "astro:assets";
+import Background from "../../assets/about/about-background.png";
+import PrimaryButton from "../buttons/PrimaryButton.astro";
+import SecondaryOutlineButton from "../buttons/SecondaryOutlineButton.astro";
+---
+
+<section class="relative w-full h-screen mb-22">
+  <Image src={Background} alt="A tokamak surrounded by cameras and equipment" class="absolute inset-0 z-0 w-full h-full"/>
+
+  <div
+    class="relative z-10 flex h-full w-full items-center justify-center md:mt-[100px]"
+  >
+    <div class="flex w-full flex-col items-center gap-5 md:pb-[25vh]">
+      <div
+        class="relative flex w-full flex-col items-center py-[30px] sm:py-[50px] md:py-[100px]"
+      >
+        <h1
+          class="hero-line text-heading-4 sm:text-heading-3 md:text-heading-2 lg:text-heading-1 invisible relative z-10 overflow-hidden"
+        >
+          What is
+        </h1>
+
+        <h1
+          class="hero-line gradient-text text-heading-4 sm:text-heading-3 md:text-heading-2 lg:text-heading-1 invisible relative z-10 overflow-hidden"
+        >
+          AtomCraft?
+        </h1>
+
+        <div class="flex flex-col items-center">
+          <h2
+            class="hero-detail md:text-heading-5 lg:text-heading-4 invisible relative z-10 mb-5 text-center md:mb-15 mt-5"
+          >
+            Design, build and run the world&apos;s first <br/> student-led fusion energy reactor. 
+          </h2>
+
+          <div class="hero-detail invisible relative z-10 flex gap-[29px]">
+            <PrimaryButton href="join"> Join Our Team </PrimaryButton>
+            <SecondaryOutlineButton href="/about"> Learn More </SecondaryOutlineButton>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { SplitText } from "gsap/SplitText";
+
+  gsap.registerPlugin(SplitText);
+
+  const split = new SplitText(".hero-line", { 
+    type: "chars", 
+    charsClass: "hero-char" 
+  });
+
+  gsap.set(".hero-line", { autoAlpha: 1 });
+
+  gsap.from(split.chars, {
+    duration: 1.2,
+    y: 100,
+    autoAlpha: 0,
+    rotateX: -90,
+    stagger: 0.03,
+    transformOrigin: "50% 100%", 
+    ease: "power4.out",
+  });
+
+  // Animates subtexts and buttons
+  gsap.fromTo(".hero-detail",
+    { 
+      y: 30, 
+      autoAlpha: 0 
+    },
+    { 
+      y: 0, 
+      autoAlpha: 1, 
+      duration: 1.5, 
+      delay: 1.1, // starts slightly after the first two lines are done
+      stagger: 0.2, 
+      ease: "power2.out" 
+    }
+  );
+</script>

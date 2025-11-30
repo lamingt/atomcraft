@@ -1,0 +1,18 @@
+---
+import AboutHero from "../components/about/AboutHero.astro";
+import Sections from "../components/about/Sections.astro";
+import What from "../components/about/What.astro";
+import Layout from "../layouts/Layout.astro";
+
+---
+
+<Layout 
+  title="AtomCraft | About Us" 
+  description="Discover the mission driving AtomCraft. Learn how we are approaching fusion energy at UNSW, and explore the strategy, objectives, and roadmap behind our Tokamak project."
+>
+  <AboutHero/>
+  <div class="relative mx-auto max-w-[1920px] px-6 md:px-[120px]">
+    <Sections/>
+    <What/>
+  </div>
+</Layout>
