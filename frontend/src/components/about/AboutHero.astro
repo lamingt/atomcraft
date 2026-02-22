@@ -5,11 +5,15 @@ import PrimaryButton from "../buttons/PrimaryButton.astro";
 import SecondaryOutlineButton from "../buttons/SecondaryOutlineButton.astro";
 ---
 
-<section class="relative w-full h-screen mb-22">
-  <Image src={Background} alt="A tokamak surrounded by cameras and equipment" class="absolute inset-0 z-0 w-full h-full"/>
+<section class="relative mb-10 h-screen w-full md:mb-22">
+  <Image
+    src={Background}
+    alt="A tokamak surrounded by cameras and equipment"
+    class="absolute inset-0 z-0 h-full w-full"
+  />
 
   <div
-    class="relative z-10 flex h-full w-full items-center justify-center md:mt-[100px]"
+    class="relative z-10 mt-[20] flex h-full w-full items-center justify-center lg:mt-26"
   >
     <div class="flex w-full flex-col items-center gap-5 md:pb-[25vh]">
       <div
@@ -29,14 +33,17 @@ import SecondaryOutlineButton from "../buttons/SecondaryOutlineButton.astro";
 
         <div class="flex flex-col items-center">
           <h2
-            class="hero-detail md:text-heading-5 lg:text-heading-4 invisible relative z-10 mb-5 text-center md:mb-15 mt-5"
+            class="hero-detail md:text-heading-5 lg:text-heading-4 invisible relative z-10 mt-5 mb-5 text-center md:mb-15"
           >
-            Design, build and run the world&apos;s first <br/> student-led fusion energy reactor. 
+            Design, build and run the world&apos;s first <br /> student-led fusion
+            energy reactor.
           </h2>
 
           <div class="hero-detail invisible relative z-10 flex gap-[29px]">
             <PrimaryButton href="join"> Join Our Team </PrimaryButton>
-            <SecondaryOutlineButton href="/about"> Learn More </SecondaryOutlineButton>
+            <SecondaryOutlineButton href="/about">
+              Learn More
+            </SecondaryOutlineButton>
           </div>
         </div>
       </div>
@@ -50,9 +57,9 @@ import SecondaryOutlineButton from "../buttons/SecondaryOutlineButton.astro";
 
   gsap.registerPlugin(SplitText);
 
-  const split = new SplitText(".hero-line", { 
-    type: "chars", 
-    charsClass: "hero-char" 
+  const split = new SplitText(".hero-line", {
+    type: "chars",
+    charsClass: "hero-char",
   });
 
   gsap.set(".hero-line", { autoAlpha: 1 });
@@ -63,23 +70,24 @@ import SecondaryOutlineButton from "../buttons/SecondaryOutlineButton.astro";
     autoAlpha: 0,
     rotateX: -90,
     stagger: 0.03,
-    transformOrigin: "50% 100%", 
+    transformOrigin: "50% 100%",
     ease: "power4.out",
   });
 
   // Animates subtexts and buttons
-  gsap.fromTo(".hero-detail",
-    { 
-      y: 30, 
-      autoAlpha: 0 
+  gsap.fromTo(
+    ".hero-detail",
+    {
+      y: 30,
+      autoAlpha: 0,
     },
-    { 
-      y: 0, 
-      autoAlpha: 1, 
-      duration: 1.5, 
+    {
+      y: 0,
+      autoAlpha: 1,
+      duration: 1.5,
       delay: 1.1, // starts slightly after the first two lines are done
-      stagger: 0.2, 
-      ease: "power2.out" 
-    }
+      stagger: 0.2,
+      ease: "power2.out",
+    },
   );
 </script>

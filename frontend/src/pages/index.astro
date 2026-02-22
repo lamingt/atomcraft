@@ -18,7 +18,7 @@ import NewsSlider from "../components/NewsSlider.astro";
 
   <div class="relative mx-auto max-w-[1920px] px-6 md:px-[120px]">
     <div
-      class="pointer-events-none absolute inset-x-0 top-0 left-0 z-10 h-[100px] bg-gradient-to-b from-black to-transparent md:h-[220px]"
+      class="pointer-events-none absolute inset-x-0 top-0 left-0 z-10 h-[100px] bg-linear-to-b from-black to-transparent md:h-[220px]"
     >
     </div>
     <WhatWeDo />
@@ -30,6 +30,11 @@ import NewsSlider from "../components/NewsSlider.astro";
     class="relative mx-auto max-w-[1920px] overflow-x-hidden px-6 md:px-[120px]"
   >
     <Objectives />
+    <div
+      class="mt-[52px] mb-20 h-0 border border-[#FFFFFF] opacity-50 md:mt-[100px] lg:mb-45 xl:mt-40"
+      id="tokamak-start"
+    >
+    </div>
     <Tokamak />
     <AboutUs />
     <Story />

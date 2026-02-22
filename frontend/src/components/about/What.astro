@@ -5,7 +5,7 @@ import Team from "../../assets/about/what.png";
 
 <section class="w-full" id="what">
   <div
-    class="xs:pb-25 relative z-10 flex flex-col items-center pt-[50px] text-center sm:pt-[100px] md:pb-50 lg:block lg:pt-[150px] lg:text-left xl:pt-[250px]"
+    class="relative z-10 flex flex-col items-center pt-[50px] pb-15 text-center sm:pt-[100px] md:pb-20 lg:block lg:pt-[150px] lg:text-left xl:pt-[250px] xl:pb-36"
   >
     <p
       id="question-text"
@@ -15,16 +15,33 @@ import Team from "../../assets/about/what.png";
     </p>
     <p
       id="answer-text"
-      class="text-heading-5 md:text-heading-4 lg:text-heading-3 xl:text-heading-2 pb-8 font-medium"
+      class="text-heading-5 md:text-heading-4 lg:text-heading-3 xl:text-heading-2 font-medium"
     >
-      AtomCraft aims make the world&apos;s first tokamak entirely designed, built, and operated by undergraduate students within 2 years. 
+      AtomCraft aims make the world&apos;s first tokamak entirely designed,
+      built, and operated by undergraduate students within 2 years.
     </p>
   </div>
-  <div class="flex gap-30 items-end">
-    <Image src={Team} alt="AtomCraft members standing behind models of the tokamak"/>
-    <p class="text-heading-4">
-      Students will develop innovative solutions to engineering challenges and work closely with industry partners, and push the boundaries of what is possible with fusion energy. 
-    </p>
+  <div
+    class="flex w-full flex-col items-center gap-10 lg:flex-row lg:items-end xl:gap-30"
+    id="what-2"
+  >
+    <div class="shrink-0 lg:w-1/2">
+      <Image
+        src={Team}
+        alt="AtomCraft members standing behind models of the tokamak"
+        class="h-auto w-full"
+      />
+    </div>
+
+    <div class="lg:w-1/2">
+      <p
+        class="text-body md:text-heading-5 xl:text-heading-4 3xl:text-heading-3 text-center lg:text-start"
+      >
+        Students will develop innovative solutions to engineering challenges and
+        work closely with industry partners, and push the boundaries of what is
+        possible with fusion energy.
+      </p>
+    </div>
   </div>
 </section>
 
@@ -60,4 +77,16 @@ import Team from "../../assets/about/what.png";
     },
     "<0.6",
   );
+
+  gsap.from("#what-2", {
+    y: 100,
+    opacity: 0,
+    duration: 1.0,
+    ease: "power3.out",
+    scrollTrigger: {
+      trigger: "#what-2",
+      start: "top 60%",
+      once: true,
+    },
+  });
 </script>

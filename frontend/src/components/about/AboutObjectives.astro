@@ -1,0 +1,152 @@
+---
+import { Image } from "astro:assets";
+import PrimaryOutlineButton from "../buttons/PrimaryOutlineButton.astro";
+import Education from "../../assets/objectives/education&talent.png";
+import Partnership from "../../assets/objectives/partnership&engagement.png";
+import Technology from "../../assets/objectives/technology&innovation.png";
+---
+
+<section id="objectives">
+  <h2
+    class="text-heading-4 sm:text-heading-3 xl:text-heading-2 mb-8 text-center lg:text-start"
+  >
+    Our Objectives
+  </h2>
+  <div class="flex flex-col gap-25">
+    <div
+      class="flex flex-col items-center gap-10 md:gap-13 lg:flex-row lg:items-end"
+      id="objective-1"
+    >
+      <div
+        class="flex flex-col items-start gap-5 lg:w-1/2 lg:items-start lg:text-start"
+      >
+        <PrimaryOutlineButton> 01 </PrimaryOutlineButton>
+        <h3 class="text-heading-5 sm:text-heading-4 xl:text-heading-3">
+          Education and Talent Development
+        </h3>
+        <ul class="text-body pl list-disc pl-5 2xl:text-[20px]">
+          <li>
+            Deliver immersive, interdisciplinary experiences that prepare
+            students for impactful careers in fusion and adjacent sectors.
+          </li>
+          <li>
+            Cultivate technical, project management, and leadership skills
+            through real-world builds and research.
+          </li>
+        </ul>
+      </div>
+      <Image
+        src={Education}
+        alt="Three students in a lab with masks conducting an experiment"
+        class="w-full lg:w-1/2"
+      />
+    </div>
+    <div class="flex flex-col gap-25">
+      <div
+        class="flex flex-col items-center gap-10 md:gap-13 lg:flex-row lg:items-end"
+        id="objective-2"
+      >
+        <div
+          class="flex flex-col items-start gap-5 lg:w-1/2 lg:items-start lg:text-start"
+        >
+          <PrimaryOutlineButton> 02 </PrimaryOutlineButton>
+          <h3 class="text-heading-5 sm:text-heading-4 xl:text-heading-3">
+            Technology Development and Innovation
+          </h3>
+          <ul class="text-body pl list-disc pl-5 2xl:text-[20px]">
+            <li>
+              Advance fusion by designing, building, and iterating student-led
+              devices, subsystems, and experimental platforms.
+            </li>
+            <li>
+              Translate learnings from each project cycle into new designs,
+              methodologies, and knowledge that others can build upon.
+            </li>
+          </ul>
+        </div>
+        <Image
+          src={Technology}
+          alt="Three students in a lab with masks conducting an experiment"
+          class="w-full lg:w-1/2"
+        />
+      </div>
+      <div class="flex flex-col gap-25">
+        <div
+          class="flex flex-col items-center gap-10 md:gap-13 lg:flex-row lg:items-end"
+          id="objective-3"
+        >
+          <div
+            class="flex flex-col items-start gap-5 lg:w-1/2 lg:items-start lg:text-start"
+          >
+            <PrimaryOutlineButton> 03 </PrimaryOutlineButton>
+            <h3 class="text-heading-5 sm:text-heading-4 xl:text-heading-3">
+              Partnership and Public Engagement
+            </h3>
+            <ul class="text-body pl list-disc pl-5 2xl:text-[20px]">
+              <li>
+                Build and sustain a collaborative network spanning academia,
+                industry, and government to accelerate technology maturity and
+                career pathways.
+              </li>
+              <li>
+                Inspire and educate the broader community about fusion through
+                outreach, events, and engagement.
+              </li>
+            </ul>
+          </div>
+          <Image
+            src={Partnership}
+            alt="Three students in a lab with masks conducting an experiment"
+            class="w-full lg:w-1/2"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import gsap from "gsap";
+  import ScrollTrigger from "gsap/ScrollTrigger";
+
+  const fromConfig = {
+    y: 100,
+    autoAlpha: 0,
+  };
+  const toConfig = {
+    y: 0,
+    autoAlpha: 1,
+    duration: 2,
+    ease: "power3.out",
+  };
+
+  gsap.fromTo("#objective-1", fromConfig, {
+    ...toConfig,
+    duration: 1.5,
+    scrollTrigger: {
+      trigger: "#objective-1",
+      start: "top 60%",
+      once: true,
+    },
+  });
+
+  gsap.fromTo("#objective-2", fromConfig, {
+    ...toConfig,
+    duration: 1.5,
+    scrollTrigger: {
+      trigger: "#objective-2",
+      start: "top 60%",
+      once: true,
+    },
+  });
+
+  gsap.fromTo("#objective-3", fromConfig, {
+    ...toConfig,
+    duration: 1.5,
+    scrollTrigger: {
+      trigger: "#objective-3",
+      start: "top 60%",
+      once: true,
+    },
+  });
+</script>

@@ -1,18 +1,28 @@
 ---
 import AboutHero from "../components/about/AboutHero.astro";
+import AboutObjectives from "../components/about/AboutObjectives.astro";
 import Sections from "../components/about/Sections.astro";
 import What from "../components/about/What.astro";
 import Layout from "../layouts/Layout.astro";
-
+import LineSeparator from "../components/LineSeparator.astro";
+import Strategy from "../components/about/Strategy.astro";
 ---
 
-<Layout 
-  title="AtomCraft | About Us" 
+<Layout
+  title="AtomCraft | About Us"
   description="Discover the mission driving AtomCraft. Learn how we are approaching fusion energy at UNSW, and explore the strategy, objectives, and roadmap behind our Tokamak project."
 >
-  <AboutHero/>
+  <AboutHero />
   <div class="relative mx-auto max-w-[1920px] px-6 md:px-[120px]">
-    <Sections/>
-    <What/>
+    <Sections />
+    <What />
+    <LineSeparator
+      class="mt-15 mb-10 md:mt-20 md:mb-15 lg:mt-30 lg:mb-20 xl:mt-45 xl:mb-39"
+    />
+    <AboutObjectives />
+    <LineSeparator
+      class="mt-15 mb-10 md:mt-20 md:mb-15 lg:mt-30 lg:mb-20 xl:mt-45 xl:mb-39"
+    />
+    <Strategy />
   </div>
 </Layout>
