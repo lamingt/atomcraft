@@ -1,7 +1,61 @@
 ---
-
+import PlanItem from "./PlanItem.astro";
 ---
 
-<section>
-  <h2 class="text-heading-2">Our Action Plan</h2>
+<section class="mb-50">
+  <h2
+    class="text-heading-4 sm:text-heading-3 xl:text-heading-2 mb-15 sm:mb-20 lg:mb-25"
+  >
+    Our Action Plan
+  </h2>
+  <div class="lg:gap-25md:mx-10 flex flex-col gap-15 sm:gap-20">
+    <PlanItem
+      year="2024"
+      subtitle="Year 1"
+      title="Design Phase"
+      fillPercentage={100}
+      items={[
+        "Complete full design of SOUTH device and its subsystems.",
+        "Finalise engineering drawings, simulations, and component specifications.",
+        "Plan safety frameworks, operational protocols, and team workflows.",
+        "Establish core expert support for technical guidance.",
+      ]}
+    />
+    <PlanItem
+      year="2025"
+      subtitle="Year 2"
+      title="Iterative Construction and GDC Testing"
+      fillPercentage={100}
+      items={[
+        "Construct and test the GDC (General Device Component) as a prototype platform.",
+        "Refine assembly procedures and operational protocols based on testing outcomes.",
+        "Train and onboard new team members, as team grows to 65 students.",
+        "Begin preliminary experiments to validate subsystem designs.",
+        "Formalise leadership roles, team structure, and cross-disciplinary training.",
+      ]}
+    />
+    <PlanItem
+      year="2026"
+      subtitle="Year 3"
+      title="Full Subsystems and Integration"
+      fillPercentage={25}
+      items={[
+        "Complete construction and testing of all SOUTH subsystems: vacuum, magnets, RF heating, diagnostics.",
+        "Integrate subsystems into a functional device and run initial plasma experiments.",
+        "Continue performance logging and optimisation of operational procedures.",
+      ]}
+    />
+    <PlanItem
+      year="2027"
+      subtitle="Year 4"
+      title="Next-Generation Design and Research Projects"
+      fillPercentage={0}
+      items={[
+        "Design and begin construction of SOUTH-2 (or next-generation device) using lessons from SOUTH-1.",
+        "Launch collaborative student research projects with UNSW staff and external advisors.",
+        "Host outreach events, workshops, and public demonstrations.",
+        "Secure medium to long-term funding and institutional support.",
+      ]}
+    />
+  </div>
 </section>
