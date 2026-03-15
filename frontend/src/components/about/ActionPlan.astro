@@ -59,3 +59,59 @@ import PlanItem from "./PlanItem.astro";
     />
   </div>
 </section>
+
+<script>
+  import gsap from "gsap";
+  import ScrollTrigger from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+  // gemini created this
+  document.addEventListener("DOMContentLoaded", () => {
+    // Grab all the PlanItem containers on the page
+    const items = gsap.utils.toArray(".plan-item");
+
+    items.forEach((item: any) => {
+      // Find the specific internal elements for this single item
+      const lineFill = item.querySelector(".plan-line-fill");
+      const targetFill = lineFill.dataset.fill;
+      const year = item.querySelector(".plan-year");
+      const content = item.querySelector(".plan-content");
+
+      // Create a timeline triggered by this specific item entering the viewport
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: item,
+          start: "top 60%", // Triggers when the top of the item hits 80% down the screen
+          once: true, // Only animate in once
+        },
+      });
+
+      // 1. Fade and slide the whole container up
+      tl.fromTo(
+        item,
+        { autoAlpha: 0, y: 50 },
+        { autoAlpha: 1, y: 0, duration: 0.6, ease: "power2.out" },
+      )
+        // 2. Slide the year text down slightly
+        .fromTo(
+          year,
+          { autoAlpha: 0, y: -20 },
+          { autoAlpha: 1, y: 0, duration: 0.5, ease: "power2.out" },
+          "-=0.4", // Overlap the animations slightly
+        )
+        // 3. Slide the text content in from the right
+        .fromTo(
+          content,
+          { autoAlpha: 0, x: 30 },
+          { autoAlpha: 1, x: 0, duration: 0.6, ease: "power2.out" },
+          "-=0.4",
+        )
+        // 4. Finally, "grow" the progress line down to its target percentage
+        .to(
+          lineFill,
+          { height: `${targetFill}%`, duration: 1.2, ease: "power3.out" },
+          "-=0.2",
+        );
+    });
+  });
+</script>

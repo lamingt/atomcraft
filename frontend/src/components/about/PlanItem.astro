@@ -10,22 +10,25 @@ interface Props {
 const { year, subtitle, title, fillPercentage, items } = Astro.props;
 ---
 
-<div class="xs:gap-9 flex gap-5">
+<div class="plan-item xs:gap-9 flex gap-5">
   <div
     class="min-h-[450px] w-1 shrink-0 overflow-hidden rounded-full bg-white/50"
   >
     <div
-      class="bg-cyan w-full transition-all duration-300 ease-in-out"
-      style={`height: ${fillPercentage}%;`}
+      class="plan-line-fill bg-cyan w-full"
+      data-fill={fillPercentage}
+      style="height: 0%;"
     >
     </div>
   </div>
 
-  <p class="text-heading-4 xs:text-heading-3 [writing-mode:vertical-rl]">
+  <p
+    class="plan-year text-heading-4 xs:text-heading-3 [writing-mode:vertical-rl]"
+  >
     {year}
   </p>
 
-  <div class="ml-5 sm:ml-10">
+  <div class="plan-content ml-5 sm:ml-10">
     <p class="xl:text-subheading-1 text-[24px] font-normal">{subtitle}</p>
     <p
       class="text-heading-5 md:text-heading-4 xl:text-heading-3 mb-5 sm:mb-10 xl:mb-15"
