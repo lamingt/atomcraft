@@ -2,18 +2,19 @@
 import { defineCollection, z } from "astro:content";
 import { getTeams, getNews, type Team, type Article } from "../api.ts";
 
+export const memberSchema = z.object({
+  name: z.string(),
+  role: z.string(),
+  imageUrl: z.string(),
+  imageAlt: z.string(),
+  id: z.string(),
+});
+
 const teams = defineCollection({
   schema: z.object({
     name: z.string(),
     description: z.string(),
-    members: z.array(
-      z.object({
-        name: z.string(),
-        role: z.string(),
-        imageUrl: z.string(),
-        imageAlt: z.string(),
-      }),
-    ),
+    members: z.array(memberSchema),
   }),
   loader: async () => {
     const teamsData: Team[] = await getTeams();
@@ -44,3 +45,4 @@ const news = defineCollection({
 });
 
 export const collections = { teams, news };
+export type Member = z.infer<typeof memberSchema>;

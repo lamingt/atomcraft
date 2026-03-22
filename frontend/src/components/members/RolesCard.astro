@@ -1,0 +1,31 @@
+---
+import { Image } from "astro:assets";
+import Default from "../../assets/roles/default.svg";
+
+export interface Props {
+  imageSrc: ImageMetadata;
+  imageAlt: string;
+  name: string;
+  role: string;
+  imageSize?: string;
+}
+
+const { imageSrc, imageAlt, name, role, imageSize = "" } = Astro.props;
+---
+
+<div class="flex w-full flex-col items-center">
+  <Image
+    src={imageSrc || Default}
+    alt={imageAlt || "Team member"}
+    class="aspect-square w-full max-w-80 rounded-full object-cover"
+  />
+
+  <div class="mt-4 w-full">
+    <p class="text-center text-xl wrap-break-word sm:text-2xl">
+      {name}
+    </p>
+    <p class="text-center wrap-break-word">
+      {role}
+    </p>
+  </div>
+</div>
