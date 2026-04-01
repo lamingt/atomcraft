@@ -10,13 +10,16 @@ import "@fontsource/inter/800.css";
 const teams = await getCollection("teams");
 const images = import.meta.glob<{ default: ImageMetadata }>(
   "/src/assets/notion-images/members/*.{jpeg,jpg,png,svg,webp}",
+  { eager:true }
 );
+
 const imageLookup: Record<string, ImageMetadata> = {};
 
 for (const path in images) {
   const file = path.split("/").pop()!;
   const base = file.replace(/\.(jpg|jpeg|png|svg|webp)$/i, "");
-  imageLookup[base] = (await images[path]()).default;
+  
+  imageLookup[base] = images[path].default; 
 }
 ---
 
