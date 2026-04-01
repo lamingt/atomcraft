@@ -21,12 +21,16 @@ for (const path in images) {
 ---
 
 <MembersLayout>
-  <div class="mx-auto mt-[150px] mb-20 w-[90%] max-w-[1500px] lg:mb-31">
+  <div
+    class="mx-auto mt-[150px] mb-20 w-[90%] max-w-[1500px] lg:mb-31 2xl:mt-[250px]"
+  >
     <div class="items-left flex w-full flex-col">
-      <h1 class="lg:text-heading-1 mt-20 mb-50 text-left text-4xl md:text-5xl">
+      <h1
+        class="sm:text-heading-3 md:text-heading-2 xl:text-heading-1 mb-20 text-left text-[clamp(26px,7vw,40px)] leading-[125%] font-bold whitespace-nowrap md:mb-30 lg:mb-40 xl:mb-51"
+      >
         Meet our team <br /> of Creators, Engineers, <br /> and Visionaries.
       </h1>
-      <div class="flex flex-col gap-40">
+      <div class="flex flex-col gap-20 md:gap-30 lg:gap-40">
         {
           teams.map(({ data }) => (
             <TeamSection

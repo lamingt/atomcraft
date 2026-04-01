@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import { type Member } from "../../content/config";
 import RolesCard from "./RolesCard.astro";
 
@@ -9,23 +8,31 @@ export interface Props {
   members: Member[];
   memberImageLookup: Record<string, ImageMetadata>;
 }
+
 const { teamName, description, members, memberImageLookup } = Astro.props;
+
 const gridCols =
-  teamName == "Academics"
-    ? "grid-cols-2 md:mt-5 lg:grid-cols-3"
-    : "grid-cols-2 md:grid-cols-3 lg:grid-cols-4";
+  members.length === 1
+    ? "grid-cols-1 md:grid-cols-2 xl:grid-cols-3"
+    : teamName == "Academics"
+      ? "grid-cols-1 xs:grid-cols-2 xl:grid-cols-3"
+      : "grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4";
 ---
 
 <section>
-  <div class="flex flex-row">
-    <div class="mr-10 w-[330px] shrink-0">
-      <h2 class="mr-9 mb-9 text-[36px] leading-[120%]">{teamName}</h2>
+  <div class="flex flex-col items-center md:flex-row md:items-start">
+    <div
+      class="mb-8 w-full shrink-0 text-center md:mr-10 md:mb-0 md:w-[280px] md:text-start lg:w-[300px] xl:w-[330px]"
+    >
+      <h2 class="mb-4 text-3xl leading-[120%] md:mb-9 lg:mr-9 lg:text-[36px]">
+        {teamName}
+      </h2>
       {description && <p>{description}</p>}
     </div>
 
-    <div class="min-w-0 flex-1">
+    <div class="w-full min-w-0 flex-1 md:w-auto">
       <div
-        class={`mt-10 grid w-full justify-items-center gap-10 md:mt-5 ${gridCols}`}
+        class={`grid w-full justify-items-center gap-6 md:gap-10 ${gridCols}`}
       >
         {
           members.map((member) => (
