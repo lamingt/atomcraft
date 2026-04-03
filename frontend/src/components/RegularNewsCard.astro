@@ -23,11 +23,14 @@ const { imageSrc, imageAlt, title, date, tags, description, url } = Astro.props;
   <div
     class="xs:w-[400px] group flex w-[270px] flex-col items-start gap-3 md:gap-5"
   >
-    <Image
-      src={imageSrc}
-      alt={imageAlt}
-      class="h-[200px] w-full object-cover"
-    />
+    <div class="relative h-[200px] w-full">
+      <Image
+        src={imageSrc}
+        alt={imageAlt}
+        class="absolute inset-0 h-full w-full rounded-[10px] object-cover"
+      />
+      <div class="absolute inset-0 rounded-[10px] bg-black/10 transition-colors duration-300 group-hover:bg-transparent"></div>
+    </div>
     <div class="flex w-full justify-between">
       {
         tags.map((tag) => (
@@ -45,11 +48,11 @@ const { imageSrc, imageAlt, title, date, tags, description, url } = Astro.props;
     </div>
 
     <div>
-      <p class="md:text-heading-5 text-xl font-medium group-hover:underline">
+      <p class="md:text-heading-5 text-xl font-medium group-hover:underline line-clamp-1">
         {title}
       </p>
     </div>
-    <p class="text-gray_text text-[13px] leading-[140%]">
+    <p class="text-gray_text text-[13px] leading-[140%] line-clamp-2 group-hover:underline">
       {description}
     </p>
   </div>

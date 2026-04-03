@@ -1,73 +1,236 @@
 ---
+import { getCollection } from "astro:content";
 import RegularNewsCard from "./RegularNewsCard.astro";
-import clampProtoype from "../assets/news/clamp.jpg";
-import glowDischarge from "../assets/news/glow-discharge.jpg";
-import smh from "../assets/news/smh.webp";
-import createDigital from "../assets/news/create-digital.png";
-import newsCom from "../assets/news/news-com.jpg";
-import mia from "../assets/news/mia.jpg";
+import SecondaryOutlineButton from "./buttons/SecondaryOutlineButton.astro";
+import rightArrow from "../assets/right-arrow.svg";
+import leftArrow from "../assets/left-arrow.svg";
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+const newsItems = await getCollection("news");
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/notion-images/news/*.{jpeg,jpg,png,svg,webp}",
+);
+const imageLookup: Record<string, ImageMetadata> = {};
+for (const path in images) {
+  const file = path.split("/").pop()!;
+  const base = file.replace(/\.(jpg|jpeg|png|svg|webp)$/i, "");
+  imageLookup[base] = (await images[path]()).default;
+}
+
+const regularNews = newsItems.filter(a => a.data.categories.includes("News"));
+const socialNews = newsItems.filter(a => a.data.categories.includes("Social"));
+
+// Duplicate arrays to guarantee enough native overflow width for GSAP's horizontalLoop to function infinitely
+const clonedNews = Array(6).fill(regularNews).flat();
+
+let chunkedSocial = [];
+for (let i = 0; i < socialNews.length; i += 2) {
+  chunkedSocial.push(socialNews.slice(i, i + 2));
+}
+const clonedSocial = Array(6).fill(chunkedSocial).flat();
 ---
 
-<div
-  class="grid w-full max-w-[1200px] gap-10 sm:grid-cols-1 md:grid-cols-2 mb-20 lg:mb-31 lg:grid-cols-3"
->
-  <RegularNewsCard
-    imageSrc={clampProtoype}
-    imageAlt="AtomCraft member welding"
-    title="Clamp Prototype"
-    date="05/11/2024"
-    tags={["Social"]}
-    description="Our structures team have been hard at work, and today marks the completion of our first clamp prototype!!"
-    url="https://www.linkedin.com/posts/atomcraft_our-structures-team-have-been-hard-at-work-activity-7259357503308578816-JurT"
-  />
+<div class="flex flex-col w-full gap-15 lg:gap-20 xl:gap-28 max-w-[1920px] mx-auto mb-20 md:mb-30 lg:mb-40 xl:mb-50">
+  
+  <section class="w-full">
+    <div class="mb-6 flex flex-col md:flex-row justify-between items-start md:items-end md:mb-12 gap-8">
+      <div class="flex flex-col gap-4">
+        <h3 class="text-heading-5 sm:text-heading-4 xl:text-heading-3 xl:text-heading-3">Featured Articles</h3>
+        <p class="text-gray_text text-body">Explore the impact that AtomCraft has made so far on platforms like The Sydney Morning Herald, News.com, Create Digital and more.</p>
+      </div>
+      <div class="flex gap-4 lg:gap-6 pb-2 shrink-0">
+        <SecondaryOutlineButton href="javascript:void(0)" class="group z-10 rn-news-prev cursor-pointer shrink-0">
+          <Image src={leftArrow} alt="left arrow" class="py-2 group-hover:invert group-active:invert-0 shrink-0" />
+        </SecondaryOutlineButton>
+        <SecondaryOutlineButton href="javascript:void(0)" class="group z-10 rn-news-next cursor-pointer shrink-0">
+          <Image src={rightArrow} alt="right arrow" class="py-2 group-hover:invert group-active:invert-0 shrink-0" />
+        </SecondaryOutlineButton>
+      </div>
+    </div>
 
-  <RegularNewsCard
-    imageSrc={glowDischarge}
-    imageAlt="Glow discharge"
-    title="Glow Discharge"
-    date="04/11/2024"
-    tags={["Social"]}
-    description="This past Friday, the Vacuum and Gas Delivery team ran the first Glow Discharge experiment, and here are the snazzy results!"
-    url="https://www.linkedin.com/posts/atomcraft_le-glow-pot-this-past-friday-the-vacuum-activity-7258995116290228224-Uaio"
-  />
+    <div class="flex gap-9 overflow-x-hidden touch-pan-y" id="rn-news-container">
+      {clonedNews.map((article) => (
+        <div class="rn-news-item shrink-0">
+          <RegularNewsCard
+            imageSrc={imageLookup[article.id]}
+            title={article.data.name}
+            imageAlt={article.data.imageAlt}
+            tags={article.data.categories}
+            description={article.data.description}
+            date={article.data.date}
+            url={article.data.url}
+          />
+        </div>
+      ))}
+    </div>
+  </section>
 
-  <RegularNewsCard
-    imageSrc={mia}
-    imageAlt="Team disassembling a microwave"
-    title="MIA: Microwaves in Action"
-    date="01/11/2024"
-    tags={["Social"]}
-    description="Our team dives into microwave disassembly, to harness radio frequencies that will heat the plasma inside our Tokamak."
-    url="https://www.linkedin.com/posts/atomcraft_mia-microwaves-in-action-our-team-activity-7257904190058827776-qWtN"
-  />
+  <section class="w-full">
+    <div class="mb-6 flex flex-col md:flex-row justify-between items-start md:items-end md:mb-12 gap-8">
+      <div class="flex flex-col gap-4">
+        <h3 class="text-heading-5 sm:text-heading-4 xl:text-heading-3">Social Media</h3>
+        <p class="text-gray_text text-body">Keep up to date with AtomCrafts social media updates. Check our social media platforms as well.</p>
+      </div>
+      <div class="flex gap-4 lg:gap-6 pb-2 shrink-0">
+        <SecondaryOutlineButton href="javascript:void(0)" class="group z-10 rn-social-prev cursor-pointer shrink-0">
+          <Image src={leftArrow} alt="left arrow" class="py-2 group-hover:invert group-active:invert-0 shrink-0" />
+        </SecondaryOutlineButton>
+        <SecondaryOutlineButton href="javascript:void(0)" class="group z-10 rn-social-next cursor-pointer shrink-0">
+          <Image src={rightArrow} alt="right arrow" class="py-2 group-hover:invert group-active:invert-0 shrink-0" />
+        </SecondaryOutlineButton>
+      </div>
+    </div>
 
-  <RegularNewsCard
-    imageSrc={createDigital}
-    imageAlt="Inside of a tokamak machine"
-    title="World-first fusion device powers student education"
-    date="21/09/2023"
-    tags={["News"]}
-    description="The first ever nuclear fusion device entirely designed and operated by students will be constructed at the University of New South Wales."
-    url="https://createdigital.org.au/fusion-device-student-education/"
-  />
+    <div class="flex gap-9 overflow-x-hidden touch-pan-y" id="rn-social-container">
+      {clonedSocial.map((col) => (
+        <div class="rn-social-item flex shrink-0 flex-row md:flex-col gap-9">
+          {col.map((article: any) => (
+            <div class="shrink-0">
+              <RegularNewsCard
+                imageSrc={imageLookup[article.id]}
+                title={article.data.name}
+                imageAlt={article.data.imageAlt}
+                tags={article.data.categories}
+                description={article.data.description}
+                date={article.data.date}
+                url={article.data.url}
+              />
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  </section>
 
-  <RegularNewsCard
-    imageSrc={smh}
-    imageAlt="Harvey Ling (right) and a group of other nuclear engineering students at UNSW involved in designing a tokamak nuclear fusion machine."
-    title="Sydney students building nuclear device to unlock the energy of stars"
-    date="18/09/2023"
-    tags={["News"]}
-    description="Sydney students are building a device capable of nuclear fusion – the process that powers stars and could unlock enormous amounts of carbon-free energy on Earth."
-    url="https://www.smh.com.au/national/nsw/sydney-students-building-nuclear-device-to-unlock-the-energy-of-stars-20230913-p5e4fy.html"
-  />
-
-  <RegularNewsCard
-    imageSrc={newsCom}
-    imageAlt="Laser fusion pioneer Prof Heinrich Hora (centre) with (from left) HB11 co-founder Dr Warren McKenzie, Macquarie University and UNSW collaborators and Alex Fuerbach and Prof Francois Ladouceur, HB11 Energy Director and former ANSTO CEO Dr Adi Paterson."
-    title="UNSW students announce fusion power product which they say will drastically reduce power bills"
-    date="14/09/2023"
-    tags={["News"]}
-    description="Energy prices are a big part of the cost-of-living crisis crushing Australians, but some Sydney university students and tech visionaries are working on a new fuel that would eliminate power bills."
-    url="https://www.news.com.au/technology/innovation/inventions/unsw-students-announce-fusion-power-product-which-they-say-will-drastically-reduce-power-bills/news-story/6a3e7afa55dbb1bc528e59d084e02f17"
-  />
 </div>
+
+<script>
+  import gsap from "gsap";
+  import { horizontalLoop } from "../helpers";
+  import { Observer } from "gsap/Observer";
+
+  gsap.registerPlugin(Observer);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // ==== NEWS SLIDER ====
+    const newsParts = gsap.utils.toArray(".rn-news-item") as HTMLElement[];
+    if (newsParts.length > 0) {
+      const newsLoop = horizontalLoop(newsParts, {
+        paused: true,
+        paddingRight: 36,
+      });
+
+      const wrapNewsTime = gsap.utils.wrap(0, newsLoop.duration());
+      const itemTimeNews = newsLoop.times[1] - newsLoop.times[0];
+
+      // Disable original stateful helpers
+      // const goNextNews = () => newsLoop.next({ duration: 1, ease: "power3.inOut" });
+      // const goPrevNews = () => newsLoop.previous({ duration: 1, ease: "power3.inOut" });
+
+      document.querySelector(".rn-news-next")?.addEventListener("click", () => {
+        gsap.to(newsLoop, {
+          totalTime: newsLoop.totalTime() + itemTimeNews,
+          duration: 0.5,
+          ease: "power2.out",
+          modifiers: { totalTime: wrapNewsTime }
+        });
+      });
+      document.querySelector(".rn-news-prev")?.addEventListener("click", () => {
+        gsap.to(newsLoop, {
+          totalTime: newsLoop.totalTime() - itemTimeNews,
+          duration: 0.5,
+          ease: "power2.out",
+          modifiers: { totalTime: wrapNewsTime }
+        });
+      });
+
+      Observer.create({
+        type: "touch,pointer",
+        target: document.querySelector("#rn-news-container"),
+        tolerance: 0,
+        preventDefault: false, // Managed natively via touch-pan-y css!
+        onChangeX: (self) => {
+          gsap.killTweensOf(newsLoop);
+          let timeDelta = self.deltaX / 100;
+          let newTime = newsLoop.totalTime() - timeDelta;
+          newsLoop.totalTime(wrapNewsTime(newTime));
+        },
+        onRelease: (self) => {
+          let velocity = self.velocityX / 100;
+          if (Math.abs(velocity) > 0.2) {
+             gsap.to(newsLoop, {
+               totalTime: newsLoop.totalTime() - velocity * 0.4,
+               duration: 0.6,
+               ease: "power2.out",
+               modifiers: {
+                 totalTime: wrapNewsTime
+               }
+             });
+          }
+        }
+      });
+    }
+
+    // ==== SOCIAL SLIDER ====
+    const socialParts = gsap.utils.toArray(".rn-social-item") as HTMLElement[];
+    if (socialParts.length > 0) {
+      const socialLoop = horizontalLoop(socialParts, {
+        paused: true,
+        paddingRight: 36,
+      });
+
+      const wrapSocialTime = gsap.utils.wrap(0, socialLoop.duration());
+      const baseItemTimeSocial = socialLoop.times[1] - socialLoop.times[0];
+
+      const getSocialJumpTime = () => {
+         // Because mobile layouts flatten 2 cards into 1 horizontal wrapper (doubling its width), 
+         // we mathematically halve the tracking jump distance dynamically beneath layout break limits.
+         return window.matchMedia("(min-width: 768px)").matches ? baseItemTimeSocial : baseItemTimeSocial / 2;
+      };
+
+      document.querySelector(".rn-social-next")?.addEventListener("click", () => {
+        gsap.to(socialLoop, {
+          totalTime: socialLoop.totalTime() + getSocialJumpTime(),
+          duration: 0.5,
+          ease: "power2.out",
+          modifiers: { totalTime: wrapSocialTime }
+        });
+      });
+      document.querySelector(".rn-social-prev")?.addEventListener("click", () => {
+        gsap.to(socialLoop, {
+          totalTime: socialLoop.totalTime() - getSocialJumpTime(),
+          duration: 0.5,
+          ease: "power2.out",
+          modifiers: { totalTime: wrapSocialTime }
+        });
+      });
+
+      Observer.create({
+        type: "touch,pointer",
+        target: document.querySelector("#rn-social-container"),
+        tolerance: 0,
+        preventDefault: false,
+        onChangeX: (self) => {
+          gsap.killTweensOf(socialLoop);
+          let timeDelta = self.deltaX / 100;
+          let newTime = socialLoop.totalTime() - timeDelta;
+          socialLoop.totalTime(wrapSocialTime(newTime));
+        },
+        onRelease: (self) => {
+          let velocity = self.velocityX / 100;
+          if (Math.abs(velocity) > 0.2) {
+             gsap.to(socialLoop, {
+               totalTime: socialLoop.totalTime() - velocity * 0.4,
+               duration: 0.6,
+               ease: "power2.out",
+               modifiers: {
+                 totalTime: wrapSocialTime
+               }
+             });
+          }
+        }
+      });
+    }
+  });
+</script>

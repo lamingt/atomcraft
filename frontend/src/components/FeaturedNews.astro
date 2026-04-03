@@ -1,4 +1,5 @@
 ---
+import { getCollection } from "astro:content";
 import openstar from "../assets/news/openstar.webp";
 import abc from "../assets/news/abc.avif";
 import csiro from "../assets/news/csiro.webp";
@@ -6,8 +7,145 @@ import FeaturedNewsCard from "../components/FeaturedNewsCard.astro";
 import { Image } from "astro:assets";
 import leftArrow from "../assets/left-arrow.svg";
 import rightArrow from "../assets/right-arrow.svg";
+
+const news = await getCollection("news");
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/notion-images/news/*.{jpeg,jpg,png,svg,webp}",
+);
+const imageLookup: Record<string, ImageMetadata> = {};
+
+for (const path in images) {
+  const file = path.split("/").pop()!;
+  const base = file.replace(/\.(jpg|jpeg|png|svg|webp)$/i, "");
+  imageLookup[base] = (await images[path]()).default;
+}
+
+const featuredNews = news.filter((article) => article.data.type === "Featured");
 ---
 
+<div class="mt-30 mb-20 lg:mb-40 2xl:mb-50 w-full">
+  {featuredNews.length > 0 && (
+    <div class="relative w-full">
+      <div class="pointer-events-none absolute right-4 top-4 z-20 flex gap-4 lg:left-0 lg:right-auto lg:top-0 lg:w-[calc(40%-16px)] xl:w-[calc(40%-22.4px)] lg:justify-end lg:gap-6 lg:pt-2">
+        <button id="feat-prev-btn" class="pointer-events-auto group flex h-10 w-16 cursor-pointer items-center justify-center rounded-full border border-white bg-black/40 backdrop-blur-md transition-colors duration-200 hover:bg-white/20 active:bg-white/40 lg:h-12 lg:w-20 lg:bg-transparent lg:backdrop-blur-none">
+          <Image src={leftArrow} alt="left arrow" class="w-5 lg:w-6" loading="eager" />
+        </button>
+        <button id="feat-next-btn" class="pointer-events-auto group flex h-10 w-16 cursor-pointer items-center justify-center rounded-full border border-white bg-black/40 backdrop-blur-md transition-colors duration-200 hover:bg-white/20 active:bg-white/40 lg:h-12 lg:w-20 lg:bg-transparent lg:backdrop-blur-none">
+          <Image src={rightArrow} alt="right arrow" class="w-5 lg:w-6" loading="eager" />
+        </button>
+      </div>
+
+      <div class="grid w-full">
+        {featuredNews.map((article, i) => (
+          <a
+            href={article.data.url}
+            target="_blank"
+            class="featured-item group col-start-1 row-start-1 flex w-full flex-col pb-4 lg:flex-row lg:items-end lg:gap-10 xl:gap-[56px] lg:pb-0"
+            style={{ opacity: i === 0 ? 1 : 0, visibility: i === 0 ? "visible" : "hidden", pointerEvents: i === 0 ? "auto" : "none" }}
+          >
+            <div class="order-2 mt-6 flex w-full flex-col justify-start lg:order-1 lg:mt-0 lg:w-[calc(40%-16px)] xl:w-[calc(40%-22.4px)] lg:justify-end">
+              {article.data.categories && article.data.categories.length > 0 && (
+                <div class:list={[
+                  "mb-4 flex w-fit items-center justify-center rounded-[100px] px-4 py-1.5 text-sm font-medium lg:text-base",
+                  article.data.categories[0] === "News" ? "bg-red" : "bg-pink"
+                ]}>
+                  {article.data.categories[0]}
+                </div>
+              )}
+              <div class="flex flex-col gap-3 xl:gap-5">
+                <h2 class="line-clamp-1 text-heading-5 sm:text-heading-4 xl:text-heading-3 font-medium tracking-wide text-white">
+                  <span class="group-hover:underline">{article.data.name}</span>
+                </h2>
+                <p class="text-gray_text">
+                  <span class="group-hover:underline">{article.data.date}</span>
+                </p>
+                <p class="line-clamp-2 text-body text-white lg:w-11/12">
+                  <span class="group-hover:underline">{article.data.description}</span>
+                </p>
+              </div>
+            </div>
+
+            <div class="relative order-1 w-full shrink-0 aspect-4/3 sm:aspect-video lg:order-2 lg:w-[calc(60%-24px)] xl:w-[calc(60%-33.6px)]">
+              <Image
+                src={imageLookup[article.id] || abc}
+                alt={article.data.imageAlt || "Featured news image"}
+                class="h-full w-full rounded-2xl object-cover"
+                loading="eager"
+              />
+              <div class="absolute inset-0 rounded-2xl bg-black/10 transition-colors group-hover:bg-transparent"></div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  )}
+</div>
+
+<script>
+  import gsap from "gsap";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const itemElements = gsap.utils.toArray(".featured-item") as HTMLElement[];
+    
+    if (itemElements.length === 0) return;
+
+    let currentIndex = 0;
+    let isAnimating = false;
+    let autoAdvanceTween: gsap.core.Tween | null = null;
+
+    const autoAdvance = () => {
+      let nextIndex = (currentIndex + 1) % itemElements.length;
+      goToIndex(nextIndex);
+    };
+
+    const goToIndex = (index: number) => {
+      if (isAnimating || index === currentIndex) return;
+      isAnimating = true;
+
+      if (autoAdvanceTween) {
+          autoAdvanceTween.kill();
+      }
+
+      const currentItem = itemElements[currentIndex];
+      const nextItem = itemElements[index];
+
+      gsap.to(currentItem, {
+        opacity: 0,
+        duration: 1,
+        ease: "power2.inOut",
+        onComplete: () => {
+          gsap.set(currentItem, { visibility: "hidden", pointerEvents: "none" });
+        }
+      });
+
+      gsap.set(nextItem, { visibility: "visible", pointerEvents: "auto" });
+      gsap.to(nextItem, {
+        opacity: 1,
+        duration: 1,
+        ease: "power2.inOut",
+        onComplete: () => {
+          currentIndex = index;
+          isAnimating = false;
+          autoAdvanceTween = gsap.delayedCall(8, autoAdvance);
+        }
+      });
+    };
+
+    autoAdvanceTween = gsap.delayedCall(8, autoAdvance);
+
+    document.querySelector("#feat-next-btn")?.addEventListener("click", () => {
+      let nextIndex = (currentIndex + 1) % itemElements.length;
+      goToIndex(nextIndex);
+    });
+
+    document.querySelector("#feat-prev-btn")?.addEventListener("click", () => {
+      let prevIndex = (currentIndex - 1 + itemElements.length) % itemElements.length;
+      goToIndex(prevIndex);
+    });
+  });
+</script>
+
+{/*
 <div class="mb-20 w-full max-w-[1200px]">
   <div class="relative flex gap-20 overflow-x-hidden">
     <FeaturedNewsCard
@@ -121,3 +259,4 @@ import rightArrow from "../assets/right-arrow.svg";
     });
   });
 </script>
+*/}
