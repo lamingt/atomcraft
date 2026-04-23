@@ -24,11 +24,13 @@ const socialNews = newsItems.filter(a => a.data.categories.includes("Social"));
 // Duplicate arrays to guarantee enough native overflow width for GSAP's horizontalLoop to function infinitely
 const clonedNews = Array(6).fill(regularNews).flat();
 
-let chunkedSocial = [];
-for (let i = 0; i < socialNews.length; i += 2) {
-  chunkedSocial.push(socialNews.slice(i, i + 2));
+// Repeat the array 10 times so we always have an even number of items and enough to scroll
+const repeatedSocial = Array(10).fill(socialNews).flat();
+
+let clonedSocial = [];
+for (let i = 0; i < repeatedSocial.length; i += 2) {
+  clonedSocial.push(repeatedSocial.slice(i, i + 2));
 }
-const clonedSocial = Array(6).fill(chunkedSocial).flat();
 ---
 
 <div class="flex flex-col w-full gap-15 lg:gap-20 xl:gap-28 max-w-[1920px] mx-auto mb-20 md:mb-30 lg:mb-40 xl:mb-50">
@@ -36,7 +38,7 @@ const clonedSocial = Array(6).fill(chunkedSocial).flat();
   <section class="w-full">
     <div class="mb-6 flex flex-col md:flex-row justify-between items-start md:items-end md:mb-12 gap-8">
       <div class="flex flex-col gap-4">
-        <h3 class="text-heading-5 sm:text-heading-4 xl:text-heading-3 xl:text-heading-3">Featured Articles</h3>
+        <h3 class="text-heading-5 sm:text-heading-4 xl:text-heading-3">Featured Articles</h3>
         <p class="text-gray_text text-body">Explore the impact that AtomCraft has made so far on platforms like The Sydney Morning Herald, News.com, Create Digital and more.</p>
       </div>
       <div class="flex gap-4 lg:gap-6 pb-2 shrink-0">
@@ -124,24 +126,33 @@ const clonedSocial = Array(6).fill(chunkedSocial).flat();
       const wrapNewsTime = gsap.utils.wrap(0, newsLoop.duration());
       const itemTimeNews = newsLoop.times[1] - newsLoop.times[0];
 
-      // Disable original stateful helpers
-      // const goNextNews = () => newsLoop.next({ duration: 1, ease: "power3.inOut" });
-      // const goPrevNews = () => newsLoop.previous({ duration: 1, ease: "power3.inOut" });
+      let newsProxy = { time: newsLoop.totalTime() };
+      let newsTargetTime = newsLoop.totalTime();
 
       document.querySelector(".rn-news-next")?.addEventListener("click", () => {
-        gsap.to(newsLoop, {
-          totalTime: newsLoop.totalTime() + itemTimeNews,
+        if (!gsap.isTweening(newsProxy)) {
+           newsProxy.time = newsLoop.totalTime();
+           newsTargetTime = newsProxy.time;
+        }
+        newsTargetTime += itemTimeNews;
+        gsap.to(newsProxy, {
+          time: newsTargetTime,
           duration: 0.5,
           ease: "power2.out",
-          modifiers: { totalTime: wrapNewsTime }
+          onUpdate: () => { newsLoop.totalTime(wrapNewsTime(newsProxy.time)); }
         });
       });
       document.querySelector(".rn-news-prev")?.addEventListener("click", () => {
-        gsap.to(newsLoop, {
-          totalTime: newsLoop.totalTime() - itemTimeNews,
+        if (!gsap.isTweening(newsProxy)) {
+           newsProxy.time = newsLoop.totalTime();
+           newsTargetTime = newsProxy.time;
+        }
+        newsTargetTime -= itemTimeNews;
+        gsap.to(newsProxy, {
+          time: newsTargetTime,
           duration: 0.5,
           ease: "power2.out",
-          modifiers: { totalTime: wrapNewsTime }
+          onUpdate: () => { newsLoop.totalTime(wrapNewsTime(newsProxy.time)); }
         });
       });
 
@@ -151,7 +162,7 @@ const clonedSocial = Array(6).fill(chunkedSocial).flat();
         tolerance: 0,
         preventDefault: false, // Managed natively via touch-pan-y css!
         onChangeX: (self) => {
-          gsap.killTweensOf(newsLoop);
+          gsap.killTweensOf(newsProxy);
           let timeDelta = self.deltaX / 100;
           let newTime = newsLoop.totalTime() - timeDelta;
           newsLoop.totalTime(wrapNewsTime(newTime));
@@ -159,13 +170,12 @@ const clonedSocial = Array(6).fill(chunkedSocial).flat();
         onRelease: (self) => {
           let velocity = self.velocityX / 100;
           if (Math.abs(velocity) > 0.2) {
-             gsap.to(newsLoop, {
-               totalTime: newsLoop.totalTime() - velocity * 0.4,
+             newsProxy.time = newsLoop.totalTime();
+             gsap.to(newsProxy, {
+               time: newsProxy.time - velocity * 0.4,
                duration: 0.6,
                ease: "power2.out",
-               modifiers: {
-                 totalTime: wrapNewsTime
-               }
+               onUpdate: () => { newsLoop.totalTime(wrapNewsTime(newsProxy.time)); }
              });
           }
         }
@@ -173,64 +183,77 @@ const clonedSocial = Array(6).fill(chunkedSocial).flat();
     }
 
     // ==== SOCIAL SLIDER ====
+    const socialContainer = document.querySelector("#rn-social-container");
     const socialParts = gsap.utils.toArray(".rn-social-item") as HTMLElement[];
-    if (socialParts.length > 0) {
-      const socialLoop = horizontalLoop(socialParts, {
-        paused: true,
-        paddingRight: 36,
-      });
-
-      const wrapSocialTime = gsap.utils.wrap(0, socialLoop.duration());
-      const baseItemTimeSocial = socialLoop.times[1] - socialLoop.times[0];
-
-      const getSocialJumpTime = () => {
-         // Because mobile layouts flatten 2 cards into 1 horizontal wrapper (doubling its width), 
-         // we mathematically halve the tracking jump distance dynamically beneath layout break limits.
-         return window.matchMedia("(min-width: 768px)").matches ? baseItemTimeSocial : baseItemTimeSocial / 2;
-      };
-
-      document.querySelector(".rn-social-next")?.addEventListener("click", () => {
-        gsap.to(socialLoop, {
-          totalTime: socialLoop.totalTime() + getSocialJumpTime(),
-          duration: 0.5,
-          ease: "power2.out",
-          modifiers: { totalTime: wrapSocialTime }
+    if (socialParts.length > 0 && socialContainer) {
+        const socialLoop = horizontalLoop(socialParts, {
+          paused: true,
+          paddingRight: 36,
         });
-      });
-      document.querySelector(".rn-social-prev")?.addEventListener("click", () => {
-        gsap.to(socialLoop, {
-          totalTime: socialLoop.totalTime() - getSocialJumpTime(),
-          duration: 0.5,
-          ease: "power2.out",
-          modifiers: { totalTime: wrapSocialTime }
-        });
-      });
 
-      Observer.create({
-        type: "touch,pointer",
-        target: document.querySelector("#rn-social-container"),
-        tolerance: 0,
-        preventDefault: false,
-        onChangeX: (self) => {
-          gsap.killTweensOf(socialLoop);
-          let timeDelta = self.deltaX / 100;
-          let newTime = socialLoop.totalTime() - timeDelta;
-          socialLoop.totalTime(wrapSocialTime(newTime));
-        },
-        onRelease: (self) => {
-          let velocity = self.velocityX / 100;
-          if (Math.abs(velocity) > 0.2) {
-             gsap.to(socialLoop, {
-               totalTime: socialLoop.totalTime() - velocity * 0.4,
-               duration: 0.6,
-               ease: "power2.out",
-               modifiers: {
-                 totalTime: wrapSocialTime
-               }
-             });
+        const wrapSocialTime = gsap.utils.wrap(0, socialLoop.duration());
+        const baseItemTimeSocial = socialLoop.times[1] - socialLoop.times[0];
+
+        const getSocialJumpTime = () => {
+           // Because mobile layouts flatten 2 cards into 1 horizontal wrapper (doubling its width), 
+           // we mathematically halve the tracking jump distance dynamically beneath layout break limits.
+           return window.matchMedia("(min-width: 768px)").matches ? baseItemTimeSocial : baseItemTimeSocial / 2;
+        };
+
+        let socialProxy = { time: socialLoop.totalTime() };
+        let socialTargetTime = socialLoop.totalTime();
+
+        document.querySelector(".rn-social-next")?.addEventListener("click", () => {
+          if (!gsap.isTweening(socialProxy)) {
+             socialProxy.time = socialLoop.totalTime();
+             socialTargetTime = socialProxy.time;
           }
-        }
-      });
+          socialTargetTime += getSocialJumpTime();
+          gsap.to(socialProxy, {
+            time: socialTargetTime,
+            duration: 0.5,
+            ease: "power2.out",
+            onUpdate: () => { socialLoop.totalTime(wrapSocialTime(socialProxy.time)); }
+          });
+        });
+        document.querySelector(".rn-social-prev")?.addEventListener("click", () => {
+          if (!gsap.isTweening(socialProxy)) {
+             socialProxy.time = socialLoop.totalTime();
+             socialTargetTime = socialProxy.time;
+          }
+          socialTargetTime -= getSocialJumpTime();
+          gsap.to(socialProxy, {
+            time: socialTargetTime,
+            duration: 0.5,
+            ease: "power2.out",
+            onUpdate: () => { socialLoop.totalTime(wrapSocialTime(socialProxy.time)); }
+          });
+        });
+
+        Observer.create({
+          type: "touch,pointer",
+          target: socialContainer,
+          tolerance: 0,
+          preventDefault: false,
+          onChangeX: (self) => {
+            gsap.killTweensOf(socialProxy);
+            let timeDelta = self.deltaX / 100;
+            let newTime = socialLoop.totalTime() - timeDelta;
+            socialLoop.totalTime(wrapSocialTime(newTime));
+          },
+          onRelease: (self) => {
+            let velocity = self.velocityX / 100;
+            if (Math.abs(velocity) > 0.2) {
+               socialProxy.time = socialLoop.totalTime();
+               gsap.to(socialProxy, {
+                 time: socialProxy.time - velocity * 0.4,
+                 duration: 0.6,
+                 ease: "power2.out",
+                 onUpdate: () => { socialLoop.totalTime(wrapSocialTime(socialProxy.time)); }
+               });
+            }
+          }
+        });
     }
   });
 </script>
