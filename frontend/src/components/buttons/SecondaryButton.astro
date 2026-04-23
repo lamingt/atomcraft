@@ -1,15 +1,18 @@
 ---
 export type Props = {
-  href: string;
+  href?: string;
   id?: string;
   class?: string;
+  type?: "button" | "submit" | "reset";
 };
 
-const { href, id, class: extraClass = "" } = Astro.props;
+const { href, id, class: extraClass = "", type } = Astro.props;
+const Element = href ? "a" : "button";
+const elementProps = href ? { href } : { type: type || "button" };
 ---
 
-<a
-  href={href}
+<Element
+  {...elementProps}
   id={id ? id : undefined}
   class:list={[
     "bg-purple hover:border-purple hover:text-purple active:bg-purple active:border-purple border-purple inline-flex cursor-pointer items-center justify-center rounded-[100px] border-2 px-[25px] py-[10.87px] text-sm duration-200 hover:bg-transparent active:text-white active:opacity-60 sm:text-[18px] lg:px-[30px] lg:py-[13px] xl:px-[38px] xl:py-[16.5px]",
@@ -17,4 +20,4 @@ const { href, id, class: extraClass = "" } = Astro.props;
   ]}
 >
   <slot />
-</a>
+</Element>

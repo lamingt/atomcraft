@@ -1,0 +1,63 @@
+---
+import PrimaryOutlineButton from "../buttons/PrimaryOutlineButton.astro";
+import { Image } from "astro:assets";
+import Partnership from "../../assets/objectives/partnership&engagement.png";
+import PrimaryButtonContainer from "../buttons/PrimaryButtonContainer.astro";
+---
+
+<section class="w-full pt-20 md:pt-[130px]">
+  <h2 class="text-heading-4 sm:text-heading-3 xl:text-heading-2 text-center mb-5">
+    Our Objectives
+  </h2>
+  <div class="flex flex-col gap-25">
+    <div
+      class="flex flex-col items-center gap-10 md:gap-13 lg:flex-row lg:items-end"
+    >
+      <div
+        class="flex flex-col items-start gap-5 lg:w-1/2 lg:items-start lg:text-start"
+      >
+        <PrimaryOutlineButton> 03 </PrimaryOutlineButton>
+        <h3 class="text-heading-5 sm:text-heading-4 xl:text-heading-3">
+          Partnership and Public Engagement
+        </h3>
+        <ul class="text-sm md:text-body pl list-disc pl-5 2xl:text-[20px]">
+          <li>
+            Build and sustain a collaborative network spanning academia,
+            industry, and government to accelerate technology maturity and
+            career pathways.
+          </li>
+          <li>
+            Inspire and educate the broader community about fusion through
+            outreach, events, and engagement.
+          </li>
+        </ul>
+      </div>
+      <Image
+        src={Partnership}
+        alt="Three students in a lab with masks conducting an experiment"
+        class="w-full lg:w-1/2"
+      />
+    </div>
+  </div>
+
+  <div class="mt-30">
+    <h2
+      class="text-heading-4 sm:text-heading-3 xl:text-heading-2 xs:mb-8 mb-10 text-center"
+    >
+      Our Strategy
+    </h2>
+    <h4
+      class="gsap-item text-heading-5 text-center mb-8"
+    >
+      Public Engagement
+    </h4>
+
+    <div class="gsap-item flex flex-col items-center gap-5">
+      <PrimaryButtonContainer> Communicate Fusion </PrimaryButtonContainer>
+      <p class="sm:w-[485px] text-center sm:text-body">
+        Actively engage the public, partners, and policymakers to make fusion
+        progress visible and inspiring
+      </p>
+    </div>
+  </div>
+</section>

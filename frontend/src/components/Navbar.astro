@@ -28,7 +28,7 @@ const isHome = Astro.url.pathname === "/";
     class="relative z-10 mx-5 flex w-full items-center justify-between lg:mx-[30px] xl:mx-10"
   >
     <div
-      class="md:text-md flex items-center md:gap-5 lg:gap-10 lg:text-xl xl:gap-[60px]"
+      class="md:text-md  xl:text-lg flex items-center md:gap-5 lg:gap-10 xl:gap-[60px]"
     >
       <a href="/">
         <Image
@@ -38,34 +38,30 @@ const isHome = Astro.url.pathname === "/";
           class="z-10 w-[200px] sm:w-[175px] lg:w-52"
         />
       </a>
-      <div class="smd:flex hidden gap-5 lg:gap-5 2xl:gap-10">
+      <div class="lg:flex hidden gap-5 lg:gap-5 2xl:gap-10">
         <a href="/about" class="hover:underline"> About Us </a>
         <a href="/news" class="hover:underline"> News </a>
         <a href="/members" class="hover:underline"> Members </a>
-        <!-- <a href="/partners" class="hover:underline">
-          Partners
-        </a>
-        <a href="/join" class="hover:underline">
-          Recruitment
-        </a> -->
+        <a href="/partners" class="hover:underline"> Partners </a>
+        <!-- <a href="/join" class="hover:underline"> Recruitment </a> -->
       </div>
     </div>
 
-    <div class="smd:block z-10 hidden">
+    <div class="z-10 hidden lg:block">
       <div class="flex items-center gap-3 xl:gap-[30px]">
-        <SecondaryButton href="/partners" class="md:text-sm lg:text-[18px]">
+        <SecondaryButton href="/partners" class="md:text-sm lg:text-[16px]">
           Partner With Us
         </SecondaryButton>
-        <PrimaryButton href="/" class="md:text-sm lg:text-[18px]">
+        <PrimaryButton target="_blank" href="https://www.unsw.edu.au/challeng/vertically-integrated-projects/explore-vertically-integrated-projects/atomcraft" class="md:text-sm lg:text-[16px]">
           Join Our Team
         </PrimaryButton>
       </div>
     </div>
 
-    <div class="smd:hidden z-10 flex flex-col items-center pr-2">
+    <div class="z-10 flex flex-col items-center pr-2 lg:hidden">
       <button
         id="mobile-menu-btn"
-        class="group smd:hidden inline-flex h-12 w-12 cursor-pointer items-center justify-center rounded text-center text-white shadow-[0_1px_0_theme(colors.slate.950/.04),0_1px_2px_theme(colors.slate.950/.12),inset_0_-2px_0_theme(colors.slate.950/.04)] transition hover:shadow-[0_1px_0_theme(colors.slate.950/.04),0_4px_8px_theme(colors.slate.950/.12),inset_0_-2px_0_theme(colors.slate.950/.04)]"
+        class="group lg:hidden inline-flex h-12 w-12 cursor-pointer items-center justify-center rounded text-center text-white shadow-[0_1px_0_theme(colors.slate.950/.04),0_1px_2px_theme(colors.slate.950/.12),inset_0_-2px_0_theme(colors.slate.950/.04)] transition hover:shadow-[0_1px_0_theme(colors.slate.950/.04),0_4px_8px_theme(colors.slate.950/.12),inset_0_-2px_0_theme(colors.slate.950/.04)]"
         aria-pressed="false"
       >
         <span class="sr-only">Menu</span>
@@ -94,21 +90,19 @@ const isHome = Astro.url.pathname === "/";
             rx="1"></rect>
         </svg>
       </button>
+    </div>
+  </div>
 
-      <div
-        id="mobile-menu"
-        class="smd:hidden invisible absolute top-full right-[-20] max-h-0 w-[100px] overflow-hidden opacity-0 transition-all duration-300 ease-in-out"
-      >
-        <div
-          class="flex flex-col items-center gap-5 rounded-2xl bg-black/70 pt-2 pb-2"
-        >
-          <a href="/about"> About Us </a>
-          <a href="/news"> News </a>
-          <a href="/members"> Members </a>
-          <a href="/partners"> Partner </a>
-          <a href="/partners"> Join Us </a>
-        </div>
-      </div>
+  <div
+    id="mobile-menu"
+    class="lg:hidden invisible absolute top-full left-0 w-full overflow-hidden opacity-0 transition-all duration-300 ease-in-out bg-dark-purple/95 backdrop-blur-md shadow-2xl max-h-0 border-t border-white/10"
+  >
+    <div class="flex flex-col w-full">
+      <a href="/about" class="px-6 py-4 text-center text-white border-b border-white/10 hover:underline"> About Us </a>
+      <a href="/news" class="px-6 py-4 text-center text-white border-b border-white/10 hover:underline"> News </a>
+      <a href="/members" class="px-6 py-4 text-center text-white border-b border-white/10 hover:underline"> Members </a>
+      <a href="/partners" class="px-6 py-4 text-center text-white border-b border-white/10 hover:underline"> Partner </a>
+      <a target="_blank" href="https://www.unsw.edu.au/challeng/vertically-integrated-projects/explore-vertically-integrated-projects/atomcraft" class="px-6 py-4 text-center text-white hover:underline"> Join Us </a>
     </div>
   </div>
 </header>
@@ -120,11 +114,11 @@ const isHome = Astro.url.pathname === "/";
   gsap.registerPlugin(ScrollTrigger);
 
   document.addEventListener("DOMContentLoaded", () => {
-    // Mobile menu logic 
+    // Mobile menu logic
     const menuBtn = document.getElementById("mobile-menu-btn");
     const mobileMenu = document.getElementById("mobile-menu");
 
-  if (menuBtn && mobileMenu) {
+    if (menuBtn && mobileMenu) {
       menuBtn.addEventListener("click", () => {
         const isPressed = menuBtn.getAttribute("aria-pressed") === "true";
         menuBtn.setAttribute("aria-pressed", String(!isPressed));
@@ -167,7 +161,7 @@ const isHome = Astro.url.pathname === "/";
           onComplete: () => {
             initScrollTrigger();
           },
-        }
+        },
       );
     } else {
       // On other pages, ensure it's visible and init scroll trigger immediately

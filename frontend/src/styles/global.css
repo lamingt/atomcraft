@@ -13,6 +13,8 @@
   --color-cyan: #39f8eb;
   --color-pink: #ff47fc;
   --color-dark-purple: #170a35;
+  --color-very-dark-purple: #170a35;
+  --color-light-purple: #8c72c5;
   --color-red: #df3528;
 
   --font-sans: "Inter", "sans-serif";
@@ -48,6 +50,8 @@
   --text-subheading-2: 40px;
   --text-subheading-2--line-height: 110%;
   --text-subheading-2--font-weight: 500;
+
+  --text-subheading-3: 20px;
 
   --text-body: 18px;
   --text-body--line-height: 150%;

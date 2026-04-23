@@ -1,0 +1,38 @@
+---
+import { Image } from "astro:assets";
+import TertiaryOutlineButton from "../../components/buttons/TertiaryOutlineButton.astro";
+import partnerImage from "../../assets/partner/csiro.jpeg";
+---
+
+<section>
+  <div class="mx-auto mt-[100px] w-[90%] max-w-[1500px] lg:mt-[150px]">
+  <div class="flex flex-col gap-10 lg:flex-row xl:gap-[70px]">
+    <div class="flex w-fit flex-col items-start justify-between">
+      <div>
+        <h1 class="w-fit text-4xl md:text-5xl xl:text-heading-2 3xl:text-heading-1 mb-5">
+          <span
+            class="gradient-text"
+            >Partner</span
+          > <br/> 
+          with Atomcraft
+        </h1>
+        <p
+          class="text-gray_text w-full text-lg mb-10 lg:mb-0"
+        >
+          Our partners provide the support and resources that make our research
+          and engineering work possible, enabling us to turn ambitious ideas
+          into real-world fusion devices.
+        </p>
+      </div>
+      <TertiaryOutlineButton href="javascript:void(0)">
+        Contact Us
+      </TertiaryOutlineButton>
+    </div>
+    <Image
+      src={partnerImage}
+      alt="AtomCraft members with arms around each other's shoulders in front of a screen which reads 'Empowering Excellence Breakfast'"
+      class="scale-auto rounded-[10px] w-full aspect-3/2 object-cover lg:w-[110%] 3xl:w-full"
+      loading="eager"
+    />
+  </div>
+</section>

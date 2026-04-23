@@ -1,0 +1,20 @@
+---
+export type Props = {
+  href: string;
+  id?: string;
+  class?: string;
+};
+
+const { href, id, class: extraClass = "" } = Astro.props;
+---
+
+<a
+  href={href}
+  id={id ? id : undefined}
+  class:list={[
+    "hover:bg-purple hover:border-purple text-purple hover:text-black active:bg-transparent active:border-purple active:text-purple border-purple inline-flex cursor-pointer items-center justify-center rounded-[100px] border-2 px-[25px] py-[10.87px] text-sm duration-200 active:opacity-60 sm:text-[18px] lg:px-[30px] lg:py-[13px] xl:px-[38px] xl:py-[16.5px]",
+    extraClass,
+  ]}
+>
+  <slot />
+</a>
