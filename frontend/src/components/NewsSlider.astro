@@ -19,6 +19,7 @@ for (const path in images) {
   imageLookup[base] = (await images[path]()).default;
 }
 
+const clonedNews = Array(6).fill(news).flat();
 ---
 
 <section class="w-full">
@@ -26,18 +27,20 @@ for (const path in images) {
     <h3 class="text-heading-3">News</h3>
     <SecondaryOutlineButton href="/news"> View All </SecondaryOutlineButton>
   </div>
-  <div class="flex gap-9 overflow-x-hidden" id="news-slider-container">
+  <div class="flex gap-9 overflow-x-hidden touch-pan-y" id="news-slider-container">
     {
-      news.map((article) => (
-        <RegularNewsCard
-          imageSrc={imageLookup[article.id]}
-          title={article.data.name}
-          imageAlt={article.data.imageAlt}
-          tags={article.data.categories}
-          description={article.data.description}
-          date={article.data.date}
-          url={article.data.url}
-        />
+      clonedNews.map((article) => (
+        <div class="hs-news-item shrink-0">
+          <RegularNewsCard
+            imageSrc={imageLookup[article.id]}
+            title={article.data.name}
+            imageAlt={article.data.imageAlt}
+            tags={article.data.categories}
+            description={article.data.description}
+            date={article.data.date}
+            url={article.data.url}
+          />
+        </div>
       ))
     }
   </div>
@@ -75,49 +78,72 @@ for (const path in images) {
 
   gsap.registerPlugin(Observer);
 
-  const parts = gsap.utils.toArray(".regular-news") as HTMLElement[];
-  const loop = horizontalLoop(parts, {
-    paused: true,
-    paddingRight: 36,
-  });
+  document.addEventListener("DOMContentLoaded", () => {
+    const newsParts = gsap.utils.toArray(".hs-news-item") as HTMLElement[];
+    if (newsParts.length > 0) {
+      const newsLoop = horizontalLoop(newsParts, {
+        paused: true,
+        paddingRight: 36,
+      });
 
-  document.querySelector("#news-next-btn")?.addEventListener("click", () => {
-    loop.next({
-      duration: 0.5,
-      ease: "power0.5.out",
-    });
-  });
+      const wrapNewsTime = gsap.utils.wrap(0, newsLoop.duration());
+      const itemTimeNews = newsLoop.times[1] - newsLoop.times[0];
 
-  document.querySelector("#news-prev-btn")?.addEventListener("click", () => {
-    loop.previous({
-      duration: 0.5,
-      ease: "power1.out",
-    });
-  });
+      let newsProxy = { time: newsLoop.totalTime() };
+      let newsTargetTime = newsLoop.totalTime();
 
-  const goNext = () => {
-    loop.next({
-      duration: 1,
-      ease: "power3.inOut",
-    });
-  };
+      document.querySelector("#news-next-btn")?.addEventListener("click", () => {
+        if (!gsap.isTweening(newsProxy)) {
+           newsProxy.time = newsLoop.totalTime();
+           newsTargetTime = newsProxy.time;
+        }
+        newsTargetTime += itemTimeNews;
+        gsap.to(newsProxy, {
+          time: newsTargetTime,
+          duration: 0.5,
+          ease: "power2.out",
+          onUpdate: () => { newsLoop.totalTime(wrapNewsTime(newsProxy.time)); }
+        });
+      });
 
-  const goPrev = () => {
-    loop.previous({
-      duration: 1,
-      ease: "power3.inOut",
-    });
-  };
+      document.querySelector("#news-prev-btn")?.addEventListener("click", () => {
+        if (!gsap.isTweening(newsProxy)) {
+           newsProxy.time = newsLoop.totalTime();
+           newsTargetTime = newsProxy.time;
+        }
+        newsTargetTime -= itemTimeNews;
+        gsap.to(newsProxy, {
+          time: newsTargetTime,
+          duration: 0.5,
+          ease: "power2.out",
+          onUpdate: () => { newsLoop.totalTime(wrapNewsTime(newsProxy.time)); }
+        });
+      });
 
-  document.querySelector("#next-btn")?.addEventListener("click", goNext);
-  document.querySelector("#prev-btn")?.addEventListener("click", goPrev);
-
-  Observer.create({
-    type: "touch,pointer",
-    target: document.querySelector("#news-slider-container"),
-    onLeft: goNext,
-    onRight: goPrev,
-    tolerance: 100,
-    preventDefault: true,
+      Observer.create({
+        type: "touch,pointer",
+        target: document.querySelector("#news-slider-container"),
+        tolerance: 0,
+        preventDefault: false, // Managed natively via touch-pan-y css!
+        onChangeX: (self) => {
+          gsap.killTweensOf(newsProxy);
+          let timeDelta = self.deltaX / 100;
+          let newTime = newsLoop.totalTime() - timeDelta;
+          newsLoop.totalTime(wrapNewsTime(newTime));
+        },
+        onRelease: (self) => {
+          let velocity = self.velocityX / 100;
+          if (Math.abs(velocity) > 0.2) {
+             newsProxy.time = newsLoop.totalTime();
+             gsap.to(newsProxy, {
+               time: newsProxy.time - velocity * 0.4,
+               duration: 0.6,
+               ease: "power2.out",
+               onUpdate: () => { newsLoop.totalTime(wrapNewsTime(newsProxy.time)); }
+             });
+          }
+        }
+      });
+    }
   });
 </script>
